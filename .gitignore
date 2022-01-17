@@ -1,0 +1,10 @@
+.cache
+build
+
+.DS_Store
+dist/
+
+*/data
+
+*.env
+**/strapi-app/*.env.*

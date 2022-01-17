@@ -1,0 +1,35 @@
+version: "3"
+
+services:
+  strapi-npta:
+    image: strapi/strapi
+    container_name: strapi-npta
+    restart: unless-stopped
+    env_file: .env
+    volumes:
+      - ./strapi-app:/srv/app
+    networks:
+      - strapi-app-network
+    ports:
+      - '1337:1337'
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - ./data:/var/lib/postgresql/data
+    networks:
+      - strapi-app-network
+
+networks:
+  strapi-app-network:
+    driver: bridge
+
+volumes:
+  strapi-app:
+  data:
