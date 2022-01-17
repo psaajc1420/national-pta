@@ -1,0 +1,20 @@
+{
+  "kind": "collectionType",
+  "collectionName": "age_groups",
+  "info": {
+    "name": "AgeGroup"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "group": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    }
+  }
+}

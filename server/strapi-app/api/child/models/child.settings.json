@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "children",
+  "info": {
+    "name": "Child"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "age": {
+      "required": true,
+      "max": 20,
+      "min": 4,
+      "type": "integer"
+    }
+  }
+}
