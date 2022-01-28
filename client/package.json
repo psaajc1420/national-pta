@@ -61,7 +61,12 @@
 		"prettier": "^2.4.1",
 		"react-scripts": "^4.0.3"
 	},
+	"husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
 	"lint-staged": {
-		"*.{js,jsx,ts,tsx}": ["eslint --fix", "prettier --config .prettierrc.json --write"]
+		"*.{js,jsx,ts,tsx}": ["eslint --fix", "npm run prettier-format"]
 	}
 }
