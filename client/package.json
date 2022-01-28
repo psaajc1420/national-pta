@@ -62,6 +62,6 @@
 		"react-scripts": "^4.0.3"
 	},
 	"lint-staged": {
-		"*.{js,jsx,ts,tsx,md,html,css}": "prettier --write"
+		"*.{js,jsx,ts,tsx,md,html,css}": "npm run prettier-format"
 	}
 }
