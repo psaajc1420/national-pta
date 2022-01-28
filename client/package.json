@@ -67,6 +67,6 @@
     }
   },
 	"lint-staged": {
-		"*.{js,jsx,ts,tsx}": ["eslint --fix", "npm run prettier-format"]
+		"*.{js,jsx,ts,tsx}": ["eslint --fix", "prettier --write"]
 	}
 }
