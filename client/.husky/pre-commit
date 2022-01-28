@@ -1,0 +1,4 @@
+# .husky/pre-commit
+# ...
+cd client
+npm test
