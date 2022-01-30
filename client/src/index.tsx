@@ -1,10 +1,31 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import {
+	ApolloClient,
+	InMemoryCache,
+	ApolloProvider,
+	// useQuery,
+	// gql,
+} from '@apollo/client';
+import { HashRouter } from 'react-router-dom';
+import { ThemeProvider } from '@emotion/react';
+import { theme } from './theme';
+
+const client = new ApolloClient({
+	uri: 'http://localhost:1337',
+	cache: new InMemoryCache(),
+});
 
 ReactDOM.render(
 	<React.StrictMode>
-		<App />
+		<ApolloProvider client={client}>
+			<ThemeProvider theme={theme}>
+				<HashRouter>
+					<App />
+				</HashRouter>
+			</ThemeProvider>
+		</ApolloProvider>
 	</React.StrictMode>,
 	document.getElementById('root'),
 );
