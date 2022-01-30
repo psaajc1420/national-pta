@@ -20,6 +20,7 @@ interface BoxProps {
 	display?: string;
 	justify?: string;
 	align?: string;
+	flexDirection?: 'row' | 'row-reverse' | 'column' | 'column-reverse';
 	border?: string;
 	borderRadius?: string | number;
 	backgroundColor?: string;
@@ -46,6 +47,7 @@ const Box = ({
 	display,
 	justify,
 	align,
+	flexDirection,
 	border,
 	borderRadius,
 	backgroundColor,
@@ -71,6 +73,7 @@ const Box = ({
 			display={display}
 			justify={justify}
 			align={align}
+			flexDirection={flexDirection}
 			border={border}
 			borderRadius={borderRadius}
 			backgroundColor={backgroundColor}
@@ -103,6 +106,7 @@ const StyledBox = styled('div')(
 		display,
 		justify,
 		align,
+		flexDirection,
 		border,
 		borderRadius,
 		backgroundColor,
@@ -125,6 +129,7 @@ const StyledBox = styled('div')(
 		display: center ? 'flex' : display ? display : 'none',
 		justifyContent: center ? 'center' : justify ? justify : 'none',
 		alignItems: center ? 'center' : align ? align : 'none',
+		flexDirection: flexDirection ? flexDirection : 'row',
 		border: border ? border : 0,
 		borderRadius: borderRadius ? borderRadius : 0,
 		backgroundColor: backgroundColor ? backgroundColor : 'blue',

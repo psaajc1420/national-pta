@@ -1,11 +1,13 @@
 export const theme = {
-	colors: {
-		light: 'white',
-		dark: 'black',
+	color: {
+		white: 'white',
+		black: 'black',
+		blue: 'blue',
+		gray: 'gray',
 	},
-	fonts: {
-		heading: '',
-		subheading: '',
-		text: '',
+	font: {
+		heading: "'Roboto Mono', monospace",
+		subheading: "'Roboto', sans-serif",
+		text: "'Open Sans', sans-serif",
 	},
 };
