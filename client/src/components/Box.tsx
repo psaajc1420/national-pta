@@ -87,8 +87,9 @@ const Box = ({
 
 export default Box;
 
-const StyledBox = styled('div')(
+const StyledBox = styled('div')<BoxProps>(
 	({
+		theme,
 		width,
 		height,
 		margin,
@@ -112,7 +113,7 @@ const StyledBox = styled('div')(
 		backgroundColor,
 		color,
 		visibility,
-	}: BoxProps) => ({
+	}) => ({
 		width: width ? width : '100%',
 		height: height ? height : '100%',
 		margin: margin ? margin : 0,
@@ -132,8 +133,8 @@ const StyledBox = styled('div')(
 		flexDirection: flexDirection ? flexDirection : 'row',
 		border: border ? border : 0,
 		borderRadius: borderRadius ? borderRadius : 0,
-		backgroundColor: backgroundColor ? backgroundColor : 'blue',
-		color: color ? color : 'black',
+		backgroundColor: backgroundColor ? backgroundColor : theme.color.blue,
+		color: color ? color : theme.color.black,
 		visibility: visibility ? visibility : 'visible',
 	}),
 );
