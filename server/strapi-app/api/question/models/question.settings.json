@@ -24,14 +24,15 @@
       },
       "type": "text"
     },
-    "answers": {
-      "collection": "answer"
-    },
     "question_category": {
       "model": "question-category"
     },
     "age_groups": {
       "collection": "age-group"
+    },
+    "answers": {
+      "via": "question",
+      "collection": "answer"
     }
   }
 }
