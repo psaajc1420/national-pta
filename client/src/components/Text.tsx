@@ -44,6 +44,7 @@ const StyledText = styled('p')<TextProps>(
 				? theme.font.text
 				: theme.font.text,
 		fontSize: size ? size : 14,
+		fontWeight: typography === 'heading' ? 'bold' : 'normal',
 		color: color ? color : theme.color.black,
 		lineHeight: lineHeight ? lineHeight : 'normal',
 		margin: 0,

@@ -9,7 +9,7 @@ export const theme = {
 		red: '#d94343',
 	},
 	font: {
-		heading: "''Nunito'', sans-serif",
+		heading: "'Nunito', sans-serif",
 		subheading: "'Nunito', sans-serif",
 		text: "'Raleway', sans-serif",
 	},
