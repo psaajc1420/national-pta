@@ -10,6 +10,9 @@
  * See more details here: https://strapi.io/documentation/developer-docs/latest/setup-deployment-guides/configurations.html#bootstrap
  */
 
+ const { faker } = require('@faker-js/faker');
+
+
 const createAdminUser = async () => {
   const params = {
     username: process.env.DEV_USER || 'admin',
@@ -55,10 +58,13 @@ const createUsers = async () => {
   if (users.length === 0) {
     const numUsers = 20;
 
+    
+
     for (let i = 0; i < numUsers; i++) {
+      let username = faker.internet.userName()
       await strapi.query('user', 'users-permissions').create({
-        username:  `User${i}`,
-        email: `user${i}@yahoo.com`,
+        username: username,
+        email: `${username}@gmail.com`,
         confirmed: true,
         blocked: false,
       });
@@ -73,8 +79,12 @@ const createChildren = async () => {
 
   if (currentData.length < numUsers) {
     for (let i = 0; i < numUsers; i++) {
+      let num = Math.floor(faker.datatype.number({
+        'min': 5,
+        'max': 18
+      }));
       await strapi.services.child.create({
-        name: `Child ${i}`,
+        name: faker.name.firstName(),
         age: 11,
       });
     }
