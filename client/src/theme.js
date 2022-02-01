@@ -1,13 +1,16 @@
 export const theme = {
 	color: {
-		white: 'white',
-		black: 'black',
-		blue: 'blue',
-		gray: 'gray',
+		white: '#f2eee2',
+		black: '#2c3035',
+		blue: '#3374ba',
+		lightBlue: '#7cc2eb',
+		green: '#3fb76c',
+		orange: '#f1b71c',
+		red: '#d94343',
 	},
 	font: {
-		heading: "'Roboto Mono', monospace",
-		subheading: "'Roboto', sans-serif",
-		text: "'Open Sans', sans-serif",
+		heading: "''Nunito'', sans-serif",
+		subheading: "'Nunito', sans-serif",
+		text: "'Raleway', sans-serif",
 	},
 };
