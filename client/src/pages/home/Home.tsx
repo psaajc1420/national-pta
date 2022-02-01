@@ -4,6 +4,33 @@ import styled from '@emotion/styled';
 
 const Home = () => {
 	const theme = useTheme();
+	const homeCategories = [
+		{
+			id: 1,
+			category: 'Device Use',
+			iconName: 'device-use',
+		},
+		{
+			id: 2,
+			category: 'Digital Safety',
+			iconName: 'digital-safety',
+		},
+		{
+			id: 3,
+			category: 'Privacy',
+			iconName: 'privacy',
+		},
+		{
+			id: 4,
+			category: 'Communication',
+			iconName: 'communication',
+		},
+		{
+			id: 5,
+			category: 'Media Choices',
+			iconName: 'media-choices',
+		},
+	];
 	return (
 		<Layout>
 			<Box
@@ -69,9 +96,17 @@ const Home = () => {
 					flexDirection='column'
 					backgroundColor='inherit'
 				>
-					<Text typography='subheading' size={36} color={theme.color.green}>
-						What is the Smart Talk?
-					</Text>
+					<Box
+						width='auto'
+						height='auto'
+						display='block'
+						backgroundColor='inherit'
+						margin='0 0 25px 0'
+					>
+						<Text typography='subheading' size={36} color={theme.color.green}>
+							What is the Smart Talk?
+						</Text>
+					</Box>
 					<Text typography='text' size={24} color={theme.color.black}>
 						The Smart Talk is a Tool that:
 					</Text>
@@ -107,8 +142,22 @@ const Home = () => {
 							</li>
 						</StyledList>
 					</Box>
-					<Box width='100%' height={350} display='block'>
-						CATEGORIES
+					<Box
+						width='100%'
+						height={250}
+						display='flex'
+						flexDirection='row'
+						justify='space-around'
+						align='center'
+						backgroundColor='inherit'
+					>
+						{homeCategories.map((e) => (
+							<Box key={e.id} width={150} height={85} center borderRadius={10}>
+								<Text typography='text' color={theme.color.white}>
+									{e.category}
+								</Text>
+							</Box>
+						))}
 					</Box>
 					<Box
 						width='auto'
@@ -127,6 +176,23 @@ const Home = () => {
 							in the family too! <br /> The end result is a personalized family
 							technology agreement to help keep everyone on <br /> track.
 						</Text>
+					</Box>
+					<Box
+						width='auto'
+						height='auto'
+						display='block'
+						backgroundColor='inherit'
+						margin='15px 0 50px 0'
+					>
+						<Button width={250} height={48} onClick={() => {}}>
+							<Text
+								typography='text'
+								textAlign='center'
+								color={theme.color.white}
+							>
+								Get Started
+							</Text>
+						</Button>
 					</Box>
 				</Box>
 			</Box>
