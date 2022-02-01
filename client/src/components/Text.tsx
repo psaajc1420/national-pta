@@ -8,6 +8,7 @@ interface TextProps {
 	size?: string | number;
 	color: string;
 	lineHeight?: string;
+	textAlign?: 'center' | 'left' | 'right' | 'justify';
 }
 
 const Text = ({
@@ -17,6 +18,7 @@ const Text = ({
 	size,
 	color,
 	lineHeight,
+	textAlign,
 }: TextProps) => {
 	return (
 		<StyledText
@@ -25,6 +27,7 @@ const Text = ({
 			size={size}
 			color={color}
 			lineHeight={lineHeight}
+			textAlign={textAlign}
 		>
 			{children}
 		</StyledText>
@@ -34,7 +37,7 @@ const Text = ({
 export default Text;
 
 const StyledText = styled('p')<TextProps>(
-	({ theme, typography, size, color, lineHeight }) => ({
+	({ theme, typography, size, color, lineHeight, textAlign }) => ({
 		fontFamily:
 			typography === 'heading'
 				? theme.font.heading
@@ -47,6 +50,7 @@ const StyledText = styled('p')<TextProps>(
 		fontWeight: typography === 'heading' ? 'bold' : 'normal',
 		color: color ? color : theme.color.black,
 		lineHeight: lineHeight ? lineHeight : 'normal',
+		textAlign: textAlign ? textAlign : 'left',
 		margin: 0,
 	}),
 );

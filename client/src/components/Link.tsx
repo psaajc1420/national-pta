@@ -13,6 +13,6 @@ const BaseLink = ({ children, to }: BaseLinkProps) => {
 
 export default BaseLink;
 
-const StyledLink = styled(Link)(() => ({
+const StyledLink = styled(Link)<BaseLinkProps>(() => ({
 	textDecoration: 'none',
 }));

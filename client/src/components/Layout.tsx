@@ -1,7 +1,9 @@
 import React from 'react';
 import { Box, Header } from './index';
+import { useTheme } from '@emotion/react';
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
+	const theme = useTheme();
 	return (
 		<Box
 			width='100vw'
@@ -11,9 +13,18 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 			align='center'
 			flexDirection='column'
 			margin={0}
+			backgroundColor={theme.color.white}
 		>
 			<Header />
-			{children}
+			<Box
+				width='100%'
+				height='100%'
+				display='block'
+				backgroundColor='inherit'
+				margin='60px 0'
+			>
+				{children}
+			</Box>
 		</Box>
 	);
 };

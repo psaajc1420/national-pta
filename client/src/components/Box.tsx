@@ -6,11 +6,7 @@ interface BoxProps {
 	width?: string | number;
 	height?: string | number;
 	margin?: string | number;
-	marginX?: string | number;
-	marginY?: string | number;
 	padding?: string | number;
-	paddingX?: string | number;
-	paddingY?: string | number;
 	position?: 'static' | 'relative' | 'fixed' | 'absolute' | 'sticky';
 	top?: string | number;
 	bottom?: string | number;
@@ -23,9 +19,11 @@ interface BoxProps {
 	flexDirection?: 'row' | 'row-reverse' | 'column' | 'column-reverse';
 	border?: string;
 	borderRadius?: string | number;
+	borderBox?: boolean;
 	backgroundColor?: string;
 	color?: string;
 	visibility?: 'visible' | 'hidden';
+	zIndex?: number;
 }
 
 const Box = ({
@@ -33,11 +31,7 @@ const Box = ({
 	width,
 	height,
 	margin,
-	marginX,
-	marginY,
 	padding,
-	paddingX,
-	paddingY,
 	position,
 	top,
 	bottom,
@@ -50,20 +44,18 @@ const Box = ({
 	flexDirection,
 	border,
 	borderRadius,
+	borderBox,
 	backgroundColor,
 	color,
 	visibility,
+	zIndex,
 }: BoxProps) => {
 	return (
 		<StyledBox
 			width={width}
 			height={height}
 			margin={margin}
-			marginX={marginX}
-			marginY={marginY}
 			padding={padding}
-			paddingX={paddingX}
-			paddingY={paddingY}
 			position={position}
 			top={top}
 			bottom={bottom}
@@ -76,9 +68,11 @@ const Box = ({
 			flexDirection={flexDirection}
 			border={border}
 			borderRadius={borderRadius}
+			borderBox={borderBox}
 			backgroundColor={backgroundColor}
 			color={color}
 			visibility={visibility}
+			zIndex={zIndex}
 		>
 			{children}
 		</StyledBox>
@@ -93,11 +87,7 @@ const StyledBox = styled('div')<BoxProps>(
 		width,
 		height,
 		margin,
-		marginY,
-		marginX,
 		padding,
-		paddingX,
-		paddingY,
 		position,
 		top,
 		bottom,
@@ -110,18 +100,16 @@ const StyledBox = styled('div')<BoxProps>(
 		flexDirection,
 		border,
 		borderRadius,
+		borderBox,
 		backgroundColor,
 		color,
 		visibility,
+		zIndex,
 	}) => ({
 		width: width ? width : '100%',
 		height: height ? height : '100%',
 		margin: margin ? margin : 0,
-		marginX: marginX ? marginX : 0,
-		marginY: marginY ? marginY : 0,
 		padding: padding ? padding : 0,
-		paddingX: paddingX ? paddingX : 0,
-		paddingY: paddingY ? paddingY : 0,
 		position: position ? position : 'relative',
 		top: top ? top : 0,
 		bottom: bottom ? bottom : 0,
@@ -133,8 +121,10 @@ const StyledBox = styled('div')<BoxProps>(
 		flexDirection: flexDirection ? flexDirection : 'row',
 		border: border ? border : 0,
 		borderRadius: borderRadius ? borderRadius : 0,
+		boxSizing: borderBox ? 'border-box' : undefined,
 		backgroundColor: backgroundColor ? backgroundColor : theme.color.blue,
 		color: color ? color : theme.color.black,
 		visibility: visibility ? visibility : 'visible',
+		zIndex: zIndex ? zIndex : undefined,
 	}),
 );
