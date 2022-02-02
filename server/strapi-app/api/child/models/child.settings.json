@@ -2,7 +2,8 @@
   "kind": "collectionType",
   "collectionName": "children",
   "info": {
-    "name": "Child"
+    "name": "Child",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -20,6 +21,11 @@
       "max": 20,
       "min": 4,
       "type": "integer"
+    },
+    "users_permissions_user": {
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "children"
     }
   }
 }

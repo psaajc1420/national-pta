@@ -9,7 +9,9 @@
     "build": "strapi build",
     "strapi": "strapi"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@faker-js/faker": "^6.0.0-alpha.5"
+  },
   "dependencies": {
     "knex": "0.21.18",
     "pg": "8.5.1",
