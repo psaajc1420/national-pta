@@ -26,7 +26,7 @@ const Header = () => {
 	return (
 		<Box
 			width='100%'
-			height={60}
+			height={80}
 			padding='14px 36px'
 			borderBox
 			display='flex'
@@ -37,16 +37,11 @@ const Header = () => {
 			top={0}
 			zIndex={999}
 		>
-			<Box
-				width='auto'
-				height='100%'
-				display='inline-block'
-				backgroundColor='inherit'
-			>
-				<Text typography='heading' size={24} color={theme.color.blue}>
-					The Smart Talk
-				</Text>
-			</Box>
+			<HeaderLogo
+				src={window.location.origin + '/assets/logos/SmartTalk_Logo.svg'}
+				alt='The Smart Talk logo'
+			/>
+
 			<Box
 				width='40%'
 				display='flex'
@@ -85,4 +80,9 @@ const NavLink = styled(Link)(() => ({
 	textDecoration: 'none',
 	// margin: '1rem',
 	// position: 'relative',
+}));
+
+const HeaderLogo = styled('img')(() => ({
+	width: 150,
+	height: 90,
 }));

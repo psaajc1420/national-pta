@@ -1,36 +1,11 @@
 import { Box, Button, Layout, Text } from '../../components';
 import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
+import HomeCategoryItem from './HomeCategoryItem';
+import { HOME_CATEGORIES } from './HomeCategories';
 
 const Home = () => {
 	const theme = useTheme();
-	const homeCategories = [
-		{
-			id: 1,
-			category: 'Device Use',
-			iconName: 'device-use',
-		},
-		{
-			id: 2,
-			category: 'Digital Safety',
-			iconName: 'digital-safety',
-		},
-		{
-			id: 3,
-			category: 'Privacy',
-			iconName: 'privacy',
-		},
-		{
-			id: 4,
-			category: 'Communication',
-			iconName: 'communication',
-		},
-		{
-			id: 5,
-			category: 'Media Choices',
-			iconName: 'media-choices',
-		},
-	];
 	return (
 		<Layout>
 			<Box
@@ -54,7 +29,15 @@ const Home = () => {
 						display='block'
 						margin='0 15px 0 0'
 						borderRadius='50%'
-					></Box>
+					>
+						<HeroImage
+							src={
+								window.location.origin +
+								'/assets/images/Hero Image Option 1.jpeg'
+							}
+							alt='Dad and his two daughters'
+						/>
+					</Box>
 					<Box
 						width='auto'
 						height='auto'
@@ -65,7 +48,7 @@ const Home = () => {
 						<Text
 							typography='heading'
 							size={42}
-							color={theme.color.blue}
+							color={theme.color.black}
 							textAlign='center'
 						>
 							Welcome to the <br /> Smart Talk
@@ -103,7 +86,7 @@ const Home = () => {
 						backgroundColor='inherit'
 						margin='0 0 25px 0'
 					>
-						<Text typography='subheading' size={36} color={theme.color.green}>
+						<Text typography='subheading' size={36} color={theme.color.blue}>
 							What is the Smart Talk?
 						</Text>
 					</Box>
@@ -125,8 +108,8 @@ const Home = () => {
 									textAlign='center'
 									color={theme.color.black}
 								>
-									Helps families have positive, proactive conversations about
-									technology
+									&bull; Helps families have positive, proactive conversations
+									about technology
 								</Text>
 							</li>
 							<li>
@@ -136,14 +119,14 @@ const Home = () => {
 									textAlign='center'
 									color={theme.color.black}
 								>
-									Allows children ages 5-8 to actively participate in their
-									family&apos;s agreed upon rules around:
+									&bull; Allows children ages 5-8 to actively participate in
+									their family&apos;s agreed upon rules around:
 								</Text>
 							</li>
 						</StyledList>
 					</Box>
 					<Box
-						width='100%'
+						width='90%'
 						height={250}
 						display='flex'
 						flexDirection='row'
@@ -151,12 +134,8 @@ const Home = () => {
 						align='center'
 						backgroundColor='inherit'
 					>
-						{homeCategories.map((e) => (
-							<Box key={e.id} width={150} height={85} center borderRadius={10}>
-								<Text typography='text' color={theme.color.white}>
-									{e.category}
-								</Text>
-							</Box>
+						{HOME_CATEGORIES.map((e) => (
+							<HomeCategoryItem key={e.id} item={e} />
 						))}
 					</Box>
 					<Box
@@ -171,10 +150,11 @@ const Home = () => {
 							size={24}
 							textAlign='center'
 							color={theme.color.black}
+							lineHeight='32px'
 						>
 							These rules aren&apos;t just for children, they are for the adults
 							in the family too! <br /> The end result is a personalized family
-							technology agreement to help keep everyone on <br /> track.
+							technology agreement to help keep everyone on track.
 						</Text>
 					</Box>
 					<Box
@@ -186,7 +166,7 @@ const Home = () => {
 					>
 						<Button width={250} height={48} onClick={() => {}}>
 							<Text
-								typography='text'
+								typography='heading'
 								textAlign='center'
 								color={theme.color.white}
 							>
@@ -205,4 +185,15 @@ export default Home;
 const StyledList = styled('ul')(() => ({
 	listStyleType: 'none',
 	color: 'inherit',
+	li: {
+		marginBottom: 10,
+	},
+}));
+
+const HeroImage = styled('img')(() => ({
+	width: 350,
+	height: 350,
+	objectFit: 'cover',
+	objectPostion: '100% 0',
+	borderRadius: '50%',
 }));
