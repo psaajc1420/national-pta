@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { Box, Text } from './index';
+import { Box, LanguageDropdown, Text } from './index';
 import { useTheme } from '@emotion/react';
 import { Link } from 'react-router-dom';
 
@@ -50,6 +50,7 @@ const Header = () => {
 				align='center'
 				backgroundColor='inherit'
 			>
+				<LanguageDropdown />
 				{menuItems.map((e) => (
 					<NavLink to={e.route} key={e.id}>
 						<Box

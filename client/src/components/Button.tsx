@@ -40,5 +40,6 @@ const StyledButton = styled('button')<ButtonProps>(
 		height: height,
 		border: 'none',
 		borderRadius: 56,
+		cursor: 'pointer',
 	}),
 );
