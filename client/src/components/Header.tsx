@@ -20,7 +20,7 @@ const Header = () => {
 		{
 			id: 3,
 			pageName: 'Login',
-			route: '/',
+			route: '/login',
 		},
 	];
 	return (
@@ -49,6 +49,7 @@ const Header = () => {
 				justify='space-around'
 				align='center'
 				backgroundColor='inherit'
+				zIndex={1000}
 			>
 				<LanguageDropdown />
 				{menuItems.map((e) => (

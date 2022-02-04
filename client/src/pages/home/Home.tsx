@@ -1,8 +1,8 @@
 import { Box, Button, Layout, Text } from '../../components';
 import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
-import HomeCategoryItem from './HomeCategoryItem';
-import { HOME_CATEGORIES } from './HomeCategories';
+import { HomeCategoryItem } from './components';
+import { HOME_CATEGORIES } from './home-categories';
 
 const Home = () => {
 	const theme = useTheme();

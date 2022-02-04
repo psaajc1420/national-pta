@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { Box, Text } from '../../components';
+import { Box, Text } from '../../../components';
 import styled from '@emotion/styled';
 import { useTheme } from '@emotion/react';
 
