@@ -4,15 +4,24 @@ import styled from '@emotion/styled';
 interface AuthInputProps {
 	placeholder: string;
 	type: string;
+	value: string | number;
+	onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const AuthInput = ({ placeholder, type }: AuthInputProps) => {
-	return <StyledInput placeholder={placeholder} type={type}></StyledInput>;
+const AuthInput = ({ placeholder, type, onChange, value }: AuthInputProps) => {
+	return (
+		<StyledInput
+			placeholder={placeholder}
+			type={type}
+			onChange={onChange}
+			value={value}
+		/>
+	);
 };
 
 export default AuthInput;
 
-const StyledInput = styled('input')(({ theme }) => ({
+const StyledInput = styled('input')<AuthInputProps>(({ theme }) => ({
 	border: 'none',
 	height: 56,
 	width: '100%',
@@ -33,3 +42,7 @@ const StyledInput = styled('input')(({ theme }) => ({
 		/* Microsoft Edge */ color: theme.color.black,
 	},
 }));
+
+AuthInput.defaultProps = {
+	autocomplete: 'off',
+};

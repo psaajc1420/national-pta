@@ -1,6 +1,6 @@
 import { Box, Button, Layout, Link, Text } from '../../components';
 import { useTheme } from '@emotion/react';
-import { AuthInput } from './components';
+// import { AuthInput } from './components';
 
 const Register = () => {
 	const theme = useTheme();
@@ -29,9 +29,9 @@ const Register = () => {
 							flexDirection='column'
 							backgroundColor='inherit'
 						>
-							<AuthInput type='text' placeholder='Email' />
+							{/* <AuthInput type='text' placeholder='Email' />
 							<AuthInput type='text' placeholder='First Name' />
-							<AuthInput type='password' placeholder='Password' />
+							<AuthInput type='password' placeholder='Password' /> */}
 							<Box
 								width='auto'
 								height='auto'
