@@ -21,7 +21,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 				height='100%'
 				display='block'
 				backgroundColor='inherit'
-				margin='60px 0'
+				margin='80px 0'
 			>
 				{children}
 			</Box>

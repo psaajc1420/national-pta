@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { Box, Text } from './index';
+import { Box, LanguageDropdown, Text } from './index';
 import { useTheme } from '@emotion/react';
 import { Link } from 'react-router-dom';
 
@@ -20,13 +20,13 @@ const Header = () => {
 		{
 			id: 3,
 			pageName: 'Login',
-			route: '/',
+			route: '/login',
 		},
 	];
 	return (
 		<Box
 			width='100%'
-			height={60}
+			height={80}
 			padding='14px 36px'
 			borderBox
 			display='flex'
@@ -37,16 +37,11 @@ const Header = () => {
 			top={0}
 			zIndex={999}
 		>
-			<Box
-				width='auto'
-				height='100%'
-				display='inline-block'
-				backgroundColor='inherit'
-			>
-				<Text typography='heading' size={24} color={theme.color.blue}>
-					The Smart Talk
-				</Text>
-			</Box>
+			<HeaderLogo
+				src={window.location.origin + '/assets/logos/SmartTalk_Logo.svg'}
+				alt='The Smart Talk logo'
+			/>
+
 			<Box
 				width='40%'
 				display='flex'
@@ -54,7 +49,9 @@ const Header = () => {
 				justify='space-around'
 				align='center'
 				backgroundColor='inherit'
+				zIndex={1000}
 			>
+				<LanguageDropdown />
 				{menuItems.map((e) => (
 					<NavLink to={e.route} key={e.id}>
 						<Box
@@ -85,4 +82,9 @@ const NavLink = styled(Link)(() => ({
 	textDecoration: 'none',
 	// margin: '1rem',
 	// position: 'relative',
+}));
+
+const HeaderLogo = styled('img')(() => ({
+	width: 150,
+	height: 90,
 }));

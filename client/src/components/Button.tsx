@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 interface ButtonProps {
 	children: React.ReactNode;
 	type?: 'button' | 'submit' | 'reset';
-	onClick: () => void;
+	onClick: any;
 	width: string | number;
 	height: string | number;
 	backgroundColor?: string;
@@ -40,5 +40,6 @@ const StyledButton = styled('button')<ButtonProps>(
 		height: height,
 		border: 'none',
 		borderRadius: 56,
+		cursor: 'pointer',
 	}),
 );
