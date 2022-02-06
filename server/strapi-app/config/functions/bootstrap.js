@@ -63,31 +63,19 @@ const createUsers = async () => {
 
   if (users.length === 0) {
     const numUsers = 20;
-<<<<<<< HEAD
     for (let i = 0; i < numUsers; i++) {
       let username = faker.internet.userName();
 
-      let user = await strapi.plugins['users-permissions'].services.user.add({
+      await strapi.plugins['users-permissions'].services.user.add({
         blocked: false,
         confirmed: true, 
         username: username,
         email: `${username}@gmail.com`,
-        password: 'password', //will be hashed automatically
-        provider: 'local', //provider
-        created_by: 1, //user admin id
-        updated_by: 1, //user admin id
-        role: 1 //role id
-=======
-
-    for (let i = 0; i < numUsers; i++) {
-      let username = faker.internet.userName();
-      await strapi.query("user", "users-permissions").create({
-        username: username,
-        email: `${username}@gmail.com`,
-        password: "password",
-        confirmed: true,
-        blocked: false,
->>>>>>> 048a577fd17bb275aa87bc76fd95f8d4bb230abc
+        password: 'password', 
+        provider: 'local', 
+        created_by: 1, 
+        updated_by: 1, 
+        role: 1 
       });
     }
   }
