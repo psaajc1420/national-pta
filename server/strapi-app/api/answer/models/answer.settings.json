@@ -27,8 +27,8 @@
       "unique": false
     },
     "question": {
-      "model": "question",
-      "via": "answers"
+      "via": "answers",
+      "model": "question"
     }
   }
 }

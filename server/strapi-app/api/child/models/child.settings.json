@@ -26,6 +26,10 @@
       "plugin": "users-permissions",
       "model": "user",
       "via": "children"
+    },
+    "questions": {
+      "via": "child",
+      "collection": "question"
     }
   }
 }
