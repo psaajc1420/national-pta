@@ -37,10 +37,12 @@ const Header = () => {
 			top={0}
 			zIndex={999}
 		>
-			<HeaderLogo
-				src={window.location.origin + '/assets/logos/SmartTalk_Logo.svg'}
-				alt='The Smart Talk logo'
-			/>
+			<Link to='/'>
+				<HeaderLogo
+					src={window.location.origin + '/assets/logos/SmartTalk_Logo.svg'}
+					alt='The Smart Talk logo'
+				/>
+			</Link>
 
 			<Box
 				width='40%'
