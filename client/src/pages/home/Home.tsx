@@ -1,4 +1,4 @@
-import { Box, Button, Layout, Text } from '../../components';
+import { Box, Button, Layout, Link, Text } from '../../components';
 import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import { HomeCategoryItem } from './components';
@@ -164,15 +164,17 @@ const Home = () => {
 						backgroundColor='inherit'
 						margin='15px 0 50px 0'
 					>
-						<Button width={250} height={48} onClick={() => {}}>
-							<Text
-								typography='heading'
-								textAlign='center'
-								color={theme.color.white}
-							>
-								Get Started
-							</Text>
-						</Button>
+						<Link to='/register'>
+							<Button width={250} height={48} onClick={() => {}}>
+								<Text
+									typography='heading'
+									textAlign='center'
+									color={theme.color.white}
+								>
+									Get Started
+								</Text>
+							</Button>
+						</Link>
 					</Box>
 				</Box>
 			</Box>

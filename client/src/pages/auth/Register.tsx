@@ -1,13 +1,29 @@
 import { Box, Button, Layout, Link, Text } from '../../components';
 import { useTheme } from '@emotion/react';
-// import { AuthInput } from './components';
+import styled from '@emotion/styled';
 
 const Register = () => {
 	const theme = useTheme();
 	return (
 		<Layout>
 			<Box width='100%' height='100%' center backgroundColor='inherit'>
-				<Box width={500} height={350} center backgroundColor='inherit'>
+				<Box
+					width='75%'
+					height={350}
+					center
+					flexDirection='column'
+					backgroundColor={theme.color.lightBlue}
+					padding='5%'
+					borderRadius={75}
+				>
+					<Text
+						typography='heading'
+						size={36}
+						color={theme.color.black}
+						textAlign='center'
+					>
+						Would you like to create an account?
+					</Text>
 					<Box
 						width='100%'
 						height={350}
@@ -16,10 +32,33 @@ const Register = () => {
 						justify='space-around'
 						align='center'
 						backgroundColor='inherit'
+						margin='15px 0 0 0'
 					>
-						<Text typography='heading' size={36} color={theme.color.black}>
-							Welcome to the Smart Talk!
-						</Text>
+						<Box width='100%' height='100%' center backgroundColor='inherit'>
+							<Text typography='text' size={16} color={theme.color.black}>
+								Creating an account gives users full access to the Smart Talk
+								tool including:
+								<StyledUl>
+									<li>
+										Questions that facilitate positive technology discussions
+										within families
+									</li>
+									<li>Educational resources</li>
+									<li>
+										A personalized family techonology agreement that is created
+										based on individual responses
+									</li>
+								</StyledUl>
+							</Text>
+						</Box>
+						<Box
+							width={4}
+							height='100%'
+							display='block'
+							border={`1px solid ${theme.color.blue}`}
+							borderRadius={25}
+							margin='0 0 0 15px'
+						></Box>
 						<Box
 							width='100%'
 							height='100%'
@@ -29,9 +68,6 @@ const Register = () => {
 							flexDirection='column'
 							backgroundColor='inherit'
 						>
-							{/* <AuthInput type='text' placeholder='Email' />
-							<AuthInput type='text' placeholder='First Name' />
-							<AuthInput type='password' placeholder='Password' /> */}
 							<Box
 								width='auto'
 								height='auto'
@@ -39,18 +75,42 @@ const Register = () => {
 								flexDirection='column'
 								backgroundColor='inherit'
 							>
+								<Box
+									width='auto'
+									height='auto'
+									display='block'
+									backgroundColor='inherit'
+									margin='15px 0 25px 0'
+								>
+									<Button
+										width={250}
+										height={46}
+										type='submit'
+										onClick={() => {}}
+										backgroundColor={theme.color.lightBlue}
+										border={`3px solid ${theme.color.blue}`}
+									>
+										<Text
+											typography='heading'
+											textAlign='center'
+											color={theme.color.black}
+										>
+											Create Account
+										</Text>
+									</Button>
+								</Box>
 								<Button
-									width={150}
-									height={56}
+									width={250}
+									height={46}
 									type='submit'
 									onClick={() => {}}
 								>
 									<Text
-										typography='subheading'
+										typography='heading'
 										textAlign='center'
 										color={theme.color.white}
 									>
-										Register
+										Continue as Guest
 									</Text>
 								</Button>
 								<Box
@@ -61,15 +121,14 @@ const Register = () => {
 									margin='15px 0'
 									zIndex={1}
 								>
-									<Link to='/login'>
-										<Text
-											typography='subheading'
-											textAlign='center'
-											color={theme.color.blue}
-										>
-											Already have an account? Login here!
-										</Text>
-									</Link>
+									<Text
+										typography='subheading'
+										textAlign='center'
+										color={theme.color.black}
+									>
+										Already have an account?
+										<Link to='/login'> Log in</Link>
+									</Text>
 								</Box>
 							</Box>
 						</Box>
@@ -81,3 +140,9 @@ const Register = () => {
 };
 
 export default Register;
+
+const StyledUl = styled('ul')(() => ({
+	listStyleType: 'disc',
+	listStylePosition: 'outside',
+	margin: '15px 0 0 20px',
+}));
