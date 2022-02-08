@@ -99,20 +99,22 @@ const Register = () => {
 										</Text>
 									</Button>
 								</Box>
-								<Button
-									width={250}
-									height={46}
-									type='submit'
-									onClick={() => {}}
-								>
-									<Text
-										typography='heading'
-										textAlign='center'
-										color={theme.color.white}
+								<Link to='/quiz'>
+									<Button
+										width={250}
+										height={46}
+										type='submit'
+										onClick={() => {}}
 									>
-										Continue as Guest
-									</Text>
-								</Button>
+										<Text
+											typography='heading'
+											textAlign='center'
+											color={theme.color.white}
+										>
+											Continue as Guest
+										</Text>
+									</Button>
+								</Link>
 								<Box
 									width='auto'
 									height='auto'
