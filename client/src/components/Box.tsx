@@ -24,6 +24,7 @@ interface BoxProps {
 	color?: string;
 	visibility?: 'visible' | 'hidden';
 	zIndex?: number;
+	onClick?: any;
 }
 
 const Box = ({
@@ -49,6 +50,7 @@ const Box = ({
 	color,
 	visibility,
 	zIndex,
+	onClick,
 }: BoxProps) => {
 	return (
 		<StyledBox
@@ -73,6 +75,7 @@ const Box = ({
 			color={color}
 			visibility={visibility}
 			zIndex={zIndex}
+			onClick={onClick}
 		>
 			{children}
 		</StyledBox>
@@ -111,10 +114,10 @@ const StyledBox = styled('div')<BoxProps>(
 		margin: margin ? margin : 0,
 		padding: padding ? padding : 0,
 		position: position ? position : 'relative',
-		top: top ? top : 0,
-		bottom: bottom ? bottom : 0,
-		left: left ? left : 0,
-		right: right ? right : 0,
+		top: top ? top : undefined,
+		bottom: bottom ? bottom : undefined,
+		left: left ? left : undefined,
+		right: right ? right : undefined,
 		display: center ? 'flex' : display ? display : 'none',
 		justifyContent: center ? 'center' : justify ? justify : 'none',
 		alignItems: center ? 'center' : align ? align : 'none',
