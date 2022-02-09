@@ -6,16 +6,17 @@ interface CategoryButtonProps {
 	children: React.ReactNode;
 	onClick: any;
 	bgColor: string;
-	selectedTab?: boolean;
+	selected?: boolean;
 }
 
 const CategoryButton = ({
 	children,
 	bgColor,
 	onClick,
+	selected,
 }: CategoryButtonProps) => {
 	return (
-		<StyledButton bgColor={bgColor} onClick={onClick}>
+		<StyledButton bgColor={bgColor} onClick={onClick} selected={selected}>
 			{children}
 		</StyledButton>
 	);
@@ -24,7 +25,7 @@ const CategoryButton = ({
 export default CategoryButton;
 
 const StyledButton = styled('div')<CategoryButtonProps>(
-	({ bgColor, theme }) => ({
+	({ bgColor, theme, selected }) => ({
 		width: 100,
 		height: 75,
 		display: 'flex',
@@ -34,6 +35,7 @@ const StyledButton = styled('div')<CategoryButtonProps>(
 		backgroundColor: `${theme.color[bgColor]}`,
 		cursor: 'pointer',
 		transition: 'all .1s ease-in-out',
+		transform: selected ? 'scale(1.1)' : undefined,
 		['&:hover']: {
 			transform: 'scale(1.1)',
 		},

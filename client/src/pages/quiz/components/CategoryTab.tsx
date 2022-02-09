@@ -9,9 +9,18 @@ interface CategoryTabProps {
 	selectedTab?: boolean;
 }
 
-const CategoryTab = ({ children, ringColor, onClick }: CategoryTabProps) => {
+const CategoryTab = ({
+	children,
+	ringColor,
+	onClick,
+	selectedTab,
+}: CategoryTabProps) => {
 	return (
-		<StyledTab ringColor={ringColor} onClick={onClick}>
+		<StyledTab
+			ringColor={ringColor}
+			onClick={onClick}
+			selectedTab={selectedTab}
+		>
 			{children}
 		</StyledTab>
 	);
@@ -19,17 +28,21 @@ const CategoryTab = ({ children, ringColor, onClick }: CategoryTabProps) => {
 
 export default CategoryTab;
 
-const StyledTab = styled('div')<CategoryTabProps>(({ ringColor, theme }) => ({
-	width: 75,
-	height: 75,
-	display: 'block',
-	borderRadius: '50%',
-	border: `10px solid ${theme.color[ringColor]}`,
-	backgroundColor: 'transparent',
-	zIndex: 899,
-	cursor: 'pointer',
-	transition: 'all .1s ease-in-out',
-	['&:hover']: {
-		transform: 'scale(1.1)',
-	},
-}));
+const StyledTab = styled('div')<CategoryTabProps>(
+	({ ringColor, theme, selectedTab }) => ({
+		width: 75,
+		height: 75,
+		display: 'block',
+		borderRadius: '50%',
+		border: `10px solid ${theme.color[ringColor]}`,
+		backgroundColor: 'transparent',
+		zIndex: 899,
+		cursor: 'pointer',
+		transition: 'all .1s ease-in-out',
+		transform: selectedTab ? 'scale(1.1)' : undefined,
+		marginRight: selectedTab ? 50 : undefined,
+		['&:hover']: {
+			transform: 'scale(1.1)',
+		},
+	}),
+);

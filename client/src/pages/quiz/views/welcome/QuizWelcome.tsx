@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 import styled from '@emotion/styled';
 import { useTheme } from '@emotion/react';
 import { Box, Button, Text } from '../../../../components';
@@ -27,8 +27,16 @@ const AGE_GROUPS = [
 	},
 ];
 
-const QuizWelcome = ({ beginQuizGuest }: { beginQuizGuest: () => void }) => {
+const QuizWelcome = ({
+	beginQuizGuest,
+	selectedCategoryTab,
+}: {
+	beginQuizGuest: (arg0: string, arg1: string, arg2: number) => void;
+	selectedCategoryTab: string;
+}) => {
 	const theme = useTheme();
+	const [selectedAgeGroup, setSelectedAgeGroup] = useState('');
+
 	return (
 		<Box
 			width='100%'
@@ -39,14 +47,36 @@ const QuizWelcome = ({ beginQuizGuest }: { beginQuizGuest: () => void }) => {
 			flexDirection='column'
 			backgroundColor='transparent'
 		>
-			<Box width='100%' height={75} center backgroundColor='inherit'>
-				<Text typography='subheading' size={24} color={theme.color.black}>
+			<Box
+				width='100%'
+				height={75}
+				center
+				flexDirection='column'
+				backgroundColor='inherit'
+			>
+				<Text
+					typography='subheading'
+					size={24}
+					color={theme.color.black}
+					textAlign='center'
+				>
 					Welcome,
 					<StyledWelcomeInput type='text' />
 					and
 					<StyledWelcomeInput type='text' />. <br />
 					Are you ready to have Smart Talk?
 				</Text>
+				<Box
+					width='auto'
+					height='auto'
+					backgroundColor='inherit'
+					display='block'
+					margin='25px 0 0 0 '
+				>
+					<Text typography='subheading' size={14} color={theme.color.black}>
+						Choose a category on the LEFT, and choose an age-range BELOW:
+					</Text>
+				</Box>
 			</Box>
 			<Box
 				width='75%'
@@ -58,14 +88,24 @@ const QuizWelcome = ({ beginQuizGuest }: { beginQuizGuest: () => void }) => {
 				backgroundColor='inherit'
 			>
 				{AGE_GROUPS.map((e) => (
-					<CategoryButton key={e.id} bgColor={e.color} onClick={() => {}}>
+					<CategoryButton
+						key={e.id}
+						bgColor={e.color}
+						onClick={() => setSelectedAgeGroup(e.ageGroup)}
+						selected={selectedAgeGroup === e.ageGroup}
+					>
 						<Text typography='heading' color={theme.color.white}>
 							{e.ageGroup}
 						</Text>
 					</CategoryButton>
 				))}
 			</Box>
-			<Button width={150} height={56} onClick={beginQuizGuest}>
+			<Button
+				width={150}
+				height={56}
+				onClick={() => beginQuizGuest(selectedCategoryTab, selectedAgeGroup, 1)}
+				disabled={selectedAgeGroup === '' || selectedCategoryTab === ''}
+			>
 				<Text typography='heading' textAlign='center' color={theme.color.white}>
 					Let&apos;s Get Started
 				</Text>
