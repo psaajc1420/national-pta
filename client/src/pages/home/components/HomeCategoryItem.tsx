@@ -6,8 +6,8 @@ import { useTheme } from '@emotion/react';
 interface HomeCategoryItemProps {
 	item: {
 		id: string | number;
-		category: string;
-		iconName: string;
+		label: string;
+		name: string;
 		color: string;
 	};
 }
@@ -25,10 +25,10 @@ const HomeCategoryItem = ({ item }: HomeCategoryItemProps) => {
 		>
 			<CategoryIcon
 				src={window.location.origin + item.iconSvg}
-				alt={item.iconName}
+				alt={item.label}
 			/>
 			<Text typography='heading' color={theme.color.white}>
-				{item.category}
+				{item.label}
 			</Text>
 		</Box>
 	);

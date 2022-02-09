@@ -1,74 +1,56 @@
-import { useState } from 'react';
-import { useTheme } from '@emotion/react';
-import { Box, Layout, Text } from '../../components';
+import { useEffect, useReducer, useState } from 'react';
+// import { useTheme } from '@emotion/react';
+import { Box, Layout } from '../../components';
 import { CategoryTab } from './components';
-const Quiz = () => {
-	const theme = useTheme();
-	const [currentCategory, setCurrentCategory] = useState('');
-	const [currentAgeGroup, setCurrentAgeGroup] = useState('');
+import { CATEGORIES, CATEGORIES_ARR } from '../../constants/category-constants';
+import { QuizWelcome } from './views/welcome';
 
+const initialState = {
+	currentCategory: '',
+	currentAgeGroup: '',
+	currentQuestion: 0,
+};
+
+const reducer = (state: any, action: any) => {
+	switch (action.type) {
+		case 'GUEST_WELCOME':
+			return { currentCategory: 'welcome' };
+		case 'GUEST_BEGIN':
+			return {
+				currentCategory: 'privacy-and-safety',
+				currentAgeGroup: '5-8',
+				currentQuestion: 1,
+			};
+		default:
+			throw new Error();
+	}
+};
+
+const Quiz = () => {
+	// const theme = useTheme();
+	const [loggedIn, setLoggedIn] = useState(false);
+	const [state, dispatch] = useReducer(reducer, initialState);
+	// const [currentAgeGroup, setCurrentAgeGroup] = useState('');
 	// TODO: Add useEffect matching currentCategory and currentAgeGroup to child
 
-	const QUIZ_CATEGORIES = [
-		{
-			id: 1,
-			category: 'Device Use',
-			iconName: 'device-use',
-			iconSvg: '/assets/illustrations/NPTA_Education Icon-11_Device Use.svg',
-			color: 'red',
-		},
-		{
-			id: 2,
-			category: 'Digital Safety',
-			iconName: 'digital-safety',
-			iconSvg: '/assets/illustrations/NPTA_Education Icon-18_Communication.svg',
-			color: 'orange',
-		},
-		{
-			id: 3,
-			category: 'Privacy',
-			iconName: 'privacy',
-			iconSvg: '/assets/illustrations/NPTA_Education Icon-45_Media Choices.svg',
-			color: 'green',
-		},
-		{
-			id: 4,
-			category: 'Communication',
-			iconName: 'communication',
-			iconSvg: '/assets/illustrations/NPTA_Education Icon-51_Privacy.svg',
-			color: 'lightBlue',
-		},
-		{
-			id: 5,
-			category: 'Media Choices',
-			iconName: 'media-choices',
-			iconSvg: '/assets/illustrations/NPTA_Education Icon-56_Security.svg',
-			color: 'blue',
-		},
-	];
+	useEffect(() => {
+		if (!loggedIn) {
+			dispatch({ type: 'GUEST_WELCOME' });
+		}
+	}, [loggedIn]);
 
-	const AGE_GROUPS = [
-		{
-			id: 1,
-			ageGroup: '5-8',
-			color: 'red',
-		},
-		{
-			id: 2,
-			ageGroup: '9-11',
-			color: 'orange',
-		},
-		{
-			id: 3,
-			ageGroup: '12-14',
-			color: 'green',
-		},
-		{
-			id: 4,
-			ageGroup: '15-18',
-			color: 'lightBlue',
-		},
-	];
+	const beginQuizGuest = () => {
+		dispatch({ type: 'GUEST_BEGIN' });
+	};
+
+	const renderCurrentUI = (param: string) => {
+		switch (param) {
+			case CATEGORIES.welcome.name:
+				return <QuizWelcome beginQuizGuest={beginQuizGuest} />;
+			default:
+				return null;
+		}
+	};
 
 	return (
 		<Layout>
@@ -94,37 +76,14 @@ const Quiz = () => {
 						bottom={0}
 						backgroundColor='transparent'
 					>
-						{QUIZ_CATEGORIES.map((e) => (
+						{CATEGORIES_ARR.map((e) => (
 							<CategoryTab key={e.id} ringColor={e.color} onClick={() => {}}>
-								<img
-									src={window.location.origin + e.iconSvg}
-									alt={e.iconName}
-								/>
+								<img src={window.location.origin + e.iconSvg} alt={e.label} />
 							</CategoryTab>
 						))}
 					</Box>
 					{''}
-
-					<Box
-						width='50%'
-						height={75}
-						display='flex'
-						flexDirection='row'
-						justify='space-around'
-						align='center'
-						position='absolute'
-						bottom={-35}
-						right={100}
-						backgroundColor='transparent'
-					>
-						{AGE_GROUPS.map((e) => (
-							<CategoryTab key={e.id} ringColor={e.color} onClick={() => {}}>
-								<Text typography='heading' color={theme.color.black}>
-									{e.ageGroup}
-								</Text>
-							</CategoryTab>
-						))}
-					</Box>
+					{renderCurrentUI(state.currentCategory)}
 				</Box>
 			</Box>
 		</Layout>

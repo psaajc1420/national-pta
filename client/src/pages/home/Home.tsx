@@ -1,8 +1,8 @@
 import { Box, Button, Layout, Link, Text } from '../../components';
+import { CATEGORIES_ARR } from '../../constants/category-constants';
 import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import { HomeCategoryItem } from './components';
-import { HOME_CATEGORIES } from './home-categories';
 
 const Home = () => {
 	const theme = useTheme();
@@ -134,7 +134,7 @@ const Home = () => {
 						align='center'
 						backgroundColor='inherit'
 					>
-						{HOME_CATEGORIES.map((e) => (
+						{CATEGORIES_ARR.map((e) => (
 							<HomeCategoryItem key={e.id} item={e} />
 						))}
 					</Box>
