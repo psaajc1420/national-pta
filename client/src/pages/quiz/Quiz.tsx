@@ -35,9 +35,6 @@ const Quiz = () => {
 	// const theme = useTheme();
 	const [state, dispatch] = useReducer(reducer, initialState);
 	const [loggedIn, setLoggedIn] = useState(false);
-	const [selectedCategoryTab, setSelectedCategoryTab] = useState(
-		loggedIn ? state.currentCategory : '',
-	);
 	// const [currentAgeGroup, setCurrentAgeGroup] = useState('');
 	// TODO: Add useEffect matching currentCategory and currentAgeGroup to child
 
@@ -57,12 +54,7 @@ const Quiz = () => {
 	const renderCurrentUI = (param: string) => {
 		switch (param) {
 			case CATEGORIES.welcome.name:
-				return (
-					<QuizWelcome
-						beginQuizGuest={beginQuiz}
-						selectedCategoryTab={selectedCategoryTab}
-					/>
-				);
+				return <QuizWelcome beginQuizGuest={beginQuiz} />;
 			case CATEGORIES.privacyAndSafety.name:
 				return (
 					<div>
@@ -137,20 +129,13 @@ const Quiz = () => {
 								key={e.id}
 								ringColor={e.color}
 								onClick={() => {
-									if (state.currentCategory === CATEGORIES.welcome.name) {
-										setSelectedCategoryTab(e.name);
-									} else {
-										dispatch({
-											type: 'SET_CATEGORY',
-											payload: { category: e.name },
-										});
-									}
+									dispatch({
+										type: 'SET_CATEGORY',
+										payload: { category: e.name },
+									});
 								}}
-								selectedTab={
-									state.currentCategory === CATEGORIES.welcome.name
-										? selectedCategoryTab === e.name
-										: state.currentCategory === e.name
-								}
+								selectedTab={state.currentCategory === e.name}
+								disabled={state.currentCategory === CATEGORIES.welcome.name}
 							>
 								<img src={window.location.origin + e.iconSvg} alt={e.label} />
 							</CategoryTab>

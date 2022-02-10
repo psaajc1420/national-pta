@@ -7,6 +7,7 @@ interface CategoryTabProps {
 	onClick: any;
 	ringColor: string;
 	selectedTab?: boolean;
+	disabled?: boolean;
 }
 
 const CategoryTab = ({
@@ -14,12 +15,14 @@ const CategoryTab = ({
 	ringColor,
 	onClick,
 	selectedTab,
+	disabled,
 }: CategoryTabProps) => {
 	return (
 		<StyledTab
 			ringColor={ringColor}
-			onClick={onClick}
-			selectedTab={selectedTab}
+			onClick={!disabled && onClick}
+			selectedTab={!disabled && selectedTab}
+			disabled={disabled}
 		>
 			{children}
 		</StyledTab>
@@ -29,7 +32,7 @@ const CategoryTab = ({
 export default CategoryTab;
 
 const StyledTab = styled('div')<CategoryTabProps>(
-	({ ringColor, theme, selectedTab }) => ({
+	({ ringColor, theme, selectedTab, disabled }) => ({
 		width: 75,
 		height: 75,
 		display: 'block',
@@ -42,7 +45,7 @@ const StyledTab = styled('div')<CategoryTabProps>(
 		transform: selectedTab ? 'scale(1.1)' : undefined,
 		marginRight: selectedTab ? 50 : undefined,
 		['&:hover']: {
-			transform: 'scale(1.1)',
+			transform: disabled ? 'none' : 'scale(1.1)',
 		},
 	}),
 );

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import styled from '@emotion/styled';
 import { useTheme } from '@emotion/react';
 import { Box, Button, Text } from '../../../../components';
+import { CATEGORIES } from '../../../../constants/category-constants';
 import { CategoryButton } from '../../components';
 
 const AGE_GROUPS = [
@@ -29,10 +30,8 @@ const AGE_GROUPS = [
 
 const QuizWelcome = ({
 	beginQuizGuest,
-	selectedCategoryTab,
 }: {
 	beginQuizGuest: (arg0: string, arg1: string, arg2: number) => void;
-	selectedCategoryTab: string;
 }) => {
 	const theme = useTheme();
 	const [selectedAgeGroup, setSelectedAgeGroup] = useState('');
@@ -71,7 +70,7 @@ const QuizWelcome = ({
 					height='auto'
 					backgroundColor='inherit'
 					display='block'
-					margin='25px 0 0 0 '
+					margin='25px 0 0 0'
 				>
 					<Text typography='subheading' size={14} color={theme.color.black}>
 						Choose a category on the LEFT, and choose an age-range BELOW:
@@ -103,8 +102,10 @@ const QuizWelcome = ({
 			<Button
 				width={150}
 				height={56}
-				onClick={() => beginQuizGuest(selectedCategoryTab, selectedAgeGroup, 1)}
-				disabled={selectedAgeGroup === '' || selectedCategoryTab === ''}
+				onClick={() =>
+					beginQuizGuest(CATEGORIES.privacyAndSafety.name, selectedAgeGroup, 1)
+				}
+				disabled={selectedAgeGroup === ''}
 			>
 				<Text typography='heading' textAlign='center' color={theme.color.white}>
 					Let&apos;s Get Started
