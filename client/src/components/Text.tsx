@@ -6,7 +6,7 @@ interface TextProps {
 	typography: 'heading' | 'subheading' | 'text';
 	tag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p';
 	size?: string | number;
-	color: string;
+	color?: string;
 	lineHeight?: string;
 	textAlign?: 'center' | 'left' | 'right' | 'justify';
 }
@@ -48,7 +48,7 @@ const StyledText = styled('p')<TextProps>(
 				: theme.font.text,
 		fontSize: size ? size : 14,
 		fontWeight: typography === 'heading' ? 'bold' : 'normal',
-		color: color ? color : theme.color.black,
+		color: color ? color : 'inherit',
 		lineHeight: lineHeight ? lineHeight : 'normal',
 		textAlign: textAlign ? textAlign : 'left',
 		margin: 0,

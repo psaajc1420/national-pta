@@ -1,6 +1,7 @@
 import { Box, Button, Layout, Link, Text } from '../../components';
 import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
+import ReactTooltip from 'react-tooltip';
 
 const Register = () => {
 	const theme = useTheme();
@@ -87,34 +88,45 @@ const Register = () => {
 										height={46}
 										type='submit'
 										onClick={() => {}}
-										backgroundColor={theme.color.lightBlue}
+										// backgroundColor={theme.color.lightBlue}
 										border={`3px solid ${theme.color.blue}`}
 									>
-										<Text
-											typography='heading'
-											textAlign='center'
-											color={theme.color.black}
-										>
+										<Text typography='heading' textAlign='center'>
 											Create Account
 										</Text>
 									</Button>
 								</Box>
-								<Link to='/quiz'>
-									<Button
-										width={250}
-										height={46}
-										type='submit'
-										onClick={() => {}}
-									>
-										<Text
-											typography='heading'
-											textAlign='center'
-											color={theme.color.white}
+								<div data-tip data-for='test'>
+									<Link to='/quiz'>
+										<Button
+											width={250}
+											height={46}
+											type='submit'
+											onClick={() => {}}
+											backgroundColor={theme.color.blue}
 										>
-											Continue as Guest
-										</Text>
-									</Button>
-								</Link>
+											<Text typography='heading' textAlign='center'>
+												Continue as Guest
+											</Text>
+											<ReactTooltip
+												id='test'
+												place='bottom'
+												// type={type}
+												// effect={effect}
+												multiline={true}
+												backgroundColor={theme.color.blue}
+											>
+												<Text typography='text' textAlign='center'>
+													As a guest, you can create and print your family
+													<br />
+													agreement, but you won&apos;t be able to save it.
+													<br /> As your family&apos;s needs grow, creating a
+													profile <br /> will help keep the conversation going.
+												</Text>
+											</ReactTooltip>
+										</Button>
+									</Link>
+								</div>
 								<Box
 									width='auto'
 									height='auto'

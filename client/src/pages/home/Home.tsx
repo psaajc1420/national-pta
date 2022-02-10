@@ -55,20 +55,31 @@ const Home = () => {
 						</Text>
 						<Box
 							width='auto'
-							height='auto'
-							display='block'
-							margin='15px 0 0 0'
+							height={115}
+							display='flex'
+							flexDirection='column'
+							justify='space-between'
+							align='center'
+							margin='25px 0 0 0'
 							backgroundColor='inherit'
 						>
 							<Button width={250} height={48} onClick={() => {}}>
-								<Text
-									typography='heading'
-									color={theme.color.white}
-									textAlign='center'
-								>
+								<Text typography='heading' textAlign='center'>
 									Quick Guide
 								</Text>
 							</Button>
+							<Link to='/register'>
+								<Button
+									width={250}
+									height={48}
+									onClick={() => {}}
+									backgroundColor={theme.color.blue}
+								>
+									<Text typography='heading' textAlign='center'>
+										Get Started
+									</Text>
+								</Button>
+							</Link>
 						</Box>
 					</Box>
 				</Box>
@@ -165,12 +176,13 @@ const Home = () => {
 						margin='15px 0 50px 0'
 					>
 						<Link to='/register'>
-							<Button width={250} height={48} onClick={() => {}}>
-								<Text
-									typography='heading'
-									textAlign='center'
-									color={theme.color.white}
-								>
+							<Button
+								width={250}
+								height={48}
+								onClick={() => {}}
+								backgroundColor={theme.color.blue}
+							>
+								<Text typography='heading' textAlign='center'>
 									Get Started
 								</Text>
 							</Button>
