@@ -17,11 +17,17 @@ const CategoryTab = ({
 	selectedTab,
 	disabled,
 }: CategoryTabProps) => {
+	const handleTabClick = () => {
+		if (!disabled) {
+			onClick();
+		}
+	};
+	const isSelectedTab = !disabled && selectedTab;
 	return (
 		<StyledTab
 			ringColor={ringColor}
-			onClick={!disabled && onClick}
-			selectedTab={!disabled && selectedTab}
+			onClick={handleTabClick}
+			selectedTab={isSelectedTab}
 			disabled={disabled}
 		>
 			{children}

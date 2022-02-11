@@ -7,13 +7,7 @@ const Register = () => {
 	const theme = useTheme();
 	return (
 		<Layout>
-			<Box
-				width='100%'
-				height='100%'
-				center
-				backgroundColor='inherit'
-				border='2px solid red'
-			>
+			<Box width='100%' height='100%' center backgroundColor='inherit'>
 				<Box
 					width='75%'
 					height={350}

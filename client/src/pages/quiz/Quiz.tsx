@@ -1,6 +1,6 @@
 import { useEffect, useReducer, useState } from 'react';
 // import { useTheme } from '@emotion/react';
-import { Box, Layout } from '../../components';
+import { Box, Button, Layout, Text, Todo } from '../../components';
 import { CategoryTab } from './components';
 import { CATEGORIES, CATEGORIES_ARR } from '../../constants/category-constants';
 import { QuizWelcome } from './views/welcome';
@@ -102,7 +102,29 @@ const Quiz = () => {
 	console.log({ state });
 	return (
 		<Layout>
-			<Box width='100%' height='100%' center backgroundColor='inherit'>
+			<Box
+				width='100%'
+				height='100%'
+				center
+				backgroundColor='inherit'
+				position='relative'
+			>
+				<Todo />
+				{/* <Box
+					width={75}
+					height={150}
+					display='flex'
+					backgroundColor='black'
+					position='absolute'
+					right={0}
+					top={400}
+				>
+					<Button width='100%' height='100%' onClick={() => {}}>
+						<Text typography='heading' color='black'>
+							TODO
+						</Text>
+					</Button>
+				</Box> */}
 				<Box
 					width='80%'
 					height='80%'
