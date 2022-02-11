@@ -106,8 +106,9 @@ const QuizWelcome = ({
 					beginQuizGuest(CATEGORIES.privacyAndSafety.name, selectedAgeGroup, 1)
 				}
 				disabled={selectedAgeGroup === ''}
+				backgroundColor={theme.color.blue}
 			>
-				<Text typography='heading' textAlign='center' color={theme.color.white}>
+				<Text typography='heading' textAlign='center'>
 					Let&apos;s Get Started
 				</Text>
 			</Button>

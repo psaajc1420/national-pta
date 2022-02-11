@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import styled from '@emotion/styled';
 import { Box, LanguageDropdown, Text } from './index';
 import { useTheme } from '@emotion/react';
@@ -5,6 +6,7 @@ import { Link } from 'react-router-dom';
 
 const Header = () => {
 	const theme = useTheme();
+	const [currentLanguage, setCurrentLanguage] = useState('');
 	const menuItems = [
 		{
 			id: 1,
@@ -52,7 +54,10 @@ const Header = () => {
 				backgroundColor='inherit'
 				zIndex={1000}
 			>
-				<LanguageDropdown />
+				<LanguageDropdown
+					currentLanguage={currentLanguage}
+					onSetCurrentLanguage={setCurrentLanguage}
+				/>
 				{menuItems.map((e) => (
 					<NavLink to={e.route} key={e.id}>
 						<Box
