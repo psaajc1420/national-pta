@@ -5,6 +5,7 @@ interface BoxProps {
 	children?: React.ReactNode;
 	width?: string | number;
 	height?: string | number;
+	minHeight?: string | number;
 	margin?: string | number;
 	padding?: string | number;
 	position?: 'static' | 'relative' | 'fixed' | 'absolute' | 'sticky';
@@ -31,6 +32,7 @@ const Box = ({
 	children,
 	width,
 	height,
+	minHeight,
 	margin,
 	padding,
 	position,
@@ -56,6 +58,7 @@ const Box = ({
 		<StyledBox
 			width={width}
 			height={height}
+			minHeight={minHeight}
 			margin={margin}
 			padding={padding}
 			position={position}
@@ -89,6 +92,7 @@ const StyledBox = styled('div')<BoxProps>(
 		theme,
 		width,
 		height,
+		minHeight,
 		margin,
 		padding,
 		position,
@@ -111,6 +115,7 @@ const StyledBox = styled('div')<BoxProps>(
 	}) => ({
 		width: width ? width : '100%',
 		height: height ? height : '100%',
+		minHeight: minHeight ? minHeight : undefined,
 		margin: margin ? margin : 0,
 		padding: padding ? padding : 0,
 		position: position ? position : 'relative',

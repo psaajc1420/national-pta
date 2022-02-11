@@ -163,9 +163,8 @@ const Home = () => {
 							color={theme.color.black}
 							lineHeight='32px'
 						>
-							These rules aren&apos;t just for children, they are for the adults
-							in the family too! <br /> The end result is a personalized family
-							technology agreement to help keep everyone on track.
+							The end result is a personalized family technology agreement to
+							help keep everyone on track.
 						</Text>
 					</Box>
 					<Box

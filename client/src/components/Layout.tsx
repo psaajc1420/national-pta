@@ -1,12 +1,12 @@
 import React from 'react';
-import { Box, Header } from './index';
+import { Box, Header, Footer } from './index';
 import { useTheme } from '@emotion/react';
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
 	const theme = useTheme();
 	return (
 		<Box
-			width='100vw'
+			width='100%'
 			height='100vh'
 			display='flex'
 			justify='flex-start'
@@ -14,6 +14,9 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 			flexDirection='column'
 			margin={0}
 			backgroundColor={theme.color.white}
+			position='absolute'
+			right={0}
+			top={0}
 		>
 			<Header />
 			<Box
@@ -21,9 +24,11 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 				height='100%'
 				display='block'
 				backgroundColor='inherit'
-				margin='80px 0'
+				padding='80px 0 56px 0'
+				position='relative'
 			>
 				{children}
+				<Footer />
 			</Box>
 		</Box>
 	);

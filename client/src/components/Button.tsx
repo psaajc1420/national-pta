@@ -10,6 +10,7 @@ interface ButtonProps {
 	backgroundColor?: string;
 	border?: string;
 	disabled?: boolean;
+	borderRadius?: string;
 }
 
 const Button = ({
@@ -21,6 +22,7 @@ const Button = ({
 	backgroundColor,
 	disabled,
 	border,
+	borderRadius,
 }: ButtonProps) => {
 	return (
 		<StyledButton
@@ -30,6 +32,7 @@ const Button = ({
 			height={height}
 			backgroundColor={backgroundColor}
 			border={border}
+			borderRadius={borderRadius}
 			disabled={disabled}
 		>
 			{children}
@@ -40,7 +43,15 @@ const Button = ({
 export default Button;
 
 const StyledButton = styled('button')<ButtonProps>(
-	({ theme, width, height, backgroundColor, border, disabled }) => ({
+	({
+		theme,
+		width,
+		height,
+		backgroundColor,
+		border,
+		borderRadius,
+		disabled,
+	}) => ({
 		backgroundColor: disabled
 			? theme.color.red
 			: backgroundColor
@@ -49,7 +60,7 @@ const StyledButton = styled('button')<ButtonProps>(
 		color: backgroundColor ? theme.color.white : theme.color.black,
 		width: width,
 		height: height,
-		borderRadius: 56,
+		borderRadius: borderRadius ? borderRadius : 56,
 		border: border ? border : `3px solid ${theme.color.blue}`,
 		cursor: 'pointer',
 		['&:hover']: {
