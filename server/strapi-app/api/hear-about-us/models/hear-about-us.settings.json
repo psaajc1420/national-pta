@@ -1,0 +1,20 @@
+{
+  "kind": "collectionType",
+  "collectionName": "hear_aboutuses",
+  "info": {
+    "name": "HearAbout",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

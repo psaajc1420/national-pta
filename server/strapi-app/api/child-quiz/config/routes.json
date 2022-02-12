@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/child-quizs",
+      "handler": "child-quiz.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/child-quizs/count",
+      "handler": "child-quiz.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/child-quizs/:id",
+      "handler": "child-quiz.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/child-quizs",
+      "handler": "child-quiz.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/child-quizs/:id",
+      "handler": "child-quiz.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/child-quizs/:id",
+      "handler": "child-quiz.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

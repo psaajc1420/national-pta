@@ -130,28 +130,10 @@ const createAgeGroup = async () => {
   });
 };
 
-const createQuestionCategories = async () => {
-  // Check if age question categories exist
-  const currentData = await strapi.services["question-category"].find();
-  let categories = ["Multiple choice", "Checkbox"];
-  currentData.forEach((data) => {
-    if (categories.includes(data.name)) {
-      categories = categories.filter((item) => item !== data.name);
-    }
-  });
-
-  categories.forEach(async (category) => {
-    await strapi.services["question-category"].create({
-      name: category,
-    });
-  });
-};
-
 module.exports = async () => {
   if (process.env.NODE_ENV === "development") {
     await createUsers();
     await createAdminUser();
   }
   await createAgeGroup();
-  await createQuestionCategories();
 };
