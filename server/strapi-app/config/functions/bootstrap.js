@@ -65,42 +65,51 @@ const createUsers = async () => {
     const numUsers = 20;
     for (let i = 0; i < numUsers; i++) {
       let username = faker.internet.userName();
-
-      await strapi.plugins['users-permissions'].services.user.add({
-        blocked: false,
-        confirmed: true, 
-        username: username,
-        email: `${username}@gmail.com`,
-        password: 'password', 
-        provider: 'local', 
-        created_by: 1, 
-        updated_by: 1, 
-        role: 1 
-      });
-    }
-  }
-};
-
-const createChildren = async () => {
-  let numUsers = 10;
-
-  const currentData = await strapi.services["child"].find();
-
-  if (currentData.length < numUsers) {
-    for (let i = 0; i < numUsers; i++) {
-      let num = Math.floor(
+      
+      let numChildren = Math.floor(
         faker.datatype.number({
-          min: 5,
-          max: 18,
+          min: 1,
+          max: 3,
         })
       );
-      await strapi.services.child.create({
-        name: faker.name.firstName(),
-        age: 11,
-      });
+      createChildren(numChildren).then((children) => {
+        strapi.plugins['users-permissions'].services.user.add({
+          blocked: false,
+          confirmed: true, 
+          username: username,
+          email: `${username}@gmail.com`,
+          password: 'password', 
+          provider: 'local', 
+          created_by: 1, 
+          updated_by: 1, 
+          role: 1,
+          children: children
+        });   
+      })  
     }
   }
 };
+
+const createChildren = async (numChildren) => {
+  let children = [];
+  for (let i = 0; i < numChildren; i++) {
+    let num = Math.floor(
+      faker.datatype.number({
+        min: 5,
+        max: 18,
+      })
+    );
+    let child = await strapi.services.child.create({
+      name: faker.name.firstName(),
+      age: 11,
+    }).then((result) => {
+      children.push(result);
+      return result;
+    }).catch((error) => {strapi.log.info(`Error: ${error}`)});
+  }
+
+  return children;
+}
 
 const createAgeGroup = async () => {
   // Check if age groups exist
@@ -121,29 +130,10 @@ const createAgeGroup = async () => {
   });
 };
 
-const createQuestionCategories = async () => {
-  // Check if age question categories exist
-  const currentData = await strapi.services["question-category"].find();
-  let categories = ["Multiple choice", "Checkbox"];
-  currentData.forEach((data) => {
-    if (categories.includes(data.name)) {
-      categories = categories.filter((item) => item !== data.name);
-    }
-  });
-
-  categories.forEach(async (category) => {
-    await strapi.services["question-category"].create({
-      name: category,
-    });
-  });
-};
-
 module.exports = async () => {
   if (process.env.NODE_ENV === "development") {
-    await createChildren();
     await createUsers();
     await createAdminUser();
   }
   await createAgeGroup();
-  await createQuestionCategories();
 };

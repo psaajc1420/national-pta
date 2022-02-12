@@ -24,9 +24,6 @@
       },
       "type": "text"
     },
-    "question_category": {
-      "model": "question-category"
-    },
     "age_groups": {
       "collection": "age-group"
     },
@@ -37,6 +34,10 @@
     "child": {
       "model": "child",
       "via": "questions"
+    },
+    "question_answers": {
+      "via": "question",
+      "collection": "question-answer"
     }
   }
 }

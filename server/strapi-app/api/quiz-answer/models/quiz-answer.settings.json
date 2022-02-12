@@ -1,0 +1,23 @@
+{
+  "kind": "collectionType",
+  "collectionName": "quiz_answers",
+  "info": {
+    "name": "QuizAnswer"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "quiz": {
+      "model": "quiz",
+      "via": "quiz_answers"
+    },
+    "question_answer": {
+      "model": "question-answer",
+      "via": "quiz_answers"
+    }
+  }
+}

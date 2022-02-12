@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "quizzes",
+  "info": {
+    "name": "Quiz"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "child_quizs": {
+      "via": "quiz",
+      "collection": "child-quiz"
+    },
+    "quiz_answers": {
+      "via": "quiz",
+      "collection": "quiz-answer"
+    }
+  }
+}

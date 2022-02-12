@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/hear-about-uses",
+      "handler": "hear-about-us.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/hear-about-uses/count",
+      "handler": "hear-about-us.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/hear-about-uses/:id",
+      "handler": "hear-about-us.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/hear-about-uses",
+      "handler": "hear-about-us.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/hear-about-uses/:id",
+      "handler": "hear-about-us.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/hear-about-uses/:id",
+      "handler": "hear-about-us.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

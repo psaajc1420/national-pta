@@ -29,6 +29,10 @@
     "question": {
       "via": "answers",
       "model": "question"
+    },
+    "question_answers": {
+      "via": "answer",
+      "collection": "question-answer"
     }
   }
 }
