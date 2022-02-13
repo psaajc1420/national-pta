@@ -4,8 +4,11 @@ import styled from '@emotion/styled';
 interface BoxProps {
 	children?: React.ReactNode;
 	width?: string | number;
+	minWidth?: string | number;
+	maxWidth?: string | number;
 	height?: string | number;
 	minHeight?: string | number;
+	maxHeight?: string | number;
 	margin?: string | number;
 	padding?: string | number;
 	position?: 'static' | 'relative' | 'fixed' | 'absolute' | 'sticky';
@@ -26,13 +29,17 @@ interface BoxProps {
 	visibility?: 'visible' | 'hidden';
 	zIndex?: number;
 	onClick?: any;
+	overflow?: string;
 }
 
 const Box = ({
 	children,
 	width,
+	minWidth,
+	maxWidth,
 	height,
 	minHeight,
+	maxHeight,
 	margin,
 	padding,
 	position,
@@ -53,12 +60,16 @@ const Box = ({
 	visibility,
 	zIndex,
 	onClick,
+	overflow,
 }: BoxProps) => {
 	return (
 		<StyledBox
 			width={width}
+			minWidth={minWidth}
+			maxWidth={maxWidth}
 			height={height}
 			minHeight={minHeight}
+			maxHeight={maxHeight}
 			margin={margin}
 			padding={padding}
 			position={position}
@@ -79,6 +90,7 @@ const Box = ({
 			visibility={visibility}
 			zIndex={zIndex}
 			onClick={onClick}
+			overflow={overflow}
 		>
 			{children}
 		</StyledBox>
@@ -91,8 +103,11 @@ const StyledBox = styled('div')<BoxProps>(
 	({
 		theme,
 		width,
+		minWidth,
+		maxWidth,
 		height,
 		minHeight,
+		maxHeight,
 		margin,
 		padding,
 		position,
@@ -112,10 +127,14 @@ const StyledBox = styled('div')<BoxProps>(
 		color,
 		visibility,
 		zIndex,
+		overflow,
 	}) => ({
 		width: width ? width : '100%',
+		minWidth: minWidth ? minWidth : undefined,
+		maxWidth: maxWidth ? maxWidth : undefined,
 		height: height ? height : '100%',
 		minHeight: minHeight ? minHeight : undefined,
+		maxHeight: maxHeight ? maxHeight : undefined,
 		margin: margin ? margin : 0,
 		padding: padding ? padding : 0,
 		position: position ? position : 'relative',
@@ -134,5 +153,6 @@ const StyledBox = styled('div')<BoxProps>(
 		color: color ? color : theme.color.black,
 		visibility: visibility ? visibility : 'visible',
 		zIndex: zIndex ? zIndex : undefined,
+		overflow: overflow ? overflow : undefined,
 	}),
 );

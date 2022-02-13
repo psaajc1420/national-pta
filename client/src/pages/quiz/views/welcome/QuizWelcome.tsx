@@ -1,9 +1,10 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import styled from '@emotion/styled';
 import { useTheme } from '@emotion/react';
 import { Box, Button, Text } from '../../../../components';
 import { CATEGORIES } from '../../../../constants/category-constants';
 import { CategoryButton } from '../../components';
+import { QuizAnswersContext } from '../../Quiz';
 
 const AGE_GROUPS = [
 	{
@@ -28,11 +29,9 @@ const AGE_GROUPS = [
 	},
 ];
 
-const QuizWelcome = ({
-	beginQuizGuest,
-}: {
-	beginQuizGuest: (arg0: string, arg1: string, arg2: number) => void;
-}) => {
+const QuizWelcome = () => {
+	// @ts-expect-error
+	const { quizDispatch } = useContext(QuizAnswersContext);
 	const theme = useTheme();
 	const [selectedAgeGroup, setSelectedAgeGroup] = useState('');
 
@@ -103,7 +102,13 @@ const QuizWelcome = ({
 				width={150}
 				height={56}
 				onClick={() =>
-					beginQuizGuest(CATEGORIES.privacyAndSafety.name, selectedAgeGroup, 1)
+					quizDispatch({
+						type: 'SET_CATEGORY_AND_AGE',
+						payload: {
+							category: CATEGORIES.privacyAndSafety.name,
+							ageGroup: selectedAgeGroup,
+						},
+					})
 				}
 				disabled={selectedAgeGroup === ''}
 				backgroundColor={theme.color.blue}
