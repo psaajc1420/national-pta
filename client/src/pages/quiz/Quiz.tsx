@@ -6,6 +6,10 @@ import { CategoryTab } from './components';
 import { CATEGORIES, CATEGORIES_ARR } from '../../constants/category-constants';
 import { QuizWelcome } from './views/welcome';
 import PrivacyAndSafety from './views/privacy-and-safety';
+import Communication from './views/communication';
+import MediaChoices from './views/media-choices';
+import HealthAndWellness from './views/health-and-wellness';
+import KeepingOurPromises from './views/keeping-our-promises';
 
 const quizInitialState = {
 	currentCategory: '',
@@ -69,6 +73,11 @@ const quizInitialState = {
 		56: null,
 		57: null,
 		58: null,
+		67: null,
+		69: null,
+		70: null,
+		71: null,
+		72: null,
 	},
 };
 
@@ -122,33 +131,13 @@ const Quiz = () => {
 			case CATEGORIES.privacyAndSafety.name:
 				return <PrivacyAndSafety />;
 			case CATEGORIES.communication.name:
-				return (
-					<div>
-						{quizState.currentCategory}
-						{quizState.currentAgeGroup}
-					</div>
-				);
+				return <Communication />;
 			case CATEGORIES.mediaChoices.name:
-				return (
-					<div>
-						{quizState.currentCategory}
-						{quizState.currentAgeGroup}
-					</div>
-				);
+				return <MediaChoices />;
 			case CATEGORIES.healthAndWellness.name:
-				return (
-					<div>
-						{quizState.currentCategory}
-						{quizState.currentAgeGroup}
-					</div>
-				);
+				return <HealthAndWellness />;
 			case CATEGORIES.keepingOurPromises.name:
-				return (
-					<div>
-						{quizState.currentCategory}
-						{quizState.currentAgeGroup}
-					</div>
-				);
+				return <KeepingOurPromises />;
 			default:
 				return null;
 		}

@@ -7,15 +7,15 @@ import { useTheme } from '@emotion/react';
 
 const GET_QUESTION = gql`
 	query {
-		first: question(id: 12) {
+		first: question(id: 11) {
 			id
 			text
 		}
-		second: question(id: 13) {
+		second: question(id: 12) {
 			id
 			text
 		}
-		third: question(id: 14) {
+		third: question(id: 13) {
 			id
 			text
 		}

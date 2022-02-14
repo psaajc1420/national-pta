@@ -33,26 +33,10 @@ const index = () => {
 	// @ts-expect-error
 	const { quizState, quizDispatch } = useContext(QuizAnswersContext);
 	const [state, dispatch] = useReducer(privacySafetyReducer, initialState);
-	const handleNextQuestion = () => {
-		if (state.currentQuestionIndex === 4) {
-			quizDispatch({
-				type: 'SET_CATEGORY',
-				payload: { category: CATEGORIES.communication.name },
-			});
-		} else {
-			dispatch({ type: 'NEXT_QUESTION' });
-		}
-	};
-	const handlePreviousQuestion = () => {
-		if (state.currentQuestionIndex === 0) {
-			quizDispatch({
-				type: 'SET_CATEGORY',
-				payload: { category: CATEGORIES.welcome.name },
-			});
-		} else {
-			dispatch({ type: 'PREVIOUS_QUESTION' });
-		}
-	};
+
+	const handleNextQuestion = () => dispatch({ type: 'NEXT_QUESTION' });
+
+	const handlePreviousQuestion = () => dispatch({ type: 'PREVIOUS_QUESTION' });
 
 	const QUESTIONS = {
 		1: (
@@ -94,6 +78,25 @@ const index = () => {
 			});
 		}
 	}, []);
+
+	useEffect(() => {
+		if (
+			state.currentQuestionIndex !== 0 &&
+			state.currentQuestionIndex > state.questionFlow.length - 1
+		) {
+			quizDispatch({
+				type: 'SET_CATEGORY',
+				payload: { category: CATEGORIES.communication.name },
+			});
+		}
+
+		if (state.currentQuestionIndex === -1) {
+			quizDispatch({
+				type: 'SET_CATEGORY',
+				payload: { category: CATEGORIES.welcome.name },
+			});
+		}
+	}, [state.currentQuestionIndex, state.questionFlow.length]);
 
 	return (
 		<Box

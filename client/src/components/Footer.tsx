@@ -33,9 +33,24 @@ const Footer = () => {
 				<Text typography='heading' color={theme.color.white}>
 					NPTA
 				</Text>
-				<Text typography='heading' color={theme.color.white}>
-					Norton
-				</Text>
+				<Box
+					width='auto'
+					height='100%'
+					display='flex'
+					justify='center'
+					align='center'
+					padding='0 25px'
+				>
+					<img
+						width={150}
+						height={35}
+						src={
+							window.location.origin +
+							'/assets/logos/NortonFull-Horizontal-Dark-RGB-Web.png'
+						}
+						alt='Norton logo'
+					/>
+				</Box>
 			</Box>
 			<Box
 				width='auto'
