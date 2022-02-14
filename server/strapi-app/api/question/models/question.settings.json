@@ -26,18 +26,6 @@
     },
     "age_groups": {
       "collection": "age-group"
-    },
-    "answers": {
-      "via": "question",
-      "collection": "answer"
-    },
-    "child": {
-      "model": "child",
-      "via": "questions"
-    },
-    "question_answers": {
-      "via": "question",
-      "collection": "question-answer"
     }
   }
 }
