@@ -38,14 +38,14 @@ const QuestionButtonsGroup = ({
 					<Button
 						width={250}
 						height={48}
-						onClick={handleContinue}
+						onClick={handlePrevious}
 						backgroundColor={theme.color.blue}
 					>
 						<Text typography='heading' textAlign='center'>
 							Previous
 						</Text>
 					</Button>
-					<Button width={250} height={48} onClick={handlePrevious}>
+					<Button width={250} height={48} onClick={handleContinue}>
 						<Text typography='heading' textAlign='center'>
 							Continue
 						</Text>

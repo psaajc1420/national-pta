@@ -20,7 +20,13 @@ const GET_QUESTION = gql`
 	}
 `;
 
-const PrivacyAndSafetyQ1 = () => {
+const PrivacyAndSafetyQ1 = ({
+	onHandleNextQuestion,
+	onHandlePreviousQuestion,
+}: {
+	onHandleNextQuestion: () => void;
+	onHandlePreviousQuestion: () => void;
+}) => {
 	const { getQuestion } = useGetQuestion();
 	const questionData = getQuestion(GET_QUESTION);
 
@@ -57,8 +63,8 @@ const PrivacyAndSafetyQ1 = () => {
 					]}
 				/>
 				<QuestionButtonsGroup
-					onContinue={() => {}}
-					onPrevious={() => {}}
+					onContinue={onHandleNextQuestion}
+					onPrevious={onHandlePreviousQuestion}
 					onSave={() => {}}
 				/>
 				<Box

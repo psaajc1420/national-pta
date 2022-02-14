@@ -2,32 +2,9 @@ import { useState, useContext } from 'react';
 import styled from '@emotion/styled';
 import { useTheme } from '@emotion/react';
 import { Box, Button, Text } from '../../../../components';
-import { CATEGORIES } from '../../../../constants/category-constants';
+import { CATEGORIES, AGE_GROUPS_ARR } from '../../../../constants';
 import { CategoryButton } from '../../components';
 import { QuizAnswersContext } from '../../Quiz';
-
-const AGE_GROUPS = [
-	{
-		id: 1,
-		ageGroup: '5-8',
-		color: 'red',
-	},
-	{
-		id: 2,
-		ageGroup: '9-11',
-		color: 'orange',
-	},
-	{
-		id: 3,
-		ageGroup: '12-14',
-		color: 'green',
-	},
-	{
-		id: 4,
-		ageGroup: '15-18',
-		color: 'lightBlue',
-	},
-];
 
 const QuizWelcome = () => {
 	// @ts-expect-error
@@ -85,7 +62,7 @@ const QuizWelcome = () => {
 				align='center'
 				backgroundColor='inherit'
 			>
-				{AGE_GROUPS.map((e) => (
+				{AGE_GROUPS_ARR.map((e) => (
 					<CategoryButton
 						key={e.id}
 						bgColor={e.color}
