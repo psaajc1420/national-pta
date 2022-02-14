@@ -8,6 +8,8 @@ import { QuizWelcome } from './views/welcome';
 import PrivacyAndSafety from './views/privacy-and-safety';
 import Communication from './views/communication';
 import MediaChoices from './views/media-choices';
+import HealthAndWellness from './views/health-and-wellness';
+import KeepingOurPromises from './views/keeping-our-promises';
 
 const quizInitialState = {
 	currentCategory: '',
@@ -133,24 +135,14 @@ const Quiz = () => {
 			case CATEGORIES.mediaChoices.name:
 				return <MediaChoices />;
 			case CATEGORIES.healthAndWellness.name:
-				return (
-					<div>
-						{quizState.currentCategory}
-						{quizState.currentAgeGroup}
-					</div>
-				);
+				return <HealthAndWellness />;
 			case CATEGORIES.keepingOurPromises.name:
-				return (
-					<div>
-						{quizState.currentCategory}
-						{quizState.currentAgeGroup}
-					</div>
-				);
+				return <KeepingOurPromises />;
 			default:
 				return null;
 		}
 	};
-	console.log({ quizState });
+
 	return (
 		<QuizAnswersContext.Provider
 			value={{
