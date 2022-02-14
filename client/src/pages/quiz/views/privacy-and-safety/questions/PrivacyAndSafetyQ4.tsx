@@ -2,6 +2,8 @@ import { Box, Text } from '../../../../../components';
 import { QuestionButtonsGroup, YesNo } from '../../../components';
 import { useGetQuestion } from '../../../../../hooks';
 import { gql } from '@apollo/client';
+import { BallTriangle } from 'react-loader-spinner';
+import { useTheme } from '@emotion/react';
 
 const GET_QUESTION = gql`
 	query {
@@ -29,8 +31,14 @@ const PrivacyAndSafetyQ4 = ({
 }) => {
 	const { getQuestion } = useGetQuestion();
 	const questionData = getQuestion(GET_QUESTION);
+	const theme = useTheme();
 
-	if (questionData.loading) return <div>LOADING</div>;
+	if (questionData.loading)
+		return (
+			<Box width='100%' height='100%' center backgroundColor='transperant'>
+				<BallTriangle color={theme.color.blue} height={150} width={150} />;
+			</Box>
+		);
 
 	return (
 		<>
@@ -57,7 +65,6 @@ const PrivacyAndSafetyQ4 = ({
 						questionData.data.first,
 						questionData.data.second,
 						questionData.data.third,
-						questionData.data.fourth,
 					]}
 				/>
 				<QuestionButtonsGroup

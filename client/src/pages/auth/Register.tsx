@@ -111,8 +111,6 @@ const Register = () => {
 											<ReactTooltip
 												id='guest-warning'
 												place='bottom'
-												// type={type}
-												// effect={effect}
 												multiline={true}
 												backgroundColor={theme.color.blue}
 											>

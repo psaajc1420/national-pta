@@ -3,6 +3,7 @@ import { QuestionButtonsGroup, YesNo } from '../../../components';
 import { useGetQuestion } from '../../../../../hooks';
 import { gql } from '@apollo/client';
 import ReactTooltip from 'react-tooltip';
+import { BallTriangle } from 'react-loader-spinner';
 import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 
@@ -30,11 +31,16 @@ const PrivacyAndSafetyQ1 = ({
 	onHandleNextQuestion: () => void;
 	onHandlePreviousQuestion: () => void;
 }) => {
-	const theme = useTheme();
 	const { getQuestion } = useGetQuestion();
 	const questionData = getQuestion(GET_QUESTION);
+	const theme = useTheme();
 
-	if (questionData.loading) return <div>LOADING</div>;
+	if (questionData.loading)
+		return (
+			<Box width='100%' height='100%' center backgroundColor='transperant'>
+				<BallTriangle color={theme.color.blue} height={150} width={150} />;
+			</Box>
+		);
 
 	return (
 		<>

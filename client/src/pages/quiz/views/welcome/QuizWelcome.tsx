@@ -48,8 +48,8 @@ const QuizWelcome = () => {
 					display='block'
 					margin='25px 0 0 0'
 				>
-					<Text typography='subheading' size={14} color={theme.color.black}>
-						Choose a category on the LEFT, and choose an age-range BELOW:
+					<Text typography='subheading' size={16} color={theme.color.black}>
+						Choose your child&apos;s age:
 					</Text>
 				</Box>
 			</Box>
@@ -69,7 +69,7 @@ const QuizWelcome = () => {
 						onClick={() => setSelectedAgeGroup(e.ageGroup)}
 						selected={selectedAgeGroup === e.ageGroup}
 					>
-						<Text typography='heading' color={theme.color.white}>
+						<Text typography='heading' color={theme.color.black}>
 							{e.ageGroup}
 						</Text>
 					</CategoryButton>

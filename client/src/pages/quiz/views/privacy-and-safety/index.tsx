@@ -1,5 +1,5 @@
 import { useContext, useEffect, useReducer } from 'react';
-import { AGE_GROUPS } from '../../../../constants';
+import { AGE_GROUPS, CATEGORIES } from '../../../../constants';
 import { Box } from '../../../../components';
 import {
 	PrivacyAndSafetyQ1,
@@ -31,14 +31,27 @@ const privacySafetyReducer = (state: any, action: any) => {
 
 const index = () => {
 	// @ts-expect-error
-	const { quizState } = useContext(QuizAnswersContext);
+	const { quizState, quizDispatch } = useContext(QuizAnswersContext);
 	const [state, dispatch] = useReducer(privacySafetyReducer, initialState);
-
 	const handleNextQuestion = () => {
-		dispatch({ type: 'NEXT_QUESTION' });
+		if (state.currentQuestionIndex === 4) {
+			quizDispatch({
+				type: 'SET_CATEGORY',
+				payload: { category: CATEGORIES.communication.name },
+			});
+		} else {
+			dispatch({ type: 'NEXT_QUESTION' });
+		}
 	};
 	const handlePreviousQuestion = () => {
-		dispatch({ type: 'PREVIOUS_QUESTION' });
+		if (state.currentQuestionIndex === 0) {
+			quizDispatch({
+				type: 'SET_CATEGORY',
+				payload: { category: CATEGORIES.welcome.name },
+			});
+		} else {
+			dispatch({ type: 'PREVIOUS_QUESTION' });
+		}
 	};
 
 	const QUESTIONS = {

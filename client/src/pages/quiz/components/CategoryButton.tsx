@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react';
 import styled from '@emotion/styled';
 
@@ -26,12 +25,13 @@ export default CategoryButton;
 
 const StyledButton = styled('div')<CategoryButtonProps>(
 	({ bgColor, theme, selected }) => ({
-		width: 100,
+		width: 125,
 		height: 75,
 		display: 'flex',
 		justifyContent: 'center',
 		alignItems: 'center',
 		borderRadius: 25,
+		// @ts-expect-error
 		backgroundColor: `${theme.color[bgColor]}`,
 		cursor: 'pointer',
 		transition: 'all .1s ease-in-out',

@@ -1,6 +1,9 @@
 // @ts-nocheck
 import React from 'react';
 import styled from '@emotion/styled';
+import ReactTooltip from 'react-tooltip';
+import { useTheme } from '@emotion/react';
+import { Text } from '../../../components';
 
 interface CategoryTabProps {
 	children: React.ReactNode;
@@ -8,6 +11,7 @@ interface CategoryTabProps {
 	ringColor: string;
 	selectedTab?: boolean;
 	disabled?: boolean;
+	label?: string;
 }
 
 const CategoryTab = ({
@@ -16,7 +20,9 @@ const CategoryTab = ({
 	onClick,
 	selectedTab,
 	disabled,
+	label,
 }: CategoryTabProps) => {
+	const theme = useTheme();
 	const handleTabClick = () => {
 		if (!disabled) {
 			onClick();
@@ -24,14 +30,26 @@ const CategoryTab = ({
 	};
 	const isSelectedTab = !disabled && selectedTab;
 	return (
-		<StyledTab
-			ringColor={ringColor}
-			onClick={handleTabClick}
-			selectedTab={isSelectedTab}
-			disabled={disabled}
-		>
-			{children}
-		</StyledTab>
+		<div data-tip data-for={label}>
+			<StyledTab
+				ringColor={ringColor}
+				onClick={handleTabClick}
+				selectedTab={isSelectedTab}
+				disabled={disabled}
+			>
+				{children}
+				<ReactTooltip
+					id={label}
+					place='bottom'
+					multiline={true}
+					backgroundColor={theme.color.blue}
+				>
+					<Text typography='text' textAlign='center'>
+						{label}
+					</Text>
+				</ReactTooltip>
+			</StyledTab>
+		</div>
 	);
 };
 

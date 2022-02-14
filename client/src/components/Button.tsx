@@ -61,11 +61,23 @@ const StyledButton = styled('button')<ButtonProps>(
 		width: width,
 		height: height,
 		borderRadius: borderRadius ? borderRadius : 56,
-		border: border ? border : `3px solid ${theme.color.blue}`,
+		border: disabled
+			? theme.color.red
+			: border
+			? border
+			: `3px solid ${theme.color.blue}`,
 		cursor: 'pointer',
 		['&:hover']: {
-			backgroundColor: backgroundColor ? 'transparent' : theme.color.blue,
-			color: backgroundColor ? theme.color.black : theme.color.white,
+			backgroundColor: disabled
+				? theme.color.red
+				: backgroundColor
+				? 'transparent'
+				: theme.color.blue,
+			color: disabled
+				? theme.color.white
+				: backgroundColor
+				? theme.color.black
+				: theme.color.white,
 		},
 	}),
 );
