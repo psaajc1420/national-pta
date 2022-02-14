@@ -35,7 +35,7 @@ const MediaChoicesQ8 = ({
 		<>
 			<Box
 				width='100%'
-				height={250}
+				height={350}
 				display='flex'
 				flexDirection='column'
 				align='center'
@@ -44,11 +44,11 @@ const MediaChoicesQ8 = ({
 			>
 				<Box
 					width='90%'
-					height='100%'
+					height={75}
 					center
 					flexDirection='column'
 					backgroundColor='transperant'
-					margin='0 0 25px 0'
+					margin='0 0 50px 0'
 				>
 					<YesNo questions={[questionData.data.question]} />
 				</Box>
@@ -58,7 +58,7 @@ const MediaChoicesQ8 = ({
 					center
 					flexDirection='column'
 					backgroundColor='transperant'
-					margin='25px 0'
+					margin='0 0 25px 0'
 					border={`1px solid ${theme.color.black}`}
 				>
 					<Text
@@ -75,12 +75,12 @@ const MediaChoicesQ8 = ({
 						fiction online?
 					</Text>
 				</Box>
-				<QuestionButtonsGroup
-					onContinue={onHandleNextQuestion}
-					onPrevious={onHandlePreviousQuestion}
-					onSave={() => {}}
-				/>
 			</Box>
+			<QuestionButtonsGroup
+				onContinue={onHandleNextQuestion}
+				onPrevious={onHandlePreviousQuestion}
+				onSave={() => {}}
+			/>
 		</>
 	);
 };

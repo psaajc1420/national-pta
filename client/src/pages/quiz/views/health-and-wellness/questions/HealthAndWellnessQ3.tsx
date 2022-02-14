@@ -68,7 +68,7 @@ const HealthAndWellnessQ3 = ({
 			</Box>
 			<Box
 				width='100%'
-				height={400}
+				height={300}
 				display='block'
 				backgroundColor='inherit'
 				margin='15px 0'
@@ -83,20 +83,12 @@ const HealthAndWellnessQ3 = ({
 					]}
 				/>
 			</Box>
-			<Box
-				width='100%'
-				height={150}
-				display='flex'
-				flexDirection='column'
-				align='center'
-				backgroundColor='transperant'
-			>
-				<QuestionButtonsGroup
-					onContinue={onHandleNextQuestion}
-					onPrevious={onHandlePreviousQuestion}
-					onSave={() => {}}
-				/>
-			</Box>
+
+			<QuestionButtonsGroup
+				onContinue={onHandleNextQuestion}
+				onPrevious={onHandlePreviousQuestion}
+				onSave={() => {}}
+			/>
 		</>
 	);
 };

@@ -80,12 +80,12 @@ const KeepingOurPromisesQ1 = ({
 		<>
 			<Box
 				width='100%'
-				height={150}
+				height={100}
 				display='flex'
 				flexDirection='column'
 				align='center'
 				backgroundColor='transperant'
-				margin='0 0 25px 0'
+				margin='0 0 15px 0'
 			>
 				<YesNo
 					questions={[questionData.data.first, questionData.data.second]}
@@ -97,14 +97,14 @@ const KeepingOurPromisesQ1 = ({
 				center
 				flexDirection='column'
 				backgroundColor='transperant'
-				margin='0 0 25px 0'
+				margin='0 0 15px 0'
 			>
 				<Box
 					width='100%'
 					height='auto'
 					display='block'
 					backgroundColor='inherit'
-					margin='15px 0'
+					margin='5px 0'
 				>
 					<Text typography='text' textAlign='center' size={18}>
 						{questionData.data.third.text}
@@ -140,7 +140,7 @@ const KeepingOurPromisesQ1 = ({
 				height='auto'
 				display='block'
 				backgroundColor='inherit'
-				margin='15px 0'
+				margin='5px 0'
 			>
 				<Text typography='text' textAlign='center' size={18}>
 					{questionData.data.fourth.text}

@@ -59,12 +59,30 @@ const Footer = () => {
 				justify='center'
 				align='center'
 			>
-				<Text typography='heading' color={theme.color.white}>
-					Share
-				</Text>
-				<Text typography='heading' color={theme.color.white}>
-					Term | Privacy
-				</Text>
+				<Box
+					width='auto'
+					height='100%'
+					display='flex'
+					justify='center'
+					align='center'
+					margin='0 15px'
+				>
+					<Text typography='heading' color={theme.color.white}>
+						Share
+					</Text>
+				</Box>
+				<Box
+					width='auto'
+					height='100%'
+					display='flex'
+					justify='center'
+					align='center'
+					margin='0 15px'
+				>
+					<Text typography='heading' color={theme.color.white}>
+						Term | Privacy
+					</Text>
+				</Box>
 				<Button
 					width={100}
 					height='100%'

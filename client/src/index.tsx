@@ -13,7 +13,7 @@ import { ThemeProvider } from '@emotion/react';
 import { theme } from './theme';
 
 const client = new ApolloClient({
-	uri: 'http:/0.0.0.0:1337/graphql',
+	uri: 'http://0.0.0.0:1337/graphql',
 	cache: new InMemoryCache(),
 });
 

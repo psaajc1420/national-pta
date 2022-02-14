@@ -62,7 +62,7 @@ const HealthAndWellnessQ2 = ({
 				height='auto'
 				display='block'
 				backgroundColor='inherit'
-				margin='15px 0'
+				margin='10px 0'
 			>
 				<Text typography='text' textAlign='left' size={18}>
 					{questionData.data.first.text}
@@ -74,7 +74,7 @@ const HealthAndWellnessQ2 = ({
 					justify='space-around'
 					align='center'
 					backgroundColor='inherit'
-					margin='15px 0'
+					margin='10px 0'
 				>
 					<input type='text' />
 					<input type='text' />
@@ -98,7 +98,7 @@ const HealthAndWellnessQ2 = ({
 					justify='space-around'
 					align='center'
 					backgroundColor='inherit'
-					margin='15px 0'
+					margin='10px 0'
 				>
 					<input type='text' />
 					<input type='text' />
@@ -110,7 +110,7 @@ const HealthAndWellnessQ2 = ({
 				height='auto'
 				display='block'
 				backgroundColor='inherit'
-				margin='15px 0'
+				margin='10px 0'
 			>
 				<Text typography='text' textAlign='left' size={18}>
 					{questionData.data.third.text}
@@ -122,7 +122,7 @@ const HealthAndWellnessQ2 = ({
 					justify='space-around'
 					align='center'
 					backgroundColor='inherit'
-					margin='15px 0'
+					margin='10px 0'
 				>
 					<input type='text' />
 					<input type='text' />
@@ -134,7 +134,7 @@ const HealthAndWellnessQ2 = ({
 				height='auto'
 				display='block'
 				backgroundColor='inherit'
-				margin='15px 0'
+				margin='10px 0'
 			>
 				<Text typography='text' textAlign='left' size={18}>
 					{questionData.data.fourth.text}
@@ -146,28 +146,19 @@ const HealthAndWellnessQ2 = ({
 					justify='space-around'
 					align='center'
 					backgroundColor='inherit'
-					margin='15px 0'
+					margin='10px 0'
 				>
 					<input type='text' />
 					<input type='text' />
 					<input type='text' />
 				</Box>
 			</Box>
-			<Box
-				width='100%'
-				height={150}
-				display='flex'
-				flexDirection='column'
-				align='center'
-				backgroundColor='transperant'
-				margin='0 0 25px 0'
-			>
-				<QuestionButtonsGroup
-					onContinue={onHandleNextQuestion}
-					onPrevious={onHandlePreviousQuestion}
-					onSave={() => {}}
-				/>
-			</Box>
+
+			<QuestionButtonsGroup
+				onContinue={onHandleNextQuestion}
+				onPrevious={onHandlePreviousQuestion}
+				onSave={() => {}}
+			/>
 		</>
 	);
 };

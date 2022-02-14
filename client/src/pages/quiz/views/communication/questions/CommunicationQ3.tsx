@@ -137,7 +137,7 @@ const CommunicationQ3 = ({
 				height='auto'
 				display='block'
 				backgroundColor='inherit'
-				margin='40px 0 20px 0'
+				margin='20px 0 20px 0'
 			>
 				<Text typography='subheading' textAlign='center' size={18}>
 					{questionData.data?.third?.text}
@@ -150,7 +150,7 @@ const CommunicationQ3 = ({
 				flexDirection='column'
 				align='center'
 				backgroundColor='transperant'
-				margin='0 0 25px 0'
+				margin='0 0 15px 0'
 			>
 				<Box
 					width={500}
@@ -184,12 +184,12 @@ const CommunicationQ3 = ({
 						</Box>
 					))}
 				</Box>
-				<QuestionButtonsGroup
-					onContinue={onHandleNextQuestion}
-					onPrevious={onHandlePreviousQuestion}
-					onSave={() => {}}
-				/>
 			</Box>
+			<QuestionButtonsGroup
+				onContinue={onHandleNextQuestion}
+				onPrevious={onHandlePreviousQuestion}
+				onSave={() => {}}
+			/>
 		</>
 	);
 };

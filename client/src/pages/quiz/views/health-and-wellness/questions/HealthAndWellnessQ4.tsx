@@ -104,7 +104,7 @@ const HealthAndWellnessQ4 = ({
 		<>
 			<Box
 				width='100%'
-				height='auto'
+				height={75}
 				display='block'
 				backgroundColor='inherit'
 				margin='15px 0'
@@ -158,7 +158,7 @@ const HealthAndWellnessQ4 = ({
 									// checked={handleChecked(e.name)}
 								/>
 								<label htmlFor={e.name}>
-									<Text typography='text' textAlign='left' size={14}>
+									<Text typography='text' textAlign='left' size={16}>
 										{e.label}
 									</Text>
 								</label>
@@ -204,7 +204,7 @@ const HealthAndWellnessQ4 = ({
 									// checked={handleChecked(e.name)}
 								/>
 								<label htmlFor={e.name}>
-									<Text typography='text' textAlign='left' size={14}>
+									<Text typography='text' textAlign='left' size={16}>
 										{e.label}
 									</Text>
 								</label>
@@ -213,21 +213,12 @@ const HealthAndWellnessQ4 = ({
 					</Box>
 				</Box>
 			</Box>
-			<Box
-				width='100%'
-				height={150}
-				display='flex'
-				flexDirection='column'
-				align='center'
-				backgroundColor='transperant'
-				margin='0 0 25px 0'
-			>
-				<QuestionButtonsGroup
-					onContinue={onHandleNextQuestion}
-					onPrevious={onHandlePreviousQuestion}
-					onSave={() => {}}
-				/>
-			</Box>
+
+			<QuestionButtonsGroup
+				onContinue={onHandleNextQuestion}
+				onPrevious={onHandlePreviousQuestion}
+				onSave={() => {}}
+			/>
 		</>
 	);
 };

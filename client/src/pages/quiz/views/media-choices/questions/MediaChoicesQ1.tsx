@@ -45,7 +45,7 @@ const MediaChoicesQ1 = ({
 			</Box>
 		);
 
-	const ANSWER_OPTIONS = [
+	const ANSWER_OPTIONS_A = [
 		{
 			name: 'schoolwork',
 			label: 'Schoolwork',
@@ -74,6 +74,9 @@ const MediaChoicesQ1 = ({
 			name: 'watching-videos',
 			label: 'Watching videos',
 		},
+	];
+
+	const ANSWER_OPTIONS_B = [
 		{
 			name: 'listening-music',
 			label: 'Listening to music',
@@ -147,30 +150,29 @@ const MediaChoicesQ1 = ({
 			</Box>
 			<Box
 				width='100%'
-				height={250}
+				height='auto'
 				display='flex'
-				flexDirection='column'
-				align='center'
+				center
 				backgroundColor='transperant'
 				margin='0 0 25px 0'
 			>
 				<Box
-					width={250}
+					width={200}
 					height='auto'
 					center
 					flexDirection='column'
 					backgroundColor='transperant'
-					margin='0 0 25px 0'
+					margin='0 0 25px 50px'
 				>
-					{ANSWER_OPTIONS.map((e) => (
+					{ANSWER_OPTIONS_A.map((e) => (
 						<Box
 							key={e.name}
-							width={300}
+							width={200}
 							height='auto'
 							display='flex'
 							align='center'
 							backgroundColor='transperant'
-							margin='2px 0'
+							margin='3px 0'
 						>
 							<StyledCheckbox
 								type='checkbox'
@@ -180,19 +182,52 @@ const MediaChoicesQ1 = ({
 								checked={handleChecked(e.name)}
 							/>
 							<label htmlFor={e.name}>
-								<Text typography='text' textAlign='left' size={14}>
+								<Text typography='text' textAlign='left' size={16}>
 									{e.label}
 								</Text>
 							</label>
 						</Box>
 					))}
 				</Box>
-				<QuestionButtonsGroup
-					onContinue={onHandleNextQuestion}
-					onPrevious={onHandlePreviousQuestion}
-					onSave={() => {}}
-				/>
+				<Box
+					width={350}
+					height='auto'
+					center
+					flexDirection='column'
+					backgroundColor='transperant'
+					margin='0 0 25px 0'
+				>
+					{ANSWER_OPTIONS_B.map((e) => (
+						<Box
+							key={e.name}
+							width={350}
+							height='auto'
+							display='flex'
+							align='center'
+							backgroundColor='transperant'
+							margin='3px 0'
+						>
+							<StyledCheckbox
+								type='checkbox'
+								id={e.name}
+								name={e.name}
+								onChange={() => handleOnChange(e.name)}
+								checked={handleChecked(e.name)}
+							/>
+							<label htmlFor={e.name}>
+								<Text typography='text' textAlign='left' size={16}>
+									{e.label}
+								</Text>
+							</label>
+						</Box>
+					))}
+				</Box>
 			</Box>
+			<QuestionButtonsGroup
+				onContinue={onHandleNextQuestion}
+				onPrevious={onHandlePreviousQuestion}
+				onSave={() => {}}
+			/>
 		</>
 	);
 };

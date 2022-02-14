@@ -62,7 +62,7 @@ const HealthAndWellnessQ1 = ({
 				height='auto'
 				display='block'
 				backgroundColor='inherit'
-				margin='0 0 35px 0'
+				margin='0 0 20px 0'
 			>
 				<Text typography='subheading' textAlign='center' size={18}>
 					Screens can have an effect on our physical and emotional health.
@@ -124,21 +124,12 @@ const HealthAndWellnessQ1 = ({
 					/>
 				</Box>
 			</Box>
-			<Box
-				width='100%'
-				height={150}
-				display='flex'
-				flexDirection='column'
-				align='center'
-				backgroundColor='transperant'
-				margin='0 0 25px 0'
-			>
-				<QuestionButtonsGroup
-					onContinue={onHandleNextQuestion}
-					onPrevious={onHandlePreviousQuestion}
-					onSave={() => {}}
-				/>
-			</Box>
+
+			<QuestionButtonsGroup
+				onContinue={onHandleNextQuestion}
+				onPrevious={onHandlePreviousQuestion}
+				onSave={() => {}}
+			/>
 		</>
 	);
 };

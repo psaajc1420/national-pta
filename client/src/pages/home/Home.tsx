@@ -138,6 +138,7 @@ const Home = () => {
 					</Box>
 					<Box
 						width='90%'
+						maxWidth={1200}
 						height={250}
 						display='flex'
 						flexDirection='row'

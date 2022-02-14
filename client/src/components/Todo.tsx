@@ -21,6 +21,7 @@ const Todo = () => {
 				onClick={() => setIsOpen(!isOpen)}
 				backgroundColor={theme.color.lightBlue}
 				borderRadius='10px'
+				border='none'
 			>
 				<Text typography='heading' color={theme.color.black} textAlign='center'>
 					To Do List

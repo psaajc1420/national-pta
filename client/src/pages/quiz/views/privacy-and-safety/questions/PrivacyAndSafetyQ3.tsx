@@ -51,7 +51,7 @@ const PrivacyAndSafetyQ3 = ({
 				height='auto'
 				display='block'
 				backgroundColor='inherit'
-				margin='0 0 35px 0'
+				margin='0 0 45px 0'
 			>
 				<Text typography='subheading' textAlign='center' size={18}>
 					We can also protect our privacy and stay safe through the choices we
@@ -64,7 +64,7 @@ const PrivacyAndSafetyQ3 = ({
 				height={250}
 				display='block'
 				backgroundColor='transperant'
-				margin='0 0 25px 0'
+				margin='0 0 35px 0'
 			>
 				<YesNo
 					questions={[
@@ -74,12 +74,12 @@ const PrivacyAndSafetyQ3 = ({
 						questionData.data.fourth,
 					]}
 				/>
-				<QuestionButtonsGroup
-					onContinue={onHandleNextQuestion}
-					onPrevious={onHandlePreviousQuestion}
-					onSave={() => {}}
-				/>
 			</Box>
+			<QuestionButtonsGroup
+				onContinue={onHandleNextQuestion}
+				onPrevious={onHandlePreviousQuestion}
+				onSave={() => {}}
+			/>
 		</>
 	);
 };

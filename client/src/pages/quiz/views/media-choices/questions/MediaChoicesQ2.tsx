@@ -134,7 +134,7 @@ const MediaChoicesQ2 = ({
 				height='auto'
 				display='block'
 				backgroundColor='inherit'
-				margin='0 0 35px 0'
+				margin='0 0 15px 0'
 			>
 				<Text typography='subheading' textAlign='center' size={18}>
 					{questionData.data.question.text}
@@ -207,7 +207,7 @@ const MediaChoicesQ2 = ({
 						flexDirection='column'
 						align='center'
 						backgroundColor='transperant'
-						margin='0 0 25px 0'
+						margin='0 0 5px 0'
 					>
 						<Text typography='heading' size={18}>
 							Movie Ratings
@@ -218,7 +218,7 @@ const MediaChoicesQ2 = ({
 							center
 							flexDirection='column'
 							backgroundColor='transperant'
-							margin='0 0 25px 0'
+							margin='0 0 5px 0'
 						>
 							{MOVIE_ANSWER_OPTIONS.map((e) => (
 								<Box

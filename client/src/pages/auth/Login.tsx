@@ -31,6 +31,7 @@ const Login = () => {
 			<Box width='100%' height='100%' center backgroundColor='inherit'>
 				<Box
 					width={350}
+					maxWidth={350}
 					height={500}
 					center
 					backgroundColor={theme.color.lightBlue}

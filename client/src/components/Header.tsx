@@ -70,7 +70,7 @@ const Header = () => {
 								typography='subheading'
 								size={16}
 								textAlign='center'
-								color={theme.color.blue}
+								color={theme.color.black}
 							>
 								{e.pageName}
 							</Text>

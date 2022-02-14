@@ -60,7 +60,7 @@ const MediaChoicesQ7 = ({
 
 			<Box
 				width='100%'
-				height={500}
+				height={400}
 				display='flex'
 				flexDirection='column'
 				align='center'

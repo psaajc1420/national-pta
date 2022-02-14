@@ -10,6 +10,7 @@ const Register = () => {
 			<Box width='100%' height='100%' center backgroundColor='inherit'>
 				<Box
 					width='75%'
+					maxWidth={1000}
 					height={350}
 					center
 					flexDirection='column'

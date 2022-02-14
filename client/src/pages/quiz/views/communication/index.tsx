@@ -132,7 +132,7 @@ const index = () => {
 			height='100%'
 			display='flex'
 			flexDirection='column'
-			padding='75px 100px'
+			padding='25px 100px 75px 100px'
 			borderBox
 			backgroundColor='transperant'
 			overflow='break-word'

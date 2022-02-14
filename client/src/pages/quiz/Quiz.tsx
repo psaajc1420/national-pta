@@ -1,7 +1,7 @@
 // @ts-nocheck
 import { createContext, useEffect, useReducer, useState } from 'react';
 // import { useTheme } from '@emotion/react';
-import { Box, Button, Layout, Text, Todo } from '../../components';
+import { Box, Layout, Text, Todo } from '../../components';
 import { CategoryTab } from './components';
 import { CATEGORIES, CATEGORIES_ARR } from '../../constants/category-constants';
 import { QuizWelcome } from './views/welcome';
@@ -124,6 +124,25 @@ const Quiz = () => {
 		}
 	}, [loggedIn]);
 
+	const renderCurrentCategoryHeading = (param: string) => {
+		switch (param) {
+			case CATEGORIES.welcome.name:
+				return null;
+			case CATEGORIES.privacyAndSafety.name:
+				return CATEGORIES.privacyAndSafety.label;
+			case CATEGORIES.communication.name:
+				return CATEGORIES.communication.label;
+			case CATEGORIES.mediaChoices.name:
+				return CATEGORIES.mediaChoices.label;
+			case CATEGORIES.healthAndWellness.name:
+				return CATEGORIES.healthAndWellness.label;
+			case CATEGORIES.keepingOurPromises.name:
+				return CATEGORIES.keepingOurPromises.label;
+			default:
+				return null;
+		}
+	};
+
 	const renderCurrentUI = (param: string) => {
 		switch (param) {
 			case CATEGORIES.welcome.name:
@@ -165,7 +184,7 @@ const Quiz = () => {
 						center
 						backgroundColor='#ffffff'
 						borderRadius={75}
-						maxWidth={850}
+						maxWidth={1000}
 					>
 						<Box
 							width={75}
@@ -202,8 +221,26 @@ const Quiz = () => {
 							))}
 						</Box>
 						{''}
-
-						{renderCurrentUI(quizState.currentCategory)}
+						<Box
+							width='100%'
+							height='100%'
+							center
+							flexDirection='column'
+							backgroundColor='transperant'
+						>
+							<Box
+								width='auto'
+								height='auto'
+								display='block'
+								backgroundColor='transperant'
+								margin='50px 0 0 0'
+							>
+								<Text typography='heading' size={24}>
+									{renderCurrentCategoryHeading(quizState.currentCategory)}
+								</Text>
+							</Box>
+							{renderCurrentUI(quizState.currentCategory)}
+						</Box>
 					</Box>
 				</Box>
 			</Layout>
