@@ -27,10 +27,6 @@
       "model": "user",
       "via": "children"
     },
-    "questions": {
-      "via": "child",
-      "collection": "question"
-    },
     "child_quizs": {
       "via": "child",
       "collection": "child-quiz"
