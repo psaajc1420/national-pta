@@ -130,10 +130,29 @@ const createAgeGroup = async () => {
   });
 };
 
+const createQuestions = async () => {
+
+  const questions = await strapi.query("question").find();
+
+  if (questions.length === 0) {
+    const jsonData = require("./questions.json");
+    
+    for (const key in jsonData) {
+      await strapi.services.question.create({
+        text: jsonData[key],
+      }).then((result) => {
+        return result;
+      }).catch((error) => {strapi.log.info(`Error: ${error}`)});
+    }
+    
+  }
+}
+
 module.exports = async () => {
   if (process.env.NODE_ENV === "development") {
     await createUsers();
     await createAdminUser();
   }
   await createAgeGroup();
+  await createQuestions();
 };
