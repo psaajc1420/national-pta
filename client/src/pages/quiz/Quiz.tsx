@@ -7,6 +7,7 @@ import { CATEGORIES, CATEGORIES_ARR } from '../../constants/category-constants';
 import { QuizWelcome } from './views/welcome';
 import PrivacyAndSafety from './views/privacy-and-safety';
 import Communication from './views/communication';
+import MediaChoices from './views/media-choices';
 
 const quizInitialState = {
 	currentCategory: '',
@@ -73,6 +74,8 @@ const quizInitialState = {
 		67: null,
 		69: null,
 		70: null,
+		71: null,
+		72: null,
 	},
 };
 
@@ -128,12 +131,7 @@ const Quiz = () => {
 			case CATEGORIES.communication.name:
 				return <Communication />;
 			case CATEGORIES.mediaChoices.name:
-				return (
-					<div>
-						{quizState.currentCategory}
-						{quizState.currentAgeGroup}
-					</div>
-				);
+				return <MediaChoices />;
 			case CATEGORIES.healthAndWellness.name:
 				return (
 					<div>
