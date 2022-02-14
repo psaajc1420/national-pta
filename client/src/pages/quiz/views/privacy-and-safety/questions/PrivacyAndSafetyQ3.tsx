@@ -11,15 +11,15 @@ const GET_QUESTION = gql`
 			id
 			text
 		}
-		second: question(id: 9) {
+		second: question(id: 69) {
 			id
 			text
 		}
-		third: question(id: 10) {
+		third: question(id: 9) {
 			id
 			text
 		}
-		fourth: question(id: 11) {
+		fourth: question(id: 10) {
 			id
 			text
 		}
