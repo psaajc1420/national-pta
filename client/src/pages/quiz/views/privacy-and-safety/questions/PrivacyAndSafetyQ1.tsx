@@ -2,6 +2,9 @@ import { Box, Text } from '../../../../../components';
 import { QuestionButtonsGroup, YesNo } from '../../../components';
 import { useGetQuestion } from '../../../../../hooks';
 import { gql } from '@apollo/client';
+import ReactTooltip from 'react-tooltip';
+import { useTheme } from '@emotion/react';
+import styled from '@emotion/styled';
 
 const GET_QUESTION = gql`
 	query {
@@ -27,6 +30,7 @@ const PrivacyAndSafetyQ1 = ({
 	onHandleNextQuestion: () => void;
 	onHandlePreviousQuestion: () => void;
 }) => {
+	const theme = useTheme();
 	const { getQuestion } = useGetQuestion();
 	const questionData = getQuestion(GET_QUESTION);
 
@@ -75,9 +79,25 @@ const PrivacyAndSafetyQ1 = ({
 					margin='35px 0'
 				>
 					<Text typography='text' textAlign='center' size={16}>
-						Bonus! How do we make strong passwords? Let&apos;s practice creating
-						a really tough password together.
+						Bonus! How do we make{' '}
+						<StyledSpan data-tip data-for='strong-passwords'>
+							strong passwords
+						</StyledSpan>
+						? Let&apos;s practice creating a really tough password together.
 					</Text>
+					<ReactTooltip
+						id='strong-passwords'
+						place='bottom'
+						multiline={true}
+						backgroundColor={theme.color.blue}
+					>
+						<Text typography='text' textAlign='center'>
+							Strong passwords usually have a combination
+							<br /> of at least 8 letters, numbers and symbols.
+							<br /> You should also avoid using personal information <br />
+							like your name or birthdate in your passwords.
+						</Text>
+					</ReactTooltip>
 				</Box>
 			</Box>
 		</>
@@ -85,3 +105,7 @@ const PrivacyAndSafetyQ1 = ({
 };
 
 export default PrivacyAndSafetyQ1;
+
+const StyledSpan = styled('span')(({ theme }) => ({
+	textDecoration: `underline ${theme.color.orange}`,
+}));

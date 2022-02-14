@@ -96,7 +96,7 @@ const Register = () => {
 										</Text>
 									</Button>
 								</Box>
-								<div data-tip data-for='test'>
+								<div data-tip data-for='guest-warning'>
 									<Link to='/quiz'>
 										<Button
 											width={250}
@@ -109,7 +109,7 @@ const Register = () => {
 												Continue as Guest
 											</Text>
 											<ReactTooltip
-												id='test'
+												id='guest-warning'
 												place='bottom'
 												// type={type}
 												// effect={effect}
