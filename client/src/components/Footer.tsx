@@ -1,7 +1,5 @@
-import styled from '@emotion/styled';
 import { Box, Button, Text } from './index';
 import { useTheme } from '@emotion/react';
-import { Link } from 'react-router-dom';
 
 const Footer = () => {
 	const theme = useTheme();
@@ -30,19 +28,31 @@ const Footer = () => {
 				align='center'
 				padding='0 25px'
 			>
-				<Text typography='heading' color={theme.color.white}>
-					NPTA
-				</Text>
 				<Box
 					width='auto'
 					height='100%'
 					display='flex'
 					justify='center'
 					align='center'
-					padding='0 25px'
+					padding='0 15px'
 				>
 					<img
-						width={150}
+						width='auto'
+						height={40}
+						src={window.location.origin + '/assets/logos/NPTA White.png'}
+						alt='Norton logo'
+					/>
+				</Box>
+				<Box
+					width='auto'
+					height='100%'
+					display='flex'
+					justify='center'
+					align='center'
+					padding='0 15px'
+				>
+					<img
+						width='auto'
 						height={35}
 						src={
 							window.location.origin +
@@ -105,5 +115,3 @@ const Footer = () => {
 };
 
 export default Footer;
-
-const StyledFooter = styled(Box)(() => ({}));
