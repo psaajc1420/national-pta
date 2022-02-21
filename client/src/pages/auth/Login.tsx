@@ -1,17 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import { useLogin } from './hooks';
-import { Box, Button, Layout, Link, Text } from '../../components';
+import { Box, Button, Link, Text } from '../../components';
 import { AuthInput } from './components';
+import { AuthContext } from '../../App';
 
 const Login = () => {
+	// @ts-expect-error
+	const { authDispatch } = useContext(AuthContext);
 	const theme = useTheme();
 	const [email, setEmail] = useState('');
 	const [password, setPassord] = useState('');
 	const [isButtonDisabled, setButtonDisabled] = useState(true);
-	const [error, setError] = useState('');
-	const { login } = useLogin();
+	const [err, setErr] = useState('');
+	const { login, data, error } = useLogin();
 
 	useEffect(() => {
 		if (email.length < 8 || password.length < 8) {
@@ -20,6 +23,18 @@ const Login = () => {
 			setButtonDisabled(false);
 		}
 	}, [email, password]);
+
+	useEffect(() => {
+		if (data?.login) {
+			authDispatch({
+				type: 'LOGIN',
+				payload: { jwt: data.login.jwt, identifier: data.login.user.username },
+			});
+		}
+		if (error) {
+			setErr('Invalid email/username and password. Please try again.');
+		}
+	}, [data, error]);
 
 	const handleInputEmail = (e: React.ChangeEvent<HTMLInputElement>) =>
 		setEmail(e.target.value);
@@ -52,7 +67,7 @@ const Login = () => {
 						flexDirection='column'
 						justify='space-around'
 						align='center'
-						backgroundColor='inherit'
+						backgroundColor='transperant'
 						zIndex={1}
 					>
 						<Text typography='heading' size={36} color={theme.color.black}>
@@ -75,16 +90,23 @@ const Login = () => {
 							height='auto'
 							center
 							flexDirection='column'
-							backgroundColor='inherit'
+							backgroundColor='transperant'
 						>
-							{error && (
-								<Text
-									typography='subheading'
-									textAlign='center'
-									color={theme.color.red}
+							{err && (
+								<Box
+									width='auto'
+									height='auto'
+									center
+									backgroundColor='transperant'
 								>
-									{error}
-								</Text>
+									<Text
+										typography='subheading'
+										textAlign='center'
+										color={theme.color.red}
+									>
+										{err}
+									</Text>
+								</Box>
 							)}
 							<Button
 								width={150}
@@ -93,7 +115,7 @@ const Login = () => {
 								disabled={isButtonDisabled}
 								onClick={() =>
 									isButtonDisabled
-										? setError('Email or Password is incomplete. Please Revise')
+										? setErr('Email or Password is incomplete. Please Revise')
 										: login(email, password)
 								}
 							>
@@ -109,7 +131,7 @@ const Login = () => {
 								width='auto'
 								height='auto'
 								display='block'
-								backgroundColor='inherit'
+								backgroundColor='transperant'
 								margin='15px 0'
 								zIndex={1}
 							>

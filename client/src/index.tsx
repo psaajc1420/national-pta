@@ -14,7 +14,7 @@ import { theme } from './theme';
 
 const client = new ApolloClient({
 	// eslint-disable-next-line no-undef
-	uri: `${process.env.REACT_APP_HOST}/graphql`,
+	uri: `http://localhost:1337/graphql`,
 	cache: new InMemoryCache(),
 });
 

@@ -2,7 +2,15 @@ import React from 'react';
 import { Box, Header, Footer } from './index';
 import { useTheme } from '@emotion/react';
 
-const Layout = ({ children }: { children: React.ReactNode }) => {
+const Layout = ({
+	children,
+	loggedIn,
+	identifier,
+}: {
+	children: React.ReactNode;
+	loggedIn?: boolean;
+	identifier?: string;
+}) => {
 	const theme = useTheme();
 	return (
 		<Box
@@ -18,7 +26,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 			right={0}
 			top={0}
 		>
-			<Header />
+			<Header loggedIn={loggedIn} identifier={identifier} />
 			<Box
 				width='100%'
 				height='100%'

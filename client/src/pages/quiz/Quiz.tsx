@@ -1,8 +1,7 @@
-// @ts-nocheck
 import { createContext, useEffect, useReducer, useState } from 'react';
 // import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
-import { Box, Layout, Text, Todo } from '../../components';
+import { Box, Text, Todo } from '../../components';
 import { CategoryTab } from './components';
 import { CATEGORIES, CATEGORIES_ARR } from '../../constants/category-constants';
 import { QuizWelcome } from './views/welcome';
@@ -166,6 +165,7 @@ const Quiz = () => {
 	return (
 		<QuizAnswersContext.Provider
 			value={{
+				// @ts-expect-error
 				quizState,
 				quizDispatch,
 			}}
@@ -190,7 +190,7 @@ const Quiz = () => {
 						width='80%'
 						maxWidth={1000}
 						height='80%'
-						maxHeight={650}
+						maxHeight={800}
 						center
 						backgroundColor='#ffffff'
 						borderRadius={75}
