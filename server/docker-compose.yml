@@ -5,7 +5,7 @@ services:
     image: strapi/strapi
     container_name: strapi-npta
     restart: unless-stopped
-    env_file: .env
+    env_file: ./strapi-app/.env
     volumes:
       - ./strapi-app:/srv/app
     networks:

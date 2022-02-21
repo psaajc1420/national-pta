@@ -5,6 +5,12 @@ module.exports = {
       cwd: './server/strapi-app',
       script: 'npm',
       args: 'start',
+      env: {
+        NODE_ENV: "development",  
+      },
+      env_production: {
+        NODE_ENV: "production",
+      }
     },
     {
       name: 'smart-talk-client',
