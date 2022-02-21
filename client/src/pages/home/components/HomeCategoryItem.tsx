@@ -16,12 +16,13 @@ const HomeCategoryItem = ({ item }: HomeCategoryItemProps) => {
 	const theme = useTheme();
 	return (
 		<Box
-			width={150}
-			height={90}
+			width={175}
+			height={100}
 			center
 			flexDirection='column'
 			borderRadius={20}
 			backgroundColor={theme.color[item.color]}
+			margin='75px 0 0 0'
 		>
 			<CategoryIcon
 				src={window.location.origin + item.iconSvg}
@@ -37,7 +38,8 @@ const HomeCategoryItem = ({ item }: HomeCategoryItemProps) => {
 export default HomeCategoryItem;
 
 const CategoryIcon = styled('img')(() => ({
-	width: 100,
+	width: 150,
+	height: 'auto',
 	position: 'absolute',
 	bottom: 50,
 }));

@@ -22,6 +22,7 @@ const Home = () => {
 					center
 					flexDirection='row'
 					backgroundColor='inherit'
+					margin='0 0 100px 0'
 				>
 					<Box
 						width={350}
@@ -29,13 +30,29 @@ const Home = () => {
 						display='block'
 						margin='0 15px 0 0'
 						borderRadius='50%'
+						position='relative'
+						backgroundColor='transperant'
 					>
 						<HeroImage
 							src={
 								window.location.origin +
-								'/assets/images/Hero Image Option 1.jpeg'
+								'/assets/images/pexels-photo-7983164.jpeg'
 							}
-							alt='Dad and his two daughters'
+							alt='Two fathers and their daughter'
+						/>
+						<HeroImage2
+							src={
+								window.location.origin +
+								'/assets/images/pexels-photo-8185911.jpeg'
+							}
+							alt='Man with his grandson'
+						/>
+						<HeroImageCircles
+							src={
+								window.location.origin +
+								'/assets/illustrations/Homepage Circles.svg'
+							}
+							alt='Man with his grandson'
 						/>
 					</Box>
 					<Box
@@ -44,6 +61,7 @@ const Home = () => {
 						center
 						flexDirection='column'
 						backgroundColor='inherit'
+						margin='150px 0 0 50px'
 					>
 						<Text
 							typography='heading'
@@ -205,9 +223,35 @@ const StyledList = styled('ul')(() => ({
 }));
 
 const HeroImage = styled('img')(() => ({
+	position: 'absolute',
 	width: 350,
 	height: 350,
 	objectFit: 'cover',
 	objectPostion: '100% 0',
 	borderRadius: '50%',
+	zIndex: 98,
+}));
+
+const HeroImage2 = styled('img')(() => ({
+	position: 'absolute',
+	top: 250,
+	right: 200,
+	width: 250,
+	height: 250,
+	objectFit: 'cover',
+	objectPostion: '100% 0',
+	borderRadius: '50%',
+	zIndex: 99,
+}));
+
+const HeroImageCircles = styled('img')(() => ({
+	position: 'absolute',
+	top: 50,
+	right: -75,
+	width: 600,
+	height: 'auto',
+	objectFit: 'cover',
+	objectPostion: '100% 0',
+	borderRadius: '50%',
+	zIndex: 0,
 }));
