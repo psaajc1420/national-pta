@@ -11,57 +11,184 @@ const RegisterForm = () => {
 		>
 			<StyledForm>
 				<Box
-					width='50%'
+					width='100%'
 					height='100%'
 					display='flex'
-					flexDirection='column'
 					backgroundColor='transperant'
+					padding='0 15px'
 				>
-					<label>
-						<input type='text' />
-					</label>
-					<label>
-						<input type='text' />
-					</label>
-					<label>
-						<input type='text' />
-					</label>
-					<label>
-						<input type='text' />
-					</label>
-					<label>
-						<input type='text' />
-					</label>
-					<label>
-						<input type='text' />
-					</label>
-					<label>
-						<input type='text' />
-					</label>
+					<Box
+						width='50%'
+						height='100%'
+						display='flex'
+						flexDirection='column'
+						backgroundColor='transperant'
+					>
+						<label>
+							<Box
+								width='100%'
+								height={48}
+								display='flex'
+								justify='space-between'
+								align='center'
+								backgroundColor='transperant'
+							>
+								<Text typography='subheading'>Parent First Name:</Text>
+								<input type='text' />
+							</Box>
+						</label>
+						<label>
+							<Box
+								width='100%'
+								height={48}
+								display='flex'
+								justify='space-between'
+								align='center'
+								backgroundColor='transperant'
+							>
+								<Text typography='subheading'>Parent Email:</Text>
+								<input type='email' />
+							</Box>
+						</label>
+						<label>
+							<Box
+								width='100%'
+								height={48}
+								display='flex'
+								justify='space-between'
+								align='center'
+								backgroundColor='transperant'
+							>
+								<Text typography='subheading'>Password:</Text>
+								<input type='password' />
+							</Box>
+						</label>
+						<label>
+							<Box
+								width='100%'
+								height={48}
+								display='flex'
+								justify='space-between'
+								align='center'
+								backgroundColor='transperant'
+							>
+								<Text typography='subheading'>City:</Text>
+								<input type='text' />
+							</Box>
+						</label>
+						<label>
+							<Box
+								width='100%'
+								height={48}
+								display='flex'
+								justify='space-between'
+								align='center'
+								backgroundColor='transperant'
+							>
+								<Text typography='subheading'>State:</Text>
+								<input type='text' />
+							</Box>
+						</label>
+						<label>
+							<Box
+								width='100%'
+								height={48}
+								display='flex'
+								justify='space-between'
+								align='center'
+								backgroundColor='transperant'
+							>
+								<Text typography='subheading'>Child First Name:</Text>
+								<input type='text' />
+							</Box>
+						</label>
+						<label>
+							<Box
+								width='100%'
+								height={48}
+								display='flex'
+								justify='space-between'
+								align='center'
+								backgroundColor='transperant'
+							>
+								<Text typography='subheading'>Child Age:</Text>
+								<input type='text' />
+							</Box>
+						</label>
+					</Box>
+					<Box
+						width='50%'
+						height='100%'
+						display='flex'
+						flexDirection='column'
+						backgroundColor='transperant'
+						padding='0 15px'
+					>
+						<label>
+							<Box
+								width='100%'
+								height={48}
+								display='flex'
+								justify='space-between'
+								align='center'
+								backgroundColor='transperant'
+							>
+								<Text typography='subheading'>Race:</Text>
+								<input type='text' />
+							</Box>
+						</label>
+						<label>
+							<Box
+								width='100%'
+								height={48}
+								display='flex'
+								justify='space-between'
+								align='center'
+								backgroundColor='transperant'
+							>
+								<Text typography='subheading'>Ethnicity:</Text>
+								<input type='text' />
+							</Box>
+						</label>
+						<label>
+							<Box
+								width='100%'
+								height={48}
+								display='flex'
+								justify='space-between'
+								align='center'
+								backgroundColor='transperant'
+							>
+								<Text typography='subheading'>
+									Primarily Language Spoken at Home:
+								</Text>
+								<input type='text' />
+							</Box>
+						</label>
+						<label>
+							<Box
+								width='100%'
+								height={48}
+								display='flex'
+								justify='space-between'
+								align='center'
+								backgroundColor='transperant'
+							>
+								<Text typography='subheading'>
+									How did you hear about The Smart Talk?:
+								</Text>
+								<input type='text' />
+							</Box>
+						</label>
+					</Box>
 				</Box>
-				<Box
-					width='50%'
-					height='100%'
-					display='flex'
-					flexDirection='column'
-					backgroundColor='transperant'
-				>
-					<label>
-						<input type='text' />
-					</label>
-					<label>
-						<input type='text' />
-					</label>
-					<label>
-						<input type='text' />
-					</label>
-					<label>
-						<input type='text' />
-					</label>
+				<Box width='auto' height='auto' center backgroundColor='transperant'>
+					<Button width={150} height={48} type='submit' onClick={() => {}}>
+						<Text typography='heading' textAlign='center'>
+							Submit
+						</Text>
+					</Button>
 				</Box>
-				<Button width={150} height={48} type='submit' onClick={() => {}}>
-					<Text typography='heading'>Submit</Text>
-				</Button>
 			</StyledForm>
 		</Box>
 	);
@@ -73,5 +200,6 @@ const StyledForm = styled('form')(() => ({
 	width: '100%',
 	height: '100%',
 	display: 'flex',
-	flexDirection: 'row',
+	flexDirection: 'column',
+	alignItems: 'center',
 }));
