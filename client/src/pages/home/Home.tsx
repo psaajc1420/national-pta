@@ -52,7 +52,7 @@ const Home = () => {
 								window.location.origin +
 								'/assets/illustrations/Homepage Circles.svg'
 							}
-							alt='Man with his grandson'
+							alt='Background circles'
 						/>
 					</Box>
 					<Box
@@ -252,6 +252,5 @@ const HeroImageCircles = styled('img')(() => ({
 	height: 'auto',
 	objectFit: 'cover',
 	objectPostion: '100% 0',
-	borderRadius: '50%',
 	zIndex: 0,
 }));

@@ -7,6 +7,7 @@ export const theme = {
 		green: '#3fb76c',
 		orange: '#f1b71c',
 		red: '#d94343',
+		purple: '#844499',
 	},
 	font: {
 		heading: "'Nunito', sans-serif",

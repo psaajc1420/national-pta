@@ -34,7 +34,19 @@ const Footer = () => {
 					display='flex'
 					justify='center'
 					align='center'
-					padding='0 15px'
+					padding='0 8px'
+				>
+					<Text typography='heading' color={theme.color.white}>
+						A collaboration between:
+					</Text>
+				</Box>
+				<Box
+					width='auto'
+					height='100%'
+					display='flex'
+					justify='center'
+					align='center'
+					padding='0 8px'
 				>
 					<img
 						width='auto'
@@ -49,7 +61,7 @@ const Footer = () => {
 					display='flex'
 					justify='center'
 					align='center'
-					padding='0 15px'
+					padding='0 8px'
 				>
 					<img
 						width='auto'

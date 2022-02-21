@@ -37,7 +37,7 @@ export const CATEGORIES = {
 		label: 'Keeping Our Promises',
 		name: 'keeping-our-promises',
 		iconSvg: '/assets/illustrations/NPTA_Keeping Our Promises Rev2.png',
-		color: 'blue',
+		color: 'purple',
 	},
 };
 
@@ -75,6 +75,6 @@ export const CATEGORIES_ARR = [
 		label: 'Keeping Our Promises',
 		name: 'keeping-our-promises',
 		iconSvg: '/assets/illustrations/NPTA_Keeping Our Promises Rev2.png',
-		color: 'blue',
+		color: 'purple',
 	},
 ];
