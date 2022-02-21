@@ -1,6 +1,7 @@
 // @ts-nocheck
 import { createContext, useEffect, useReducer, useState } from 'react';
 // import { useTheme } from '@emotion/react';
+import styled from '@emotion/styled';
 import { Box, Layout, Text, Todo } from '../../components';
 import { CategoryTab } from './components';
 import { CATEGORIES, CATEGORIES_ARR } from '../../constants/category-constants';
@@ -178,13 +179,22 @@ const Quiz = () => {
 					position='relative'
 				>
 					<Todo />
+					<QuizCircles
+						src={
+							window.location.origin +
+							'/assets/illustrations/Quiz Beginning Circles.svg'
+						}
+						alt='Background circles'
+					/>
 					<Box
 						width='80%'
+						maxWidth={1000}
 						height='80%'
+						maxHeight={650}
 						center
 						backgroundColor='#ffffff'
 						borderRadius={75}
-						maxWidth={1000}
+						zIndex={98}
 					>
 						<Box
 							width={75}
@@ -216,7 +226,12 @@ const Quiz = () => {
 									}
 									label={e.label}
 								>
-									<img src={window.location.origin + e.iconSvg} alt={e.label} />
+									<img
+										width={85}
+										height={85}
+										src={window.location.origin + e.quizIconSvg}
+										alt={e.label}
+									/>
 								</CategoryTab>
 							))}
 						</Box>
@@ -249,3 +264,13 @@ const Quiz = () => {
 };
 
 export default Quiz;
+
+const QuizCircles = styled('img')(() => ({
+	width: 1220,
+	height: 'auto',
+	position: 'fixed',
+	top: '54%',
+	left: '50%',
+	transform: 'translate(-50%, -50%)',
+	zIndex: 0,
+}));

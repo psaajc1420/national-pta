@@ -47,6 +47,7 @@ export const CATEGORIES_ARR = [
 		label: 'Privacy & Safety',
 		name: 'privacy-and-safety',
 		iconSvg: '/assets/illustrations/NPTA_Privacy and Safety.png',
+		quizIconSvg: '/assets/illustrations/NPTA_Privacy and Safety_simple.png',
 		color: 'red',
 	},
 	{
@@ -54,6 +55,7 @@ export const CATEGORIES_ARR = [
 		label: 'Communication',
 		name: 'communication',
 		iconSvg: '/assets/illustrations/NPTA_Communication Rev2.png',
+		quizIconSvg: '/assets/illustrations/NPTA_Communication_simple.png',
 		color: 'orange',
 	},
 	{
@@ -61,6 +63,7 @@ export const CATEGORIES_ARR = [
 		label: 'Media Choices',
 		name: 'media-choices',
 		iconSvg: '/assets/illustrations/NPTA_Media Choices.png',
+		quizIconSvg: '/assets/illustrations/NPTA_Media Choices_Simple.png',
 		color: 'green',
 	},
 	{
@@ -68,6 +71,7 @@ export const CATEGORIES_ARR = [
 		label: 'Health & Wellness',
 		name: 'health-and-wellness',
 		iconSvg: '/assets/illustrations/NPTA_Health and Wellness Rev2.png',
+		quizIconSvg: '/assets/illustrations/NPTA_Health and Wellness_simple.png',
 		color: 'lightBlue',
 	},
 	{
@@ -75,6 +79,7 @@ export const CATEGORIES_ARR = [
 		label: 'Keeping Our Promises',
 		name: 'keeping-our-promises',
 		iconSvg: '/assets/illustrations/NPTA_Keeping Our Promises Rev2.png',
+		quizIconSvg: '/assets/illustrations/NPTA_Keeping Our Promises_simple.png',
 		color: 'purple',
 	},
 ];

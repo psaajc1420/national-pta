@@ -14,4 +14,9 @@ export const theme = {
 		subheading: "'Nunito', sans-serif",
 		text: "'Raleway', sans-serif",
 	},
+	screen: {
+		mobile: '(max-width: 699px)',
+		desktop: '(max-width: 1224px)',
+		largeDesktop: '(min-width: 1824px)',
+	},
 };

@@ -7,7 +7,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 	return (
 		<Box
 			width='100%'
-			height='100vh'
+			height='100%'
 			display='flex'
 			justify='flex-start'
 			align='center'

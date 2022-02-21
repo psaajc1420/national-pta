@@ -4,26 +4,28 @@ import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import ReactTooltip from 'react-tooltip';
 import { RegisterForm } from './components';
+import { useMediaQuery } from 'react-responsive';
 
 const Register = () => {
 	const theme = useTheme();
 	const [view, setView] = useState('default');
+	const isMobile = useMediaQuery({ query: theme.screen.mobile });
+
 	return (
 		<Layout>
 			<Box width='100%' height='100%' center backgroundColor='inherit'>
-				<RegisterCircles
+				{/* <RegisterCircles
 					src={
 						window.location.origin +
 						'/assets/illustrations/Create Account Circles.svg'
 					}
 					alt='Background circles'
-				/>
+				/> */}
 				{view === 'default' ? (
 					<Box
 						width='75%'
 						maxWidth={1000}
-						height={350}
-						maxHeight={350}
+						height={isMobile ? 600 : 350}
 						center
 						flexDirection='column'
 						backgroundColor={theme.color.lightBlue}
@@ -42,13 +44,18 @@ const Register = () => {
 							width='100%'
 							height={350}
 							display='flex'
-							flexDirection='row'
+							flexDirection={isMobile ? 'column' : 'row'}
 							justify='space-around'
 							align='center'
-							backgroundColor='inherit'
+							backgroundColor='transperant'
 							margin='15px 0 0 0'
 						>
-							<Box width='100%' height='100%' center backgroundColor='inherit'>
+							<Box
+								width='100%'
+								height='100%'
+								center
+								backgroundColor='transperant'
+							>
 								<Text typography='text' size={16} color={theme.color.black}>
 									Creating an account gives users full access to the Smart Talk
 									tool including:
@@ -65,14 +72,16 @@ const Register = () => {
 									</StyledUl>
 								</Text>
 							</Box>
-							<Box
-								width={4}
-								height='100%'
-								display='block'
-								border={`1px solid ${theme.color.blue}`}
-								borderRadius={25}
-								margin='0 0 0 15px'
-							></Box>
+							{!isMobile && (
+								<Box
+									width={4}
+									height='100%'
+									display='block'
+									border={`1px solid ${theme.color.blue}`}
+									borderRadius={25}
+									margin='0 0 0 15px'
+								></Box>
+							)}
 							<Box
 								width='100%'
 								height='100%'
@@ -80,20 +89,20 @@ const Register = () => {
 								justify='space-around'
 								align='center'
 								flexDirection='column'
-								backgroundColor='inherit'
+								backgroundColor='transperant'
 							>
 								<Box
 									width='auto'
 									height='auto'
 									center
 									flexDirection='column'
-									backgroundColor='inherit'
+									backgroundColor='transperant'
 								>
 									<Box
 										width='auto'
 										height='auto'
 										display='block'
-										backgroundColor='inherit'
+										backgroundColor='transperant'
 										margin='15px 0 25px 0'
 									>
 										<Button
@@ -143,7 +152,7 @@ const Register = () => {
 										width='auto'
 										height='auto'
 										display='block'
-										backgroundColor='inherit'
+										backgroundColor='transperant'
 										margin='15px 0'
 										zIndex={1}
 									>
@@ -176,13 +185,13 @@ const StyledUl = styled('ul')(() => ({
 	margin: '15px 0 0 20px',
 }));
 
-const RegisterCircles = styled('img')(() => ({
-	position: 'fixed',
-	top: 50,
-	right: 150,
-	width: '70%',
-	height: 'auto',
-	objectFit: 'cover',
-	objectPostion: '100% 0',
-	zIndex: 0,
-}));
+// const RegisterCircles = styled('img')(() => ({
+// 	width: '80%',
+// 	maxWidth: 1220,
+// 	height: 'auto',
+// 	position: 'fixed',
+// 	top: '51%',
+// 	left: '50%',
+// 	transform: 'translate(-50%, -50%)',
+// 	zIndex: 0,
+// }));

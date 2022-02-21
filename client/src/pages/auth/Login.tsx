@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useTheme } from '@emotion/react';
+import styled from '@emotion/styled';
 import { useLogin } from './hooks';
 import { Box, Button, Layout, Link, Text } from '../../components';
 import { AuthInput } from './components';
@@ -29,6 +30,12 @@ const Login = () => {
 	return (
 		<Layout>
 			<Box width='100%' height='100%' center backgroundColor='inherit'>
+				<LoginCircles
+					src={
+						window.location.origin + '/assets/illustrations/Login Circles.svg'
+					}
+					alt='Background circles'
+				/>
 				<Box
 					width={350}
 					maxWidth={350}
@@ -124,3 +131,13 @@ const Login = () => {
 };
 
 export default Login;
+
+const LoginCircles = styled('img')(() => ({
+	width: 1220,
+	height: 'auto',
+	position: 'fixed',
+	top: '50%',
+	left: '50%',
+	transform: 'translate(-50%, -50%)',
+	zIndex: 0,
+}));

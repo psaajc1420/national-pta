@@ -16,5 +16,10 @@ declare module '@emotion/react' {
 			subheading: string;
 			text: string;
 		};
+		screen: {
+			mobile: string;
+			desktop: string;
+			largeDesktop: string;
+		};
 	}
 }

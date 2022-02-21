@@ -59,7 +59,9 @@ const StyledTab = styled('div')<CategoryTabProps>(
 	({ ringColor, theme, selectedTab, disabled }) => ({
 		width: 75,
 		height: 75,
-		display: 'block',
+		display: 'flex',
+		justifyContent: 'center',
+		alignItems: 'center',
 		borderRadius: '50%',
 		border: `10px solid ${theme.color[ringColor]}`,
 		backgroundColor: 'transparent',
