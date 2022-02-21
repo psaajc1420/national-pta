@@ -46,43 +46,50 @@ const Footer = () => {
 				</Box>
 				<Box
 					width='auto'
-					height='100%'
+					height='auto'
 					display='flex'
-					justify='center'
-					align='center'
-					padding='0 8px'
+					backgroundColor='transperant'
 				>
-					<img
+					<Box
 						width='auto'
-						height={35}
-						src={window.location.origin + '/assets/logos/NPTA White.png'}
-						alt='Norton logo'
-					/>
-				</Box>
-				<Box
-					width='auto'
-					height='100%'
-					display='flex'
-					justify='center'
-					align='center'
-					padding='0 8px'
-				>
-					<img
+						height='100%'
+						display='flex'
+						justify='center'
+						align='center'
+						padding='0 8px'
+					>
+						<img
+							width='auto'
+							height={35}
+							src={window.location.origin + '/assets/logos/NPTA White.png'}
+							alt='Norton logo'
+						/>
+					</Box>
+					<Box
 						width='auto'
-						height={35}
-						src={
-							window.location.origin +
-							'/assets/logos/NortonFull-Horizontal-Dark-RGB-Web.png'
-						}
-						alt='Norton logo'
-					/>
+						height='100%'
+						display='flex'
+						justify='center'
+						align='center'
+						padding='0 8px'
+					>
+						<img
+							width='auto'
+							height={35}
+							src={
+								window.location.origin +
+								'/assets/logos/NortonFull-Horizontal-Dark-RGB-Web.png'
+							}
+							alt='Norton logo'
+						/>
+					</Box>
 				</Box>
 			</Box>
 			<Box
 				width={isMobile ? '100%' : 'auto'}
 				height='100%'
 				display='flex'
-				justify={isMobile ? 'space-around' : 'center'}
+				justify={isMobile ? 'space-between' : 'center'}
 				align='center'
 			>
 				<Box

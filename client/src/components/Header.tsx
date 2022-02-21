@@ -19,7 +19,7 @@ const Header = ({
 		<Box
 			width='100%'
 			height={80}
-			padding='14px 36px'
+			padding={isMobile ? '14px 15px' : '14px 36px'}
 			borderBox
 			display='flex'
 			justify='space-between'
