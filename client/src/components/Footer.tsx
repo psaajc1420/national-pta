@@ -1,8 +1,10 @@
 import { Box, Button, Text } from './index';
 import { useTheme } from '@emotion/react';
+import { useMediaQuery } from 'react-responsive';
 
 const Footer = () => {
 	const theme = useTheme();
+	const isMobile = useMediaQuery({ query: theme.screen.mobile });
 
 	const scrollToTop = () => {
 		document.body.scrollTop = 0;
@@ -11,10 +13,11 @@ const Footer = () => {
 	return (
 		<Box
 			width='100%'
-			height={56}
+			height={isMobile ? 132 : 56}
 			display='flex'
 			justify='space-between'
 			align='center'
+			flexDirection={isMobile ? 'column' : 'row'}
 			backgroundColor={theme.color.blue}
 			position='absolute'
 			right={0}
@@ -26,6 +29,7 @@ const Footer = () => {
 				display='flex'
 				justify='center'
 				align='center'
+				flexDirection={isMobile ? 'column' : 'row'}
 				padding='0 25px'
 			>
 				<Box
@@ -50,7 +54,7 @@ const Footer = () => {
 				>
 					<img
 						width='auto'
-						height={40}
+						height={35}
 						src={window.location.origin + '/assets/logos/NPTA White.png'}
 						alt='Norton logo'
 					/>
@@ -75,10 +79,10 @@ const Footer = () => {
 				</Box>
 			</Box>
 			<Box
-				width='auto'
+				width={isMobile ? '100%' : 'auto'}
 				height='100%'
 				display='flex'
-				justify='center'
+				justify={isMobile ? 'space-around' : 'center'}
 				align='center'
 			>
 				<Box

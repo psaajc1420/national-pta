@@ -1,9 +1,10 @@
 import routes from './routes';
 import './index.css';
+import { Layout } from './components';
 
 // eslint-disable-next-line require-jsdoc
 function App() {
-	return <div className='App'>{routes}</div>;
+	return <Layout>{routes}</Layout>;
 }
 
 export default App;

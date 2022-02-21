@@ -28,7 +28,7 @@ const Login = () => {
 		setPassord(e.target.value);
 
 	return (
-		<Layout>
+		<>
 			<Box width='100%' height='100%' center backgroundColor='inherit'>
 				<LoginCircles
 					src={
@@ -126,7 +126,7 @@ const Login = () => {
 					</Box>
 				</Box>
 			</Box>
-		</Layout>
+		</>
 	);
 };
 

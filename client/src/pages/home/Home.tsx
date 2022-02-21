@@ -7,7 +7,7 @@ import { HomeCategoryItem } from './components';
 const Home = () => {
 	const theme = useTheme();
 	return (
-		<Layout>
+		<>
 			<Box
 				height='auto'
 				display='flex'
@@ -208,7 +208,7 @@ const Home = () => {
 					</Box>
 				</Box>
 			</Box>
-		</Layout>
+		</>
 	);
 };
 

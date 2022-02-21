@@ -170,7 +170,7 @@ const Quiz = () => {
 				quizDispatch,
 			}}
 		>
-			<Layout>
+			<>
 				<Box
 					width='100%'
 					height='100%'
@@ -258,7 +258,7 @@ const Quiz = () => {
 						</Box>
 					</Box>
 				</Box>
-			</Layout>
+			</>
 		</QuizAnswersContext.Provider>
 	);
 };

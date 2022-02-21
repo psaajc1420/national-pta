@@ -12,15 +12,17 @@ const Register = () => {
 	const isMobile = useMediaQuery({ query: theme.screen.mobile });
 
 	return (
-		<Layout>
+		<>
 			<Box width='100%' height='100%' center backgroundColor='inherit'>
-				{/* <RegisterCircles
-					src={
-						window.location.origin +
-						'/assets/illustrations/Create Account Circles.svg'
-					}
-					alt='Background circles'
-				/> */}
+				{!isMobile && (
+					<RegisterCircles
+						src={
+							window.location.origin +
+							'/assets/illustrations/Create Account Circles.svg'
+						}
+						alt='Background circles'
+					/>
+				)}
 				{view === 'default' ? (
 					<Box
 						width='75%'
@@ -173,7 +175,7 @@ const Register = () => {
 					<RegisterForm />
 				)}
 			</Box>
-		</Layout>
+		</>
 	);
 };
 
@@ -185,13 +187,13 @@ const StyledUl = styled('ul')(() => ({
 	margin: '15px 0 0 20px',
 }));
 
-// const RegisterCircles = styled('img')(() => ({
-// 	width: '80%',
-// 	maxWidth: 1220,
-// 	height: 'auto',
-// 	position: 'fixed',
-// 	top: '51%',
-// 	left: '50%',
-// 	transform: 'translate(-50%, -50%)',
-// 	zIndex: 0,
-// }));
+const RegisterCircles = styled('img')(() => ({
+	width: '80%',
+	maxWidth: 1220,
+	height: 'auto',
+	position: 'fixed',
+	top: '51%',
+	left: '50%',
+	transform: 'translate(-50%, -50%)',
+	zIndex: 0,
+}));
