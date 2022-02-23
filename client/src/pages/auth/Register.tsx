@@ -1,16 +1,24 @@
-import { useState } from 'react';
-import { Box, Button, Layout, Link, Text } from '../../components';
+import { useContext, useEffect, useState } from 'react';
+import { Box, Button, Link, Text } from '../../components';
 import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import ReactTooltip from 'react-tooltip';
-import { RegisterForm } from './components';
+import { DataIntakeForm, RegisterForm } from './components';
 import { useMediaQuery } from 'react-responsive';
+import { AuthContext } from '../../App';
 
 const Register = () => {
+	// @ts-expect-error
+	const { authState } = useContext(AuthContext);
 	const theme = useTheme();
 	const [view, setView] = useState('default');
 	const isMobile = useMediaQuery({ query: theme.screen.mobile });
 
+	const handleNextToDataIntakeForm = () => {
+		setView('data-intake-form');
+	};
+
+	console.log({ authState });
 	return (
 		<>
 			<Box width='100%' height='100%' center backgroundColor='inherit'>
@@ -171,8 +179,12 @@ const Register = () => {
 							</Box>
 						</Box>
 					</Box>
+				) : view === 'register' ? (
+					<RegisterForm
+						onHandleNextToDataIntakeForm={handleNextToDataIntakeForm}
+					/>
 				) : (
-					<RegisterForm />
+					<DataIntakeForm />
 				)}
 			</Box>
 		</>
