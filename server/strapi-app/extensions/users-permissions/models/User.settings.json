@@ -62,6 +62,18 @@
     "children": {
       "via": "users_permissions_user",
       "collection": "child"
+    },
+    "name": {
+      "type": "string"
+    },
+    "ethnicity": {
+      "type": "string"
+    },
+    "primary_lang": {
+      "type": "string"
+    },
+    "hear_about": {
+      "model": "hear-about-us"
     }
   }
 }

@@ -23,13 +23,9 @@
       "type": "integer"
     },
     "users_permissions_user": {
+      "via": "children",
       "plugin": "users-permissions",
-      "model": "user",
-      "via": "children"
-    },
-    "child_quizs": {
-      "via": "child",
-      "collection": "child-quiz"
+      "model": "user"
     }
   }
 }
