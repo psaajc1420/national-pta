@@ -6,6 +6,15 @@ import AuthInput from './AuthInput';
 
 const DataIntakeForm = () => {
 	const theme = useTheme();
+	const [parentName, setParentName] = useState('');
+	const [city, setCity] = useState('');
+	const [state, setState] = useState('');
+	const [childName, setChildName] = useState('');
+	const [childAge, setChildAge] = useState('');
+	const [race, setRace] = useState('');
+	const [ethnicity, setEthnicity] = useState('');
+	const [primaryLang, setPrimaryLang] = useState('');
+	const [howDidYouHear, setHowDidYouHear] = useState('');
 	return (
 		<Box
 			height='80%'
@@ -72,8 +81,8 @@ const DataIntakeForm = () => {
 					<AuthInput
 						width='98%'
 						height={36}
-						onChange={() => {}}
-						value=''
+						onChange={(e) => setParentName(e.target.value)}
+						value={parentName}
 						type='text'
 						placeholder='Parent or Caregiver First Name'
 					/>
@@ -88,16 +97,16 @@ const DataIntakeForm = () => {
 						<AuthInput
 							width='45%'
 							height={36}
-							onChange={() => {}}
-							value=''
+							onChange={(e) => setCity(e.target.value)}
+							value={city}
 							type='text'
 							placeholder='City'
 						/>
 						<AuthInput
 							width='45%'
 							height={36}
-							onChange={() => {}}
-							value=''
+							onChange={(e) => setState(e.target.value)}
+							value={state}
 							type='text'
 							placeholder='State'
 						/>
@@ -113,16 +122,16 @@ const DataIntakeForm = () => {
 						<AuthInput
 							width='80%'
 							height={36}
-							onChange={() => {}}
-							value=''
+							onChange={(e) => setChildName(e.target.value)}
+							value={childName}
 							type='text'
 							placeholder="Child's First Name"
 						/>
 						<AuthInput
 							width='10%'
 							height={36}
-							onChange={() => {}}
-							value=''
+							onChange={(e) => setChildAge(e.target.value)}
+							value={childAge}
 							type='text'
 							placeholder='Age'
 						/>
@@ -165,16 +174,16 @@ const DataIntakeForm = () => {
 						<AuthInput
 							width='45%'
 							height={36}
-							onChange={() => {}}
-							value=''
+							onChange={(e) => setRace(e.target.value)}
+							value={race}
 							type='text'
 							placeholder='Race'
 						/>
 						<AuthInput
 							width='45%'
 							height={36}
-							onChange={() => {}}
-							value=''
+							onChange={(e) => setEthnicity(e.target.value)}
+							value={ethnicity}
 							type='text'
 							placeholder='Ethnicity'
 						/>
@@ -182,16 +191,16 @@ const DataIntakeForm = () => {
 					<AuthInput
 						width='98%'
 						height={36}
-						onChange={() => {}}
-						value=''
+						onChange={(e) => setPrimaryLang(e.target.value)}
+						value={primaryLang}
 						type='text'
 						placeholder='Primary language spoken in your home?'
 					/>
 					<AuthInput
 						width='98%'
 						height={36}
-						onChange={() => {}}
-						value=''
+						onChange={(e) => setHowDidYouHear(e.target.value)}
+						value={howDidYouHear}
 						type='text'
 						placeholder='How did you hear about The Smart Talk'
 					/>
