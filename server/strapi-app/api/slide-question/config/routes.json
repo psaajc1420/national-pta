@@ -2,48 +2,48 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/cities",
-      "handler": "city.find",
+      "path": "/slide-questions",
+      "handler": "slide-question.find",
       "config": {
         "policies": []
       }
     },
     {
       "method": "GET",
-      "path": "/cities/count",
-      "handler": "city.count",
+      "path": "/slide-questions/count",
+      "handler": "slide-question.count",
       "config": {
         "policies": []
       }
     },
     {
       "method": "GET",
-      "path": "/cities/:id",
-      "handler": "city.findOne",
+      "path": "/slide-questions/:id",
+      "handler": "slide-question.findOne",
       "config": {
         "policies": []
       }
     },
     {
       "method": "POST",
-      "path": "/cities",
-      "handler": "city.create",
+      "path": "/slide-questions",
+      "handler": "slide-question.create",
       "config": {
         "policies": []
       }
     },
     {
       "method": "PUT",
-      "path": "/cities/:id",
-      "handler": "city.update",
+      "path": "/slide-questions/:id",
+      "handler": "slide-question.update",
       "config": {
         "policies": []
       }
     },
     {
       "method": "DELETE",
-      "path": "/cities/:id",
-      "handler": "city.delete",
+      "path": "/slide-questions/:id",
+      "handler": "slide-question.delete",
       "config": {
         "policies": []
       }

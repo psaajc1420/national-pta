@@ -17,10 +17,7 @@ services:
 
   postgres:
     image: postgres
-    environment:
-      POSTGRES_DB: ${POSTGRES_DB}
-      POSTGRES_USER: ${POSTGRES_USER}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    env_file: ./strapi-app/.env
     volumes:
       - ./data:/var/lib/postgresql/data
     networks:

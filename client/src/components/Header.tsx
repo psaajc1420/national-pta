@@ -5,32 +5,21 @@ import { useTheme } from '@emotion/react';
 import { Link } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 
-const Header = () => {
+const Header = ({
+	loggedIn,
+	identifier,
+}: {
+	loggedIn?: boolean;
+	identifier?: string;
+}) => {
 	const theme = useTheme();
 	const isMobile = useMediaQuery({ query: theme.screen.mobile });
 	const [currentLanguage, setCurrentLanguage] = useState('');
-	const menuItems = [
-		{
-			id: 1,
-			pageName: 'About',
-			route: '/',
-		},
-		{
-			id: 2,
-			pageName: 'Q&A',
-			route: '/',
-		},
-		{
-			id: 3,
-			pageName: 'Login',
-			route: '/login',
-		},
-	];
 	return (
 		<Box
 			width='100%'
 			height={80}
-			padding='14px 36px'
+			padding={isMobile ? '14px 15px' : '14px 36px'}
 			borderBox
 			display='flex'
 			justify='space-between'
@@ -61,25 +50,58 @@ const Header = () => {
 						currentLanguage={currentLanguage}
 						onSetCurrentLanguage={setCurrentLanguage}
 					/>
-					{menuItems.map((e) => (
-						<NavLink to={e.route} key={e.id}>
-							<Box
-								width={50}
-								height='100%'
-								display='block'
-								backgroundColor='inherit'
+
+					<NavLink to='/'>
+						<Box
+							width={50}
+							height='100%'
+							display='block'
+							backgroundColor='inherit'
+						>
+							<Text
+								typography='subheading'
+								size={16}
+								textAlign='center'
+								color={theme.color.black}
 							>
-								<Text
-									typography='subheading'
-									size={16}
-									textAlign='center'
-									color={theme.color.black}
-								>
-									{e.pageName}
-								</Text>
-							</Box>
-						</NavLink>
-					))}
+								About
+							</Text>
+						</Box>
+					</NavLink>
+					<NavLink to='/'>
+						<Box
+							width={50}
+							height='100%'
+							display='block'
+							backgroundColor='inherit'
+						>
+							<Text
+								typography='subheading'
+								size={16}
+								textAlign='center'
+								color={theme.color.black}
+							>
+								Q&A
+							</Text>
+						</Box>
+					</NavLink>
+					<NavLink to={loggedIn ? '/quiz' : '/login'}>
+						<Box
+							width={50}
+							height='100%'
+							display='block'
+							backgroundColor='inherit'
+						>
+							<Text
+								typography='subheading'
+								size={16}
+								textAlign='center'
+								color={theme.color.black}
+							>
+								{loggedIn ? identifier : 'Login'}
+							</Text>
+						</Box>
+					</NavLink>
 				</Box>
 			)}
 		</Box>

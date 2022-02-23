@@ -1,11 +1,13 @@
-import { Box, Button, Layout, Link, Text } from '../../components';
+import { Box, Button, Link, Text } from '../../components';
 import { CATEGORIES_ARR } from '../../constants/category-constants';
 import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import { HomeCategoryItem } from './components';
+import { useMediaQuery } from 'react-responsive';
 
 const Home = () => {
 	const theme = useTheme();
+	const isMobile = useMediaQuery({ query: theme.screen.mobile });
 	return (
 		<>
 			<Box
@@ -14,15 +16,16 @@ const Home = () => {
 				justify='flex-start'
 				align='center'
 				flexDirection='column'
-				backgroundColor='inherit'
+				backgroundColor='transperant'
 			>
 				<Box
 					width='100%'
-					height={500}
+					height={isMobile ? 800 : 500}
 					center
-					flexDirection='row'
-					backgroundColor='inherit'
+					flexDirection={isMobile ? 'column' : 'row'}
+					backgroundColor='transperant'
 					margin='0 0 100px 0'
+					overflow={isMobile ? 'hidden' : undefined}
 				>
 					<Box
 						width={350}
@@ -47,21 +50,23 @@ const Home = () => {
 							}
 							alt='Man with his grandson'
 						/>
-						<HeroImageCircles
-							src={
-								window.location.origin +
-								'/assets/illustrations/Homepage Circles.svg'
-							}
-							alt='Background circles'
-						/>
+						{!isMobile && (
+							<HeroImageCircles
+								src={
+									window.location.origin +
+									'/assets/illustrations/Homepage Circles.svg'
+								}
+								alt='Background circles'
+							/>
+						)}
 					</Box>
 					<Box
 						width='auto'
 						height='auto'
 						center
 						flexDirection='column'
-						backgroundColor='inherit'
-						margin='150px 0 0 50px'
+						backgroundColor='transperant'
+						margin={isMobile ? '200px 0 0 0' : '150px 0 0 50px'}
 					>
 						<Text
 							typography='heading'
@@ -79,7 +84,7 @@ const Home = () => {
 							justify='space-between'
 							align='center'
 							margin='25px 0 0 0'
-							backgroundColor='inherit'
+							backgroundColor='transperant'
 						>
 							<Button width={250} height={48} onClick={() => {}}>
 								<Text typography='heading' textAlign='center'>
@@ -106,16 +111,21 @@ const Home = () => {
 					height='auto'
 					center
 					flexDirection='column'
-					backgroundColor='inherit'
+					backgroundColor={theme.color.white}
 				>
 					<Box
 						width='auto'
 						height='auto'
 						display='block'
-						backgroundColor='inherit'
+						backgroundColor='transperant'
 						margin='0 0 25px 0'
 					>
-						<Text typography='subheading' size={36} color={theme.color.blue}>
+						<Text
+							typography='subheading'
+							size={36}
+							color={theme.color.blue}
+							textAlign='center'
+						>
 							What is the Smart Talk?
 						</Text>
 					</Box>
@@ -126,7 +136,7 @@ const Home = () => {
 						width='auto'
 						height='auto'
 						display='block'
-						backgroundColor='inherit'
+						backgroundColor='transperant'
 						margin='15px 0'
 					>
 						<StyledList>
@@ -157,12 +167,12 @@ const Home = () => {
 					<Box
 						width='90%'
 						maxWidth={1200}
-						height={250}
+						height={isMobile ? 1200 : 250}
 						display='flex'
-						flexDirection='row'
+						flexDirection={isMobile ? 'column' : 'row'}
 						justify='space-around'
 						align='center'
-						backgroundColor='inherit'
+						backgroundColor='transperant'
 					>
 						{CATEGORIES_ARR.map((e) => (
 							<HomeCategoryItem key={e.id} item={e} />
@@ -172,7 +182,7 @@ const Home = () => {
 						width='auto'
 						height='auto'
 						display='block'
-						backgroundColor='inherit'
+						backgroundColor='transperant'
 						margin='15px 0'
 					>
 						<Text
@@ -190,7 +200,7 @@ const Home = () => {
 						width='auto'
 						height='auto'
 						display='block'
-						backgroundColor='inherit'
+						backgroundColor='transperant'
 						margin='15px 0 50px 0'
 					>
 						<Link to='/register'>
@@ -222,7 +232,7 @@ const StyledList = styled('ul')(() => ({
 	},
 }));
 
-const HeroImage = styled('img')(() => ({
+const HeroImage = styled('img')(({ theme }) => ({
 	position: 'absolute',
 	width: 350,
 	height: 350,
@@ -230,9 +240,12 @@ const HeroImage = styled('img')(() => ({
 	objectPostion: '100% 0',
 	borderRadius: '50%',
 	zIndex: 98,
+	[`@media ${theme.screen.mobile}`]: {
+		left: 50,
+	},
 }));
 
-const HeroImage2 = styled('img')(() => ({
+const HeroImage2 = styled('img')(({ theme }) => ({
 	position: 'absolute',
 	top: 250,
 	right: 200,
@@ -242,6 +255,10 @@ const HeroImage2 = styled('img')(() => ({
 	objectPostion: '100% 0',
 	borderRadius: '50%',
 	zIndex: 99,
+
+	[`@media ${theme.screen.mobile}`]: {
+		right: 150,
+	},
 }));
 
 const HeroImageCircles = styled('img')(() => ({

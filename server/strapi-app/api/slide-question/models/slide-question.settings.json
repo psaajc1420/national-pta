@@ -1,8 +1,9 @@
 {
   "kind": "collectionType",
-  "collectionName": "cities",
+  "collectionName": "slide_questions",
   "info": {
-    "name": "City"
+    "name": "SlideQuestion",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -11,13 +12,11 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "name": {
-      "type": "string",
-      "required": true
+    "questions": {
+      "collection": "question"
     },
-    "state": {
-      "model": "state",
-      "via": "cities"
+    "slides": {
+      "collection": "slide"
     }
   }
 }

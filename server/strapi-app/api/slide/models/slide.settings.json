@@ -1,8 +1,9 @@
 {
   "kind": "collectionType",
-  "collectionName": "states",
+  "collectionName": "slides",
   "info": {
-    "name": "State"
+    "name": "Slide",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -11,13 +12,11 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "name": {
-      "type": "string",
-      "required": true
+    "header": {
+      "type": "text"
     },
-    "cities": {
-      "via": "state",
-      "collection": "city"
+    "slide_number": {
+      "type": "integer"
     }
   }
 }
