@@ -80,6 +80,9 @@
     },
     "city": {
       "type": "string"
+    },
+    "is_registered": {
+      "type": "boolean"
     }
   }
 }
