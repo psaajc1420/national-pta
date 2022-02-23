@@ -24,6 +24,7 @@ const useRegister = () => {
 	useEffect(() => {
 		if (data?.register?.jwt) {
 			localStorage.setItem('token', data?.register?.jwt);
+			window.location.reload();
 		}
 	}, [data?.register?.jwt]);
 

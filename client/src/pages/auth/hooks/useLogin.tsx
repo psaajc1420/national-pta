@@ -18,6 +18,7 @@ const useLogin = () => {
 	useEffect(() => {
 		if (data?.login?.jwt) {
 			localStorage.setItem('token', data?.login?.jwt);
+			window.location.reload();
 		}
 	}, [data?.login?.jwt]);
 

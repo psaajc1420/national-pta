@@ -1,9 +1,8 @@
-import { useContext, useEffect, useState } from 'react';
+import { useState } from 'react';
 import styled from '@emotion/styled';
 import { useTheme } from '@emotion/react';
 import { Box, Text, Button } from '../../../components';
 import AuthInput from './AuthInput';
-import { AuthContext } from '../../../App';
 
 const RegisterForm = ({
 	register,
@@ -12,8 +11,6 @@ const RegisterForm = ({
 	register: (arg0: string, arg1: string) => void;
 	error?: any;
 }) => {
-	// @ts-expect-error
-	const { authDispatch } = useContext(AuthContext);
 	const theme = useTheme();
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');

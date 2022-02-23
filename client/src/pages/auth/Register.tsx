@@ -10,7 +10,7 @@ import { useRegister } from './hooks';
 
 const Register = () => {
 	// @ts-expect-error
-	const { authState, authDispatch } = useContext(AuthContext);
+	const { authState } = useContext(AuthContext);
 	const theme = useTheme();
 	const [view, setView] = useState('default');
 	const { register, data, error } = useRegister();
@@ -19,14 +19,17 @@ const Register = () => {
 	const isMobile = useMediaQuery({ query: theme.screen.mobile });
 
 	useEffect(() => {
-		if (authState.loggedIn && !authState.profileCompleted) {
+		if (authState.loggedIn && !authState.user.is_registered) {
 			setView('data-intake-form');
 		}
-	}, [authState.loggedIn, authState.profileCompleted]);
+	}, [authState.loggedIn, authState.user.is_registered]);
 
-	const handleNextToDataIntakeForm = () => {
-		setView('data-intake-form');
-	};
+	useEffect(() => {
+		if (error) {
+			setErr('There has been an error. Please try again.');
+			console.log({ error });
+		}
+	}, [error]);
 
 	console.log({ authState });
 	return (

@@ -1,20 +1,17 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import { useLogin } from './hooks';
 import { Box, Button, Link, Text } from '../../components';
 import { AuthInput } from './components';
-import { AuthContext } from '../../App';
 
 const Login = () => {
-	// @ts-expect-error
-	const { authDispatch } = useContext(AuthContext);
 	const theme = useTheme();
 	const [email, setEmail] = useState('');
 	const [password, setPassord] = useState('');
 	const [isButtonDisabled, setButtonDisabled] = useState(true);
 	const [err, setErr] = useState('');
-	const { login, data, error } = useLogin();
+	const { login, error } = useLogin();
 
 	useEffect(() => {
 		if (email.length < 8 || password.length < 8) {
@@ -23,6 +20,12 @@ const Login = () => {
 			setButtonDisabled(false);
 		}
 	}, [email, password]);
+
+	useEffect(() => {
+		if (error) {
+			setErr('Invalid email or password. Please try again.');
+		}
+	}, []);
 
 	const handleInputEmail = (e: React.ChangeEvent<HTMLInputElement>) =>
 		setEmail(e.target.value);

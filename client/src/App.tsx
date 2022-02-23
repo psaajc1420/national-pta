@@ -30,7 +30,7 @@ const authReducer = (state: any, action: any) => {
 function App() {
 	const [authState, authDispatch] = useReducer(authReducer, authInitialState);
 	const user = useGetUser();
-
+	console.log({ user });
 	useEffect(() => {
 		if (user?.data?.me?.user) {
 			authDispatch({
@@ -45,7 +45,13 @@ function App() {
 		<AuthContext.Provider value={{ authState, authDispatch }}>
 			<Layout
 				loggedIn={authState.loggedIn}
-				identifier={authState.user.name || authState.user.username}
+				identifier={
+					authState.user?.name ||
+					authState.user?.username?.substring(
+						0,
+						authState.user?.username?.indexOf('@'),
+					)
+				}
 			>
 				{routes}
 			</Layout>
