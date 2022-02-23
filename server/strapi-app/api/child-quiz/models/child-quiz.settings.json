@@ -14,10 +14,6 @@
     "quiz": {
       "model": "quiz",
       "via": "child_quizs"
-    },
-    "child": {
-      "model": "child",
-      "via": "child_quizs"
     }
   }
 }
