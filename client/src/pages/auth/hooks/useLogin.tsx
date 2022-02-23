@@ -1,13 +1,10 @@
+import { useEffect } from 'react';
 import { gql, useMutation } from '@apollo/client';
 
 const POST_LOGIN = gql`
 	mutation PostLogin($email: String!, $password: String!) {
 		login(input: { identifier: $email, password: $password }) {
 			jwt
-			user {
-				username
-				email
-			}
 		}
 	}
 `;
@@ -17,6 +14,13 @@ const useLogin = () => {
 	const login = (email: string, password: string) => {
 		postLogin({ variables: { email, password } });
 	};
+
+	useEffect(() => {
+		if (data?.login?.jwt) {
+			localStorage.setItem('token', data?.login?.jwt);
+		}
+	}, [data?.login?.jwt]);
+
 	return { login, data, loading, error };
 };
 

@@ -1,23 +1,23 @@
-import { createContext, useReducer } from 'react';
+import { createContext, useEffect, useReducer } from 'react';
 import routes from './routes';
 import './index.css';
 import { Layout } from './components';
+import { useGetUser } from './hooks';
 
 const authInitialState = {
 	loggedIn: false,
-	jwt: '',
-	identifier: '',
+	user: {},
 };
 
 export const AuthContext = createContext(authInitialState);
 
 const authReducer = (state: any, action: any) => {
 	switch (action.type) {
-		case 'LOGIN':
+		case 'LOGIN_USER':
 			return {
+				...state,
 				loggedIn: true,
-				jwt: action.payload.jwt,
-				identifier: action.payload.identifier,
+				user: action.payload,
 			};
 		case 'LOGOUT':
 			return { authInitialState };
@@ -29,10 +29,24 @@ const authReducer = (state: any, action: any) => {
 // eslint-disable-next-line require-jsdoc
 function App() {
 	const [authState, authDispatch] = useReducer(authReducer, authInitialState);
+	const user = useGetUser();
+
+	useEffect(() => {
+		if (user?.data?.me?.user) {
+			authDispatch({
+				type: 'LOGIN_USER',
+				payload: user?.data?.me?.user,
+			});
+		}
+	}, [user?.data?.me?.user]);
+
 	return (
 		// @ts-expect-error
 		<AuthContext.Provider value={{ authState, authDispatch }}>
-			<Layout loggedIn={authState.loggedIn} identifier={authState.identifier}>
+			<Layout
+				loggedIn={authState.loggedIn}
+				identifier={authState.user.name || authState.user.username}
+			>
 				{routes}
 			</Layout>
 		</AuthContext.Provider>

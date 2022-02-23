@@ -6,13 +6,23 @@ import ReactTooltip from 'react-tooltip';
 import { DataIntakeForm, RegisterForm } from './components';
 import { useMediaQuery } from 'react-responsive';
 import { AuthContext } from '../../App';
+import { useRegister } from './hooks';
 
 const Register = () => {
 	// @ts-expect-error
-	const { authState } = useContext(AuthContext);
+	const { authState, authDispatch } = useContext(AuthContext);
 	const theme = useTheme();
 	const [view, setView] = useState('default');
+	const { register, data, error } = useRegister();
+	const [err, setErr] = useState('');
+	console.log({ data, error });
 	const isMobile = useMediaQuery({ query: theme.screen.mobile });
+
+	useEffect(() => {
+		if (authState.loggedIn && !authState.profileCompleted) {
+			setView('data-intake-form');
+		}
+	}, [authState.loggedIn, authState.profileCompleted]);
 
 	const handleNextToDataIntakeForm = () => {
 		setView('data-intake-form');
@@ -180,9 +190,7 @@ const Register = () => {
 						</Box>
 					</Box>
 				) : view === 'register' ? (
-					<RegisterForm
-						onHandleNextToDataIntakeForm={handleNextToDataIntakeForm}
-					/>
+					<RegisterForm register={register} error={err} />
 				) : (
 					<DataIntakeForm />
 				)}

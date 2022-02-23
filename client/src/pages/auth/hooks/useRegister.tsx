@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { gql, useMutation } from '@apollo/client';
 
 const POST_REGISTER = gql`
@@ -10,10 +11,6 @@ const POST_REGISTER = gql`
 			input: { username: $username, email: $email, password: $password }
 		) {
 			jwt
-			user {
-				username
-				email
-			}
 		}
 	}
 `;
@@ -23,6 +20,13 @@ const useRegister = () => {
 	const register = (email: string, password: string) => {
 		postRegister({ variables: { username: email, email, password } });
 	};
+
+	useEffect(() => {
+		if (data?.register?.jwt) {
+			localStorage.setItem('token', data?.register?.jwt);
+		}
+	}, [data?.register?.jwt]);
+
 	return { register, data, loading, error };
 };
 

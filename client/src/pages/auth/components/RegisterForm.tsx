@@ -3,13 +3,14 @@ import styled from '@emotion/styled';
 import { useTheme } from '@emotion/react';
 import { Box, Text, Button } from '../../../components';
 import AuthInput from './AuthInput';
-import { useRegister } from '../hooks';
 import { AuthContext } from '../../../App';
 
 const RegisterForm = ({
-	onHandleNextToDataIntakeForm,
+	register,
+	error,
 }: {
-	onHandleNextToDataIntakeForm: () => void;
+	register: (arg0: string, arg1: string) => void;
+	error?: any;
 }) => {
 	// @ts-expect-error
 	const { authDispatch } = useContext(AuthContext);
@@ -17,26 +18,6 @@ const RegisterForm = ({
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [confirmPassword, setConfirmPassword] = useState('');
-	const [err, setErr] = useState('');
-
-	const { register, data, error } = useRegister();
-	console.log({ data, error });
-
-	useEffect(() => {
-		if (data?.register) {
-			authDispatch({
-				type: 'LOGIN',
-				payload: {
-					jwt: data.register.jwt,
-					identifier: data.register.user.username,
-				},
-			});
-			onHandleNextToDataIntakeForm();
-		}
-		if (error) {
-			setErr('There was an error. Please try again.');
-		}
-	}, [data, error]);
 
 	const handleRegister = () => {
 		register(email, password);
@@ -108,7 +89,7 @@ const RegisterForm = ({
 				</Box>
 
 				<Box width='auto' height='auto' center backgroundColor='transperant'>
-					{err && (
+					{error && (
 						<Box
 							width='auto'
 							height='auto'
@@ -120,7 +101,7 @@ const RegisterForm = ({
 								textAlign='center'
 								color={theme.color.red}
 							>
-								{err}
+								{error}
 							</Text>
 						</Box>
 					)}

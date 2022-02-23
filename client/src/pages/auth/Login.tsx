@@ -24,18 +24,6 @@ const Login = () => {
 		}
 	}, [email, password]);
 
-	useEffect(() => {
-		if (data?.login) {
-			authDispatch({
-				type: 'LOGIN',
-				payload: { jwt: data.login.jwt, identifier: data.login.user.username },
-			});
-		}
-		if (error) {
-			setErr('Invalid email/username and password. Please try again.');
-		}
-	}, [data, error]);
-
 	const handleInputEmail = (e: React.ChangeEvent<HTMLInputElement>) =>
 		setEmail(e.target.value);
 
