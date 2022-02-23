@@ -74,6 +74,12 @@
     },
     "hear_about": {
       "model": "hear-about-us"
+    },
+    "state": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
     }
   }
 }
