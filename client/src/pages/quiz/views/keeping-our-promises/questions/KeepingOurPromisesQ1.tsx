@@ -7,24 +7,17 @@ import { QuestionButtonsGroup, YesNo } from '../../../components';
 import { useGetQuestion } from '../../../../../hooks';
 import { gql } from '@apollo/client';
 import { QuizAnswersContext } from '../../../Quiz';
+import { AuthContext } from '../../../../../App';
 
 const GET_QUESTION = gql`
 	query {
-		first: question(id: 55) {
-			id
-			text
-		}
-		second: question(id: 56) {
-			id
-			text
-		}
-		third: question(id: 57) {
-			id
-			text
-		}
-		fourth: question(id: 58) {
-			id
-			text
+		slide(id: 23) {
+			slide_number
+			header
+			questions {
+				id
+				text
+			}
 		}
 	}
 `;
@@ -38,10 +31,26 @@ const KeepingOurPromisesQ1 = ({
 }) => {
 	// @ts-expect-error
 	const { quizState, quizDispatch } = useContext(QuizAnswersContext);
+	// @ts-expect-error
+	const { authState } = useContext(AuthContext);
+	const theme = useTheme();
 	const { getQuestion } = useGetQuestion();
 	const questionData = getQuestion(GET_QUESTION);
-	const theme = useTheme();
+	const questionId = questionData?.data?.slide?.questions[2]?.id;
 
+	const [answers, setAnswers] = useState<string[]>(
+		quizState.answers[questionId] || [],
+	);
+	console.log({ questionData });
+
+	useEffect(() => {
+		if (questionId) {
+			quizDispatch({
+				type: 'SET_ANSWER',
+				payload: { id: questionId, value: answers },
+			});
+		}
+	}, [questionId, answers]);
 	if (questionData.loading)
 		return (
 			<Box width='100%' height='100%' center backgroundColor='transperant'>
@@ -76,6 +85,23 @@ const KeepingOurPromisesQ1 = ({
 		},
 	];
 
+	const handleOnChange = (label: string) => {
+		const answerIndex = answers.findIndex((e) => e === label);
+		if (answerIndex !== -1) {
+			setAnswers(answers.filter((e) => e !== label));
+		} else {
+			setAnswers((state) => [...state, label]);
+		}
+	};
+
+	const handleChecked = (label: string) => {
+		if (quizState.answers[questionId]) {
+			return quizState.answers[questionId].includes(label);
+		} else {
+			return false;
+		}
+	};
+
 	return (
 		<>
 			<Box
@@ -88,7 +114,10 @@ const KeepingOurPromisesQ1 = ({
 				margin='0 0 15px 0'
 			>
 				<YesNo
-					questions={[questionData.data.first, questionData.data.second]}
+					questions={[
+						questionData?.data?.slide?.questions[0],
+						questionData?.data?.slide?.questions[1],
+					]}
 				/>
 			</Box>
 			<Box
@@ -107,7 +136,7 @@ const KeepingOurPromisesQ1 = ({
 					margin='5px 0'
 				>
 					<Text typography='text' textAlign='center' size={18}>
-						{questionData.data.third.text}
+						{questionData?.data?.slide?.questions[2]?.text}
 					</Text>
 				</Box>
 				{ANSWER_OPTIONS.map((e) => (
@@ -124,8 +153,8 @@ const KeepingOurPromisesQ1 = ({
 							type='checkbox'
 							id={e.name}
 							name={e.name}
-							// onChange={() => handleOnChange(e.name)}
-							// checked={handleChecked(e.name)}
+							onChange={() => handleOnChange(e.name)}
+							checked={handleChecked(e.name)}
 						/>
 						<label htmlFor={e.name}>
 							<Text typography='text' textAlign='left' size={14}>
@@ -143,7 +172,20 @@ const KeepingOurPromisesQ1 = ({
 				margin='5px 0'
 			>
 				<Text typography='text' textAlign='center' size={18}>
-					{questionData.data.fourth.text}
+					{questionData?.data?.slide?.questions[3]?.text
+						.replace(
+							'(CHILD)',
+							quizState.guestChild ||
+								(authState.user?.children &&
+									authState.user?.children[0]?.name) ||
+								'CHILD',
+						)
+						.replace(
+							'(ADULT)',
+							quizState.guestAdult ||
+								(authState.user && authState.user?.name) ||
+								'ADULT',
+						)}
 				</Text>
 				<Box
 					width='100%'

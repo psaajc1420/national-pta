@@ -7,16 +7,20 @@ import { QuestionButtonsGroup } from '../../../components';
 import { useGetQuestion } from '../../../../../hooks';
 import { gql } from '@apollo/client';
 import { QuizAnswersContext } from '../../../Quiz';
+import { AuthContext } from '../../../../../App';
 
 const GET_QUESTION = gql`
 	query {
-		question(id: 23) {
-			id
-			text
+		slide(id: 24) {
+			slide_number
+			header
+			questions {
+				id
+				text
+			}
 		}
 	}
 `;
-
 const KeepingOurPromises = ({
 	onHandleNextQuestion,
 	onHandlePreviousQuestion,
@@ -26,17 +30,26 @@ const KeepingOurPromises = ({
 }) => {
 	// @ts-expect-error
 	const { quizState, quizDispatch } = useContext(QuizAnswersContext);
+	// @ts-expect-error
+	const { authState } = useContext(AuthContext);
+	const theme = useTheme();
 	const { getQuestion } = useGetQuestion();
 	const questionData = getQuestion(GET_QUESTION);
-	const theme = useTheme();
-	const [answers, setAnswers] = useState<string[]>(quizState.answers[23] || []);
+	const questionId = questionData?.data?.slide?.questions[0]?.id;
+
+	const [answers, setAnswers] = useState<string[]>(
+		quizState.answers[questionId] || [],
+	);
+	console.log({ questionData });
 
 	useEffect(() => {
-		quizDispatch({
-			type: 'SET_ANSWER',
-			payload: { id: 23, value: answers },
-		});
-	}, [answers]);
+		if (questionId) {
+			quizDispatch({
+				type: 'SET_ANSWER',
+				payload: { id: questionId, value: answers },
+			});
+		}
+	}, [questionId, answers]);
 
 	if (questionData.loading)
 		return (
@@ -77,22 +90,22 @@ const KeepingOurPromises = ({
 		},
 	];
 
-	// const handleOnChange = (name: string) => {
-	// 	const answerIndex = answers.findIndex((e) => e === name);
-	// 	if (answerIndex !== -1) {
-	// 		setAnswers(answers.filter((e) => e !== name));
-	// 	} else {
-	// 		setAnswers((state) => [...state, name]);
-	// 	}
-	// };
+	const handleOnChange = (label: string) => {
+		const answerIndex = answers.findIndex((e) => e === label);
+		if (answerIndex !== -1) {
+			setAnswers(answers.filter((e) => e !== label));
+		} else {
+			setAnswers((state) => [...state, label]);
+		}
+	};
 
-	// const handleChecked = (name: string) => {
-	// 	if (quizState.answers[23]) {
-	// 		return quizState.answers[23].includes(name);
-	// 	} else {
-	// 		return false;
-	// 	}
-	// };
+	const handleChecked = (label: string) => {
+		if (quizState.answers[questionId]) {
+			return quizState.answers[questionId].includes(label);
+		} else {
+			return false;
+		}
+	};
 
 	return (
 		<>
@@ -104,7 +117,7 @@ const KeepingOurPromises = ({
 				margin='0 0 25px 0'
 			>
 				<Text typography='subheading' textAlign='center' size={18}>
-					There are so many ways to talk to others through technology.
+					{questionData?.data?.slide?.header}
 				</Text>
 			</Box>
 			<Box
@@ -115,8 +128,12 @@ const KeepingOurPromises = ({
 				margin='0 0 25px 0'
 			>
 				<Text typography='subheading' textAlign='center' size={18}>
-					How will our family monitor technology and make sure we are all
-					sticking to this Smart Talk agreement? Check all that apply.
+					{questionData?.data?.slide?.questions[0]?.text.replace(
+						'(ADULT)',
+						quizState.guestAdult ||
+							(authState.user && authState.user?.name) ||
+							'ADULT',
+					)}
 				</Text>
 			</Box>
 			<Box
@@ -150,8 +167,8 @@ const KeepingOurPromises = ({
 								type='checkbox'
 								id={e.name}
 								name={e.name}
-								// onChange={() => handleOnChange(e.name)}
-								// checked={handleChecked(e.name)}
+								onChange={() => handleOnChange(e.name)}
+								checked={handleChecked(e.name)}
 							/>
 							<label htmlFor={e.name}>
 								<Text typography='text' textAlign='left' size={14}>
