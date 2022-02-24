@@ -21,7 +21,6 @@ const CREATE_CHILD = gql`
 
 const useCreateChild = () => {
 	const [postCreateChild, { data, loading, error }] = useMutation(CREATE_CHILD);
-	console.log({ data, loading, error });
 	const createChild = (
 		name: string,
 		age: string | number,

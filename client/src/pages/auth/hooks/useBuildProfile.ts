@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { gql, useMutation } from '@apollo/client';
 
 const UPDATE_USER = gql`
@@ -12,10 +13,14 @@ const UPDATE_USER = gql`
 
 const useBuildProfile = () => {
 	const [updateUser, { data, loading, error }] = useMutation(UPDATE_USER);
-	console.log({ data, loading, error });
 	const buildProfile = (inputId: any, payload: any) => {
 		updateUser({ variables: { inputId, payload } });
 	};
+	useEffect(() => {
+		if (data?.updateUser?.user?.id) {
+			window.location.reload();
+		}
+	}, [data?.updateUser?.user?.id]);
 	return { buildProfile, data, loading, error };
 };
 
