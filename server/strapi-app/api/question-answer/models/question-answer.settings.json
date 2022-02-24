@@ -2,7 +2,8 @@
   "kind": "collectionType",
   "collectionName": "question_answers",
   "info": {
-    "name": "QuestionAnswer"
+    "name": "QuestionAnswer",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -11,9 +12,14 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "quiz_answers": {
-      "via": "question_answer",
-      "collection": "quiz-answer"
+    "answers": {
+      "collection": "answer"
+    },
+    "questions": {
+      "collection": "question"
+    },
+    "children": {
+      "collection": "child"
     }
   }
 }
