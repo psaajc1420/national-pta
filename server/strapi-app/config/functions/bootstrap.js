@@ -156,29 +156,19 @@ const createSlides = async () => {
 
     let i = 0;
     for (const key in jsonData) {
-      
       const questions = jsonData[key].questions;
 
-      // strapi.log.info(strapi.query("questions").findOne(questions[j]));
       if (questions) {
-        // for (let j = 0; j < questions.length; j++) {
-          await strapi.services.slide.create({
-            slide_number: i,
-            header: jsonData[key].header,
-            age_group: 1,
-            questions: jsonData[key].questions
-          }).then((result) => {
-            // const questions = jsonData[key].questions;
-            // for (let i = 0; i < questions.length; i++) {
-            //   result.add({
-                
-            //   });
-            // }
-            return result;
-          }).catch((error) => {strapi.log.info(`Error: ${error}`)});
+        await strapi.services.slide.create({
+          slide_number: i+1,
+          header: jsonData[key].header,
+          age_group: 1,
+          questions: jsonData[key].questions
+        }).then((result) => {
+          return result;
+        }).catch((error) => {strapi.log.info(`Error: ${error}`)});
 
-          i++;
-        // }
+        i++;
       }
     }
   }
