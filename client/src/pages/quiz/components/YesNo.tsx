@@ -51,24 +51,25 @@ const YesNo = ({ questions }: { questions: any }) => {
 				justify='space-around'
 				backgroundColor='transperant'
 			>
-				{questions.map((e: any) => (
-					<Text key={e.id} typography='text' size={16}>
-						{e.text
-							.replace(
-								'(CHILD)',
-								quizState.guestChild ||
-									(authState.user?.children &&
-										authState.user?.children[0]?.name) ||
-									'CHILD',
-							)
-							.replace(
-								'(ADULT)',
-								quizState.guestAdult ||
-									(authState.user && authState.user?.name) ||
-									'ADULT',
-							)}
-					</Text>
-				))}
+				{questions &&
+					questions.map((e: any) => (
+						<Text key={e.id} typography='text' size={16}>
+							{e.text
+								.replace(
+									'(CHILD)',
+									quizState.guestChild ||
+										(authState.user?.children &&
+											authState.user?.children[0]?.name) ||
+										'CHILD',
+								)
+								.replace(
+									'(ADULT)',
+									quizState.guestAdult ||
+										(authState.user && authState.user?.name) ||
+										'ADULT',
+								)}
+						</Text>
+					))}
 			</Box>
 
 			<Box
