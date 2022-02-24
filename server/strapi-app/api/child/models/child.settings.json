@@ -26,6 +26,12 @@
       "via": "children",
       "plugin": "users-permissions",
       "model": "user"
+    },
+    "age_group": {
+      "model": "age-group"
+    },
+    "last_slide_number": {
+      "type": "integer"
     }
   }
 }

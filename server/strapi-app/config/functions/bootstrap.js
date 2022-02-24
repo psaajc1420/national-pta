@@ -135,7 +135,7 @@ const createQuestions = async () => {
   const questions = await strapi.query("question").find();
 
   if (questions.length === 0) {
-    const jsonData = require("./questions.json");
+    const jsonData = require("./unique_questions.json");
     
     for (const key in jsonData) {
       await strapi.services.question.create({
@@ -148,22 +148,41 @@ const createQuestions = async () => {
   }
 }
 
-// const createSlides = async () => {
-//   const slides = await strapi.query("slide").find();
+const createSlides = async () => {
+  const slides = await strapi.query("slide").find();
 
-//   if (slides.length === 0) {
-//     const jsonData = require("./headers.json");
+  if (slides.length === 0) {
+    const jsonData = require("./slides.json");
 
-//     for (const key in jsonData) {
-//       await strapi.services.slide.create({
-//         slide_number: 0,
-//         header: jsonData[key]
-//       }).then((result) => {
-//         return result;
-//       }).catch((error) => {strapi.log.info(`Error: ${error}`)});
-//     }
-//   }
-// }
+    let i = 0;
+    for (const key in jsonData) {
+      
+      const questions = jsonData[key].questions;
+
+      // strapi.log.info(strapi.query("questions").findOne(questions[j]));
+      if (questions) {
+        // for (let j = 0; j < questions.length; j++) {
+          await strapi.services.slide.create({
+            slide_number: i,
+            header: jsonData[key].header,
+            age_group: 1,
+            questions: jsonData[key].questions
+          }).then((result) => {
+            // const questions = jsonData[key].questions;
+            // for (let i = 0; i < questions.length; i++) {
+            //   result.add({
+                
+            //   });
+            // }
+            return result;
+          }).catch((error) => {strapi.log.info(`Error: ${error}`)});
+
+          i++;
+        // }
+      }
+    }
+  }
+}
 
 
 module.exports = async () => {
@@ -173,4 +192,5 @@ module.exports = async () => {
   }
   await createAgeGroup();
   await createQuestions();
+  await createSlides();
 };
