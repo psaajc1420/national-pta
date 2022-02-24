@@ -52,7 +52,7 @@ const Header = ({
 					justify='space-around'
 					align='center'
 					backgroundColor='inherit'
-					zIndex={1000}
+					zIndex={997}
 				>
 					<LanguageDropdown
 						currentLanguage={currentLanguage}
