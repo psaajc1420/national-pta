@@ -9,17 +9,13 @@ import styled from '@emotion/styled';
 
 const GET_QUESTION = gql`
 	query {
-		first: question(id: 1) {
-			id
-			text
-		}
-		second: question(id: 2) {
-			id
-			text
-		}
-		third: question(id: 3) {
-			id
-			text
+		slide(id: 1) {
+			slide_number
+			header
+			questions {
+				id
+				text
+			}
 		}
 	}
 `;
@@ -52,24 +48,21 @@ const PrivacyAndSafetyQ1 = ({
 				margin='0 0 35px 0'
 			>
 				<Text typography='subheading' textAlign='center' size={18}>
-					It is important to be thoughtful and cautious when using technology.
-					We must take steps to keep our private information to ourselves. There
-					are many ways to protect our information, our accounts and our
-					devices. Let&apos;s talk about some options!
+					{questionData?.data?.slide?.header}
 				</Text>
 			</Box>
 			<Box
 				width='100%'
-				height={250}
+				height={200}
 				display='block'
 				backgroundColor='transperant'
 				margin='0 0 25px 0'
 			>
 				<YesNo
 					questions={[
-						questionData.data.first,
-						questionData.data.second,
-						questionData.data.third,
+						questionData?.data?.slide?.questions[0],
+						questionData?.data?.slide?.questions[1],
+						questionData?.data?.slide?.questions[2],
 					]}
 				/>
 				<QuestionButtonsGroup

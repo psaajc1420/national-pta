@@ -7,12 +7,17 @@ import { QuestionButtonsGroup } from '../../../components';
 import { useGetQuestion } from '../../../../../hooks';
 import { gql } from '@apollo/client';
 import { QuizAnswersContext } from '../../../Quiz';
+import { AuthContext } from '../../../../../App';
 
 const GET_QUESTION = gql`
 	query {
-		question(id: 22) {
-			id
-			text
+		slide(id: 10) {
+			slide_number
+			header
+			questions {
+				id
+				text
+			}
 		}
 	}
 `;
@@ -26,17 +31,25 @@ const CommunicationQ6 = ({
 }) => {
 	// @ts-expect-error
 	const { quizState, quizDispatch } = useContext(QuizAnswersContext);
+	// @ts-expect-error
+	const { authState } = useContext(AuthContext);
+	const theme = useTheme();
 	const { getQuestion } = useGetQuestion();
 	const questionData = getQuestion(GET_QUESTION);
-	const theme = useTheme();
-	const [answers, setAnswers] = useState<string[]>(quizState.answers[22] || []);
+	const questionId = questionData?.data?.slide?.questions?.[0]?.id;
+
+	const [answers, setAnswers] = useState<string[]>(
+		quizState.answers[questionId] || [],
+	);
 
 	useEffect(() => {
-		quizDispatch({
-			type: 'SET_ANSWER',
-			payload: { id: 22, value: answers },
-		});
-	}, [answers]);
+		if (questionId) {
+			quizDispatch({
+				type: 'SET_ANSWER',
+				payload: { id: questionId, value: answers },
+			});
+		}
+	}, [questionId, answers]);
 
 	if (questionData.loading)
 		return (
@@ -73,23 +86,22 @@ const CommunicationQ6 = ({
 		},
 	];
 
-	const handleOnChange = (name: string) => {
-		const answerIndex = answers.findIndex((e) => e === name);
+	const handleOnChange = (label: string) => {
+		const answerIndex = answers.findIndex((e) => e === label);
 		if (answerIndex !== -1) {
-			setAnswers(answers.filter((e) => e !== name));
+			setAnswers(answers.filter((e) => e !== label));
 		} else {
-			setAnswers((state) => [...state, name]);
+			setAnswers((state) => [...state, label]);
 		}
 	};
 
-	const handleChecked = (name: string) => {
-		if (quizState.answers[22]) {
-			return quizState.answers[22].includes(name);
+	const handleChecked = (label: string) => {
+		if (quizState.answers[questionId]) {
+			return quizState.answers[questionId].includes(label);
 		} else {
 			return false;
 		}
 	};
-
 	return (
 		<>
 			<Box
@@ -109,7 +121,12 @@ const CommunicationQ6 = ({
 					margin='20px 0'
 				>
 					<Text typography='subheading' textAlign='center' size={18}>
-						{questionData.data?.question?.text}
+						{questionData?.data?.slide?.questions?.[0]?.text.replace(
+							'(ADULT)',
+							quizState.guestAdult ||
+								(authState.user && authState.user?.name) ||
+								'ADULT',
+						)}
 					</Text>
 				</Box>
 				<Box

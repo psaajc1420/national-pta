@@ -7,17 +7,13 @@ import { useTheme } from '@emotion/react';
 
 const GET_QUESTION = gql`
 	query {
-		first: question(id: 11) {
-			id
-			text
-		}
-		second: question(id: 12) {
-			id
-			text
-		}
-		third: question(id: 13) {
-			id
-			text
+		slide(id: 4) {
+			slide_number
+			header
+			questions {
+				id
+				text
+			}
 		}
 	}
 `;
@@ -50,7 +46,7 @@ const PrivacyAndSafetyQ4 = ({
 				margin='0 0 35px 0'
 			>
 				<Text typography='subheading' textAlign='center' size={18}>
-					What else will we do to protect our information and stay safe?
+					{questionData?.data?.slide?.header}
 				</Text>
 			</Box>
 			<Box
@@ -62,9 +58,9 @@ const PrivacyAndSafetyQ4 = ({
 			>
 				<YesNo
 					questions={[
-						questionData.data.first,
-						questionData.data.second,
-						questionData.data.third,
+						questionData?.data?.slide?.questions[0],
+						questionData?.data?.slide?.questions[1],
+						questionData?.data?.slide?.questions[2],
 					]}
 				/>
 				<QuestionButtonsGroup

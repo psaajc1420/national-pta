@@ -10,17 +10,13 @@ import { QuizAnswersContext } from '../../../Quiz';
 
 const GET_QUESTION = gql`
 	query {
-		first: question(id: 31) {
-			id
-			text
-		}
-		second: question(id: 32) {
-			id
-			text
-		}
-		third: question(id: 33) {
-			id
-			text
+		slide(id: 16) {
+			slide_number
+			header
+			questions {
+				id
+				text
+			}
 		}
 	}
 `;
@@ -62,11 +58,7 @@ const MediaChoicesQ6 = ({
 				margin='0 0 35px 0'
 			>
 				<Text typography='subheading' textAlign='center' size={18}>
-					Not all content on the internet is appropriate for kids. It is
-					important to think about what kinds of online content make us feel
-					good and what makes us feel scared, confused, sad or otherwise not so
-					great. Let&apos;s talk about what types of content make us
-					uncomfortable when we see it.
+					{questionData?.data?.slide?.header}
 				</Text>
 			</Box>
 			<Box
@@ -77,7 +69,7 @@ const MediaChoicesQ6 = ({
 				margin='15px 0'
 			>
 				<Text typography='text' textAlign='center' size={18}>
-					{questionData.data.first.text}
+					{questionData?.data?.slide?.questions[0].text}
 				</Text>
 				<Box
 					width='100%'
@@ -101,7 +93,7 @@ const MediaChoicesQ6 = ({
 				margin='15px 0'
 			>
 				<Text typography='text' textAlign='center' size={18}>
-					{questionData.data.second.text}
+					{questionData?.data?.slide?.questions[1].text}
 				</Text>
 				<Box
 					width='100%'
@@ -126,7 +118,7 @@ const MediaChoicesQ6 = ({
 				backgroundColor='transperant'
 				margin='0 0 25px 0'
 			>
-				<YesNo questions={[questionData.data.third]} />
+				<YesNo questions={[questionData?.data?.slide?.questions[2]]} />
 				<QuestionButtonsGroup
 					onContinue={onHandleNextQuestion}
 					onPrevious={onHandlePreviousQuestion}

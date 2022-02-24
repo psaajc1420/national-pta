@@ -7,21 +7,13 @@ import { useTheme } from '@emotion/react';
 
 const GET_QUESTION = gql`
 	query {
-		first: question(id: 4) {
-			id
-			text
-		}
-		second: question(id: 5) {
-			id
-			text
-		}
-		third: question(id: 6) {
-			id
-			text
-		}
-		fourth: question(id: 7) {
-			id
-			text
+		slide(id: 2) {
+			slide_number
+			header
+			questions {
+				id
+				text
+			}
 		}
 	}
 `;
@@ -54,11 +46,7 @@ const PrivacyAndSafetyQ2 = ({
 				margin='0 0 35px 0'
 			>
 				<Text typography='subheading' textAlign='center' size={18}>
-					Tools on our devices called &apos;privacy settings&apos; help us
-					decide who can see the things we share - like our location, photos,
-					apps and more. <br />
-					Select the privacy settings you would like to work on together after
-					this conversation.
+					{questionData?.data?.slide?.header}
 				</Text>
 			</Box>
 			<Box
@@ -70,10 +58,10 @@ const PrivacyAndSafetyQ2 = ({
 			>
 				<YesNo
 					questions={[
-						questionData.data.first,
-						questionData.data.second,
-						questionData.data.third,
-						questionData.data.fourth,
+						questionData?.data?.slide?.questions[0],
+						questionData?.data?.slide?.questions[1],
+						questionData?.data?.slide?.questions[2],
+						questionData?.data?.slide?.questions[3],
 					]}
 				/>
 				<QuestionButtonsGroup

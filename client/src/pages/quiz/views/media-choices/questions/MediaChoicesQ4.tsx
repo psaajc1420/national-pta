@@ -7,16 +7,17 @@ import { QuestionButtonsGroup } from '../../../components';
 import { useGetQuestion } from '../../../../../hooks';
 import { gql } from '@apollo/client';
 import { QuizAnswersContext } from '../../../Quiz';
+import { AuthContext } from '../../../../../App';
 
 const GET_QUESTION = gql`
 	query {
-		first: question(id: 29) {
-			id
-			text
-		}
-		second: question(id: 30) {
-			id
-			text
+		slide(id: 14) {
+			slide_number
+			header
+			questions {
+				id
+				text
+			}
 		}
 	}
 `;
@@ -29,24 +30,27 @@ const MediaChoicesQ4 = ({
 	onHandlePreviousQuestion: () => void;
 }) => {
 	// @ts-expect-error
-	const { quizDispatch } = useContext(QuizAnswersContext);
+	const { quizState, quizDispatch } = useContext(QuizAnswersContext);
+	// @ts-expect-error
+	const { authState } = useContext(AuthContext);
 	const { getQuestion } = useGetQuestion();
 	const questionData = getQuestion(GET_QUESTION);
 	const theme = useTheme();
+	console.log({ questionData });
 
 	const [deviceUseTime, setDeviceUseTime] = useState('');
-	const [screenTimePercentage, setScreenTimePercentage] = useState('0');
+	const [screenTimePercentage, setScreenTimePercentage] = useState('50');
 
-	useEffect(() => {
-		quizDispatch({
-			type: 'SET_ANSWER',
-			payload: { id: 29, value: deviceUseTime },
-		});
-		quizDispatch({
-			type: 'SET_ANSWER',
-			payload: { id: 30, value: screenTimePercentage },
-		});
-	}, [deviceUseTime, screenTimePercentage]);
+	// useEffect(() => {
+	// 	quizDispatch({
+	// 		type: 'SET_ANSWER',
+	// 		payload: { id: 29, value: deviceUseTime },
+	// 	});
+	// 	quizDispatch({
+	// 		type: 'SET_ANSWER',
+	// 		payload: { id: 30, value: screenTimePercentage },
+	// 	});
+	// }, [deviceUseTime, screenTimePercentage]);
 
 	if (questionData.loading)
 		return (
@@ -65,7 +69,7 @@ const MediaChoicesQ4 = ({
 				margin='0 0 35px 0'
 			>
 				<Text typography='subheading' textAlign='center' size={18}>
-					Not all screen time is created equally!
+					{questionData?.data?.slide?.header}
 				</Text>
 			</Box>
 			<Box
@@ -77,7 +81,12 @@ const MediaChoicesQ4 = ({
 				margin='0 0 15px 0'
 			>
 				<Text typography='subheading' textAlign='center' size={18}>
-					{questionData.data.first.text}
+					{questionData?.data?.slide?.questions[0]?.text.replace(
+						'(CHILD)',
+						quizState.guestChild ||
+							(authState.user?.children && authState.user?.children[0]?.name) ||
+							'CHILD',
+					)}
 				</Text>
 				<Box
 					width='100%'
@@ -114,7 +123,7 @@ const MediaChoicesQ4 = ({
 					margin='0 0 25px 0'
 				>
 					<Text typography='subheading' textAlign='center' size={18}>
-						{questionData.data.second.text}
+						{questionData?.data?.slide?.questions[1]?.text}
 					</Text>
 					<Box
 						width='100%'

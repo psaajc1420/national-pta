@@ -7,12 +7,17 @@ import { gql } from '@apollo/client';
 
 const GET_QUESTION = gql`
 	query {
-		question(id: 38) {
-			id
-			text
+		slide(id: 18) {
+			slide_number
+			header
+			questions {
+				id
+				text
+			}
 		}
 	}
 `;
+
 const MediaChoicesQ8 = ({
 	onHandleNextQuestion,
 	onHandlePreviousQuestion,
@@ -50,7 +55,7 @@ const MediaChoicesQ8 = ({
 					backgroundColor='transperant'
 					margin='0 0 50px 0'
 				>
-					<YesNo questions={[questionData.data.question]} />
+					<YesNo questions={[questionData?.data?.slide?.questions[0]]} />
 				</Box>
 				<Box
 					width='90%'

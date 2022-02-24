@@ -11,6 +11,8 @@ const QuizWelcome = () => {
 	const { quizDispatch } = useContext(QuizAnswersContext);
 	const theme = useTheme();
 	const [selectedAgeGroup, setSelectedAgeGroup] = useState('');
+	const [guestAdult, setGuestAdult] = useState('');
+	const [guestChild, setGuestChild] = useState('');
 
 	useEffect(() => {
 		if (selectedAgeGroup) {
@@ -47,9 +49,20 @@ const QuizWelcome = () => {
 					textAlign='center'
 				>
 					Welcome,
-					<StyledWelcomeInput type='text' />
+					<StyledWelcomeInput
+						type='text'
+						placeholder='Adult Name'
+						value={guestAdult}
+						onChange={(e) => setGuestAdult(e.target.value)}
+					/>
 					and
-					<StyledWelcomeInput type='text' />. <br />
+					<StyledWelcomeInput
+						type='text'
+						placeholder='Child Name'
+						value={guestChild}
+						onChange={(e) => setGuestChild(e.target.value)}
+					/>
+					. <br />
 					Are you ready to have Smart Talk?
 				</Text>
 				<Box
@@ -86,15 +99,22 @@ const QuizWelcome = () => {
 			<Button
 				width={150}
 				height={56}
-				onClick={() =>
+				onClick={() => {
 					quizDispatch({
 						type: 'SET_CATEGORY_AND_AGE',
 						payload: {
 							category: CATEGORIES.privacyAndSafety.name,
 							ageGroup: selectedAgeGroup,
 						},
-					})
-				}
+					});
+					quizDispatch({
+						type: 'SET_GUEST_NAMES',
+						payload: {
+							guestAdult,
+							guestChild,
+						},
+					});
+				}}
 				disabled={selectedAgeGroup === ''}
 				backgroundColor={theme.color.blue}
 			>
@@ -111,4 +131,6 @@ export default QuizWelcome;
 const StyledWelcomeInput = styled('input')(() => ({
 	border: 'none',
 	borderBottom: '1px solid black',
+	textAlign: 'center',
+	fontSize: 20,
 }));

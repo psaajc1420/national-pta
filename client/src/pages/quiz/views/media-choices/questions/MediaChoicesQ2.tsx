@@ -7,12 +7,17 @@ import { QuestionButtonsGroup } from '../../../components';
 import { useGetQuestion } from '../../../../../hooks';
 import { gql } from '@apollo/client';
 import { QuizAnswersContext } from '../../../Quiz';
+import { AuthContext } from '../../../../../App';
 
 const GET_QUESTION = gql`
 	query {
-		question(id: 24) {
-			id
-			text
+		slide(id: 12) {
+			slide_number
+			header
+			questions {
+				id
+				text
+			}
 		}
 	}
 `;
@@ -26,18 +31,25 @@ const MediaChoicesQ2 = ({
 }) => {
 	// @ts-expect-error
 	const { quizState, quizDispatch } = useContext(QuizAnswersContext);
+	// @ts-expect-error
+	const { authState } = useContext(AuthContext);
+	const theme = useTheme();
 	const { getQuestion } = useGetQuestion();
 	const questionData = getQuestion(GET_QUESTION);
-	const theme = useTheme();
-	const [answers, setAnswers] = useState<string[]>(quizState.answers[24] || []);
+	const questionId = questionData?.data?.slide?.questions?.[0]?.id;
+
+	const [answers, setAnswers] = useState<string[]>(
+		quizState.answers[questionId] || [],
+	);
 
 	useEffect(() => {
-		quizDispatch({
-			type: 'SET_ANSWER',
-			payload: { id: 24, value: answers },
-		});
-	}, [answers]);
-
+		if (questionId) {
+			quizDispatch({
+				type: 'SET_ANSWER',
+				payload: { id: questionId, value: answers },
+			});
+		}
+	}, [questionId, answers]);
 	if (questionData.loading)
 		return (
 			<Box width='100%' height='100%' center backgroundColor='transperant'>
@@ -110,18 +122,18 @@ const MediaChoicesQ2 = ({
 		},
 	];
 
-	const handleOnChange = (name: string) => {
-		const answerIndex = answers.findIndex((e) => e === name);
+	const handleOnChange = (label: string) => {
+		const answerIndex = answers.findIndex((e) => e === label);
 		if (answerIndex !== -1) {
-			setAnswers(answers.filter((e) => e !== name));
+			setAnswers(answers.filter((e) => e !== label));
 		} else {
-			setAnswers((state) => [...state, name]);
+			setAnswers((state) => [...state, label]);
 		}
 	};
 
-	const handleChecked = (name: string) => {
-		if (quizState.answers[24]) {
-			return quizState.answers[24].includes(name);
+	const handleChecked = (label: string) => {
+		if (quizState.answers[questionId]) {
+			return quizState.answers[questionId].includes(label);
 		} else {
 			return false;
 		}
@@ -137,7 +149,12 @@ const MediaChoicesQ2 = ({
 				margin='0 0 15px 0'
 			>
 				<Text typography='subheading' textAlign='center' size={18}>
-					{questionData.data.question.text}
+					{questionData?.data?.slide?.header.replace(
+						'(CHILD)',
+						quizState.guestChild ||
+							(authState.user?.children && authState.user?.children[0]?.name) ||
+							'CHILD',
+					)}
 				</Text>
 			</Box>
 			<Box
@@ -164,7 +181,7 @@ const MediaChoicesQ2 = ({
 						margin='0 0 5px 0'
 					>
 						<Text typography='heading' size={18}>
-							Game Ratings
+							{questionData?.data?.slide?.questions?.[0]?.text}
 						</Text>
 						<Box
 							width={200}
@@ -188,10 +205,10 @@ const MediaChoicesQ2 = ({
 										type='checkbox'
 										id={e.name}
 										name={e.name}
-										onChange={() => handleOnChange(e.name)}
-										checked={handleChecked(e.name)}
+										onChange={() => handleOnChange(e.label)}
+										checked={handleChecked(e.label)}
 									/>
-									<label htmlFor={e.name}>
+									<label htmlFor={e.label}>
 										<Text typography='text' textAlign='left' size={18}>
 											{e.label}
 										</Text>
@@ -210,7 +227,7 @@ const MediaChoicesQ2 = ({
 						margin='0 0 5px 0'
 					>
 						<Text typography='heading' size={18}>
-							Movie Ratings
+							{questionData?.data?.slide?.questions?.[1]?.text}
 						</Text>
 						<Box
 							width={65}
@@ -234,10 +251,10 @@ const MediaChoicesQ2 = ({
 										type='checkbox'
 										id={e.name}
 										name={e.name}
-										onChange={() => handleOnChange(e.name)}
-										checked={handleChecked(e.name)}
+										onChange={() => handleOnChange(e.label)}
+										checked={handleChecked(e.label)}
 									/>
-									<label htmlFor={e.name}>
+									<label htmlFor={e.label}>
 										<Text typography='text' textAlign='left' size={18}>
 											{e.label}
 										</Text>
@@ -264,7 +281,7 @@ const MediaChoicesQ2 = ({
 						margin='0 0 25px 0'
 					>
 						<Text typography='heading' size={18}>
-							App Ratings
+							{questionData?.data?.slide?.questions?.[2]?.text}
 						</Text>
 						<Box
 							width={65}
@@ -288,10 +305,10 @@ const MediaChoicesQ2 = ({
 										type='checkbox'
 										id={e.name}
 										name={e.name}
-										onChange={() => handleOnChange(e.name)}
-										checked={handleChecked(e.name)}
+										onChange={() => handleOnChange(e.label)}
+										checked={handleChecked(e.label)}
 									/>
-									<label htmlFor={e.name}>
+									<label htmlFor={e.label}>
 										<Text typography='text' textAlign='left' size={18}>
 											{e.label}
 										</Text>
@@ -309,7 +326,7 @@ const MediaChoicesQ2 = ({
 						backgroundColor='transperant'
 					>
 						<Text typography='heading' size={18}>
-							Music Ratings
+							{questionData?.data?.slide?.questions?.[3]?.text}
 						</Text>
 						<Box
 							width={250}
@@ -332,10 +349,10 @@ const MediaChoicesQ2 = ({
 										type='checkbox'
 										id={e.name}
 										name={e.name}
-										onChange={() => handleOnChange(e.name)}
-										checked={handleChecked(e.name)}
+										onChange={() => handleOnChange(e.label)}
+										checked={handleChecked(e.label)}
 									/>
-									<label htmlFor={e.name}>
+									<label htmlFor={e.label}>
 										<Text typography='text' textAlign='left' size={18}>
 											{e.label}
 										</Text>

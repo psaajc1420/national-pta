@@ -7,16 +7,17 @@ import { QuestionButtonsGroup, YesNo } from '../../../components';
 import { useGetQuestion } from '../../../../../hooks';
 import { gql } from '@apollo/client';
 import { QuizAnswersContext } from '../../../Quiz';
+import { AuthContext } from '../../../../../App';
 
 const GET_QUESTION = gql`
 	query {
-		first: question(id: 18) {
-			id
-			text
-		}
-		second: question(id: 70) {
-			id
-			text
+		slide(id: 8) {
+			slide_number
+			header
+			questions {
+				id
+				text
+			}
 		}
 	}
 `;
@@ -30,17 +31,25 @@ const CommunicationQ4 = ({
 }) => {
 	// @ts-expect-error
 	const { quizState, quizDispatch } = useContext(QuizAnswersContext);
+	// @ts-expect-error
+	const { authState } = useContext(AuthContext);
+	const theme = useTheme();
 	const { getQuestion } = useGetQuestion();
 	const questionData = getQuestion(GET_QUESTION);
-	const theme = useTheme();
-	const [answers, setAnswers] = useState<string[]>(quizState.answers[18] || []);
+	const questionId = questionData?.data?.slide?.questions?.[0]?.id;
+
+	const [answers, setAnswers] = useState<string[]>(
+		quizState.answers[questionId] || [],
+	);
 
 	useEffect(() => {
-		quizDispatch({
-			type: 'SET_ANSWER',
-			payload: { id: 18, value: answers },
-		});
-	}, [answers]);
+		if (questionId) {
+			quizDispatch({
+				type: 'SET_ANSWER',
+				payload: { id: questionId, value: answers },
+			});
+		}
+	}, [questionId, answers]);
 
 	if (questionData.loading)
 		return (
@@ -76,18 +85,18 @@ const CommunicationQ4 = ({
 		},
 	];
 
-	const handleOnChange = (name: string) => {
-		const answerIndex = answers.findIndex((e) => e === name);
+	const handleOnChange = (label: string) => {
+		const answerIndex = answers.findIndex((e) => e === label);
 		if (answerIndex !== -1) {
-			setAnswers(answers.filter((e) => e !== name));
+			setAnswers(answers.filter((e) => e !== label));
 		} else {
-			setAnswers((state) => [...state, name]);
+			setAnswers((state) => [...state, label]);
 		}
 	};
 
-	const handleChecked = (name: string) => {
-		if (quizState.answers[18]) {
-			return quizState.answers[18].includes(name);
+	const handleChecked = (label: string) => {
+		if (quizState.answers[questionId]) {
+			return quizState.answers[questionId].includes(label);
 		} else {
 			return false;
 		}
@@ -110,11 +119,7 @@ const CommunicationQ4 = ({
 					margin='0 0 15px 0'
 				>
 					<Text typography='subheading' textAlign='center' size={18}>
-						Technology is a great way to communicate, but we want to represent
-						ourselves and our family well when we post online. We also want to
-						share in ways that honor and respect the feelings of others.
-						Let&apos;s talk about what types of information our family is
-						comfortable sharing publicly.
+						{questionData?.data?.slide?.header}
 					</Text>
 				</Box>
 			</Box>
@@ -136,7 +141,20 @@ const CommunicationQ4 = ({
 					margin='20px 0'
 				>
 					<Text typography='subheading' textAlign='center' size={18}>
-						{questionData.data?.first?.text}
+						{questionData?.data?.slide?.questions?.[1]?.text
+							.replace(
+								'(CHILD)',
+								quizState.guestChild ||
+									(authState.user?.children &&
+										authState.user?.children[0]?.name) ||
+									'CHILD',
+							)
+							.replace(
+								'(ADULT)',
+								quizState.guestAdult ||
+									(authState.user && authState.user?.name) ||
+									'ADULT',
+							)}
 					</Text>
 				</Box>
 				<Box
@@ -172,7 +190,7 @@ const CommunicationQ4 = ({
 					))}
 				</Box>
 			</Box>
-			<YesNo questions={[questionData.data.second]} />
+			<YesNo questions={[questionData?.data?.slide?.questions?.[0]]} />
 			<QuestionButtonsGroup
 				onContinue={onHandleNextQuestion}
 				onPrevious={onHandlePreviousQuestion}

@@ -1,27 +1,22 @@
+import { useContext } from 'react';
 import { Box, Text } from '../../../../../components';
 import { QuestionButtonsGroup, YesNo } from '../../../components';
 import { useGetQuestion } from '../../../../../hooks';
 import { gql } from '@apollo/client';
 import { BallTriangle } from 'react-loader-spinner';
 import { useTheme } from '@emotion/react';
+import { QuizAnswersContext } from '../../../Quiz';
+import { AuthContext } from '../../../../../App';
 
 const GET_QUESTION = gql`
 	query {
-		first: question(id: 8) {
-			id
-			text
-		}
-		second: question(id: 69) {
-			id
-			text
-		}
-		third: question(id: 9) {
-			id
-			text
-		}
-		fourth: question(id: 10) {
-			id
-			text
+		slide(id: 3) {
+			slide_number
+			header
+			questions {
+				id
+				text
+			}
 		}
 	}
 `;
@@ -33,6 +28,10 @@ const PrivacyAndSafetyQ3 = ({
 	onHandleNextQuestion: () => void;
 	onHandlePreviousQuestion: () => void;
 }) => {
+	// @ts-expect-error
+	const { quizState } = useContext(QuizAnswersContext);
+	// @ts-expect-error
+	const { authState } = useContext(AuthContext);
 	const { getQuestion } = useGetQuestion();
 	const questionData = getQuestion(GET_QUESTION);
 	const theme = useTheme();
@@ -54,9 +53,12 @@ const PrivacyAndSafetyQ3 = ({
 				margin='0 0 45px 0'
 			>
 				<Text typography='subheading' textAlign='center' size={18}>
-					We can also protect our privacy and stay safe through the choices we
-					make when we are online. (CHILD), what do you agree to do to protect
-					yourself when you are using your device?
+					{questionData?.data?.slide?.header.replace(
+						'(CHILD)',
+						quizState.guestChild ||
+							(authState.user?.children && authState.user?.children[0]?.name) ||
+							'CHILD',
+					)}
 				</Text>
 			</Box>
 			<Box
@@ -68,10 +70,10 @@ const PrivacyAndSafetyQ3 = ({
 			>
 				<YesNo
 					questions={[
-						questionData.data.first,
-						questionData.data.second,
-						questionData.data.third,
-						questionData.data.fourth,
+						questionData?.data?.slide?.questions[0],
+						questionData?.data?.slide?.questions[1],
+						questionData?.data?.slide?.questions[2],
+						questionData?.data?.slide?.questions[3],
 					]}
 				/>
 			</Box>

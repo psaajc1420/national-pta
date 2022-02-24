@@ -7,21 +7,13 @@ import { useTheme } from '@emotion/react';
 
 const GET_QUESTION = gql`
 	query {
-		first: question(id: 25) {
-			id
-			text
-		}
-		second: question(id: 26) {
-			id
-			text
-		}
-		third: question(id: 27) {
-			id
-			text
-		}
-		fourth: question(id: 28) {
-			id
-			text
+		slide(id: 13) {
+			slide_number
+			header
+			questions {
+				id
+				text
+			}
 		}
 	}
 `;
@@ -54,10 +46,7 @@ const MediaChoicesQ3 = ({
 				margin='0 0 35px 0'
 			>
 				<Text typography='subheading' textAlign='center' size={18}>
-					ust like there are device settings that help us maintain privacy,
-					there are settings that can help us control what we can download,
-					search for or access online. Which settings will your family set up to
-					help you stick to your media agreements?
+					{questionData?.data?.slide?.header}
 				</Text>
 			</Box>
 			<Box
@@ -69,10 +58,10 @@ const MediaChoicesQ3 = ({
 			>
 				<YesNo
 					questions={[
-						questionData.data.first,
-						questionData.data.second,
-						questionData.data.third,
-						questionData.data.fourth,
+						questionData?.data?.slide?.questions[0],
+						questionData?.data?.slide?.questions[1],
+						questionData?.data?.slide?.questions[2],
+						questionData?.data?.slide?.questions[3],
 					]}
 				/>
 				<QuestionButtonsGroup

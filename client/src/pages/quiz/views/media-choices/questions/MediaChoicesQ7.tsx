@@ -7,24 +7,17 @@ import { gql } from '@apollo/client';
 
 const GET_QUESTION = gql`
 	query {
-		first: question(id: 34) {
-			id
-			text
-		}
-		second: question(id: 35) {
-			id
-			text
-		}
-		third: question(id: 36) {
-			id
-			text
-		}
-		fourth: question(id: 37) {
-			id
-			text
+		slide(id: 17) {
+			slide_number
+			header
+			questions {
+				id
+				text
+			}
 		}
 	}
 `;
+
 const MediaChoicesQ7 = ({
 	onHandleNextQuestion,
 	onHandlePreviousQuestion,
@@ -53,8 +46,7 @@ const MediaChoicesQ7 = ({
 				margin='0 0 35px 0'
 			>
 				<Text typography='subheading' textAlign='center' size={18}>
-					What strategies can our family try to help avoid inappropriate
-					content?
+					{questionData?.data?.slide?.header}
 				</Text>
 			</Box>
 
@@ -77,10 +69,10 @@ const MediaChoicesQ7 = ({
 				>
 					<YesNo
 						questions={[
-							questionData.data.first,
-							questionData.data.second,
-							questionData.data.third,
-							questionData.data.fourth,
+							questionData?.data?.slide?.questions[0],
+							questionData?.data?.slide?.questions[1],
+							questionData?.data?.slide?.questions[2],
+							questionData?.data?.slide?.questions[3],
 						]}
 					/>
 				</Box>

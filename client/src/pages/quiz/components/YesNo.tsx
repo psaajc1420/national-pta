@@ -1,24 +1,25 @@
 import { useContext } from 'react';
 import { Box, Text } from '../../../components/index';
 import { QuizAnswersContext } from '../Quiz';
+import { AuthContext } from '../../../App';
 
 const YesNo = ({ questions }: { questions: any }) => {
 	// @ts-expect-error
 	const { quizState, quizDispatch } = useContext(QuizAnswersContext);
+	// @ts-expect-error
+	const { authState } = useContext(AuthContext);
 
 	const handleYesChecked = (id: number | string) => {
-		if (quizState.answers[id] === null) {
+		if (quizState.answers[id] === undefined) {
 			return null;
-		} else {
-			return quizState.answers[id];
 		}
+		return quizState.answers[id];
 	};
 	const handleNoChecked = (id: number | string) => {
-		if (quizState.answers[id] === null) {
+		if (quizState.answers[id] === undefined) {
 			return null;
-		} else {
-			return !quizState.answers[id];
 		}
+		return !quizState.answers[id];
 	};
 	const handleYesAnswer = (id: number | string) => {
 		quizDispatch({
@@ -52,7 +53,20 @@ const YesNo = ({ questions }: { questions: any }) => {
 			>
 				{questions.map((e: any) => (
 					<Text key={e.id} typography='text' size={16}>
-						{e.text}
+						{e.text
+							.replace(
+								'(CHILD)',
+								quizState.guestChild ||
+									(authState.user?.children &&
+										authState.user?.children[0]?.name) ||
+									'CHILD',
+							)
+							.replace(
+								'(ADULT)',
+								quizState.guestAdult ||
+									(authState.user && authState.user?.name) ||
+									'ADULT',
+							)}
 					</Text>
 				))}
 			</Box>
