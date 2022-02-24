@@ -147,8 +147,8 @@ const Home = () => {
 									textAlign='center'
 									color={theme.color.black}
 								>
-									&bull; Helps families have positive, proactive conversations
-									about technology
+									Helps families have positive, proactive conversations about
+									technology
 								</Text>
 							</li>
 							<li>
@@ -158,8 +158,8 @@ const Home = () => {
 									textAlign='center'
 									color={theme.color.black}
 								>
-									&bull; Allows children ages 5-8 to actively participate in
-									their family&apos;s agreed upon rules around:
+									Allows children ages 5-8 to actively participate in their
+									family&apos;s agreed upon rules around:
 								</Text>
 							</li>
 						</StyledList>
@@ -179,7 +179,7 @@ const Home = () => {
 						))}
 					</Box>
 					<Box
-						width='auto'
+						width='80%'
 						height='auto'
 						display='block'
 						backgroundColor='transperant'
@@ -225,10 +225,12 @@ const Home = () => {
 export default Home;
 
 const StyledList = styled('ul')(() => ({
-	listStyleType: 'none',
+	listStyleType: 'disc',
 	color: 'inherit',
 	li: {
-		marginBottom: 10,
+		width: '70%',
+		margin: 'auto',
+		marginBottom: 15,
 	},
 }));
 

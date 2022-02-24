@@ -32,7 +32,7 @@ const Layout = ({
 				height='100%'
 				display='block'
 				backgroundColor='inherit'
-				padding='80px 0 56px 0'
+				padding='40px 0'
 				position='relative'
 			>
 				{children}
