@@ -2,7 +2,7 @@ import { gql, useMutation } from '@apollo/client';
 
 const UPDATE_USER = gql`
 	mutation UpdateUser($inputId: InputID!, $payload: editUserInput!) {
-		updateUser(input: { where: $id, data: $payload }) {
+		updateUser(input: { where: $inputId, data: $payload }) {
 			user {
 				id
 			}
@@ -12,10 +12,10 @@ const UPDATE_USER = gql`
 
 const useBuildProfile = () => {
 	const [updateUser, { data, loading, error }] = useMutation(UPDATE_USER);
-	const buildProfile = (inputId: object, payload: object) => {
+	console.log({ data, loading, error });
+	const buildProfile = (inputId: any, payload: any) => {
 		updateUser({ variables: { inputId, payload } });
 	};
-
 	return { buildProfile, data, loading, error };
 };
 

@@ -13,9 +13,9 @@ const Register = () => {
 	const { authState } = useContext(AuthContext);
 	const theme = useTheme();
 	const [view, setView] = useState('default');
-	const { register, data, error } = useRegister();
+	const { register, error } = useRegister();
 	const [err, setErr] = useState('');
-	console.log({ data, error });
+
 	const isMobile = useMediaQuery({ query: theme.screen.mobile });
 
 	useEffect(() => {
@@ -31,7 +31,6 @@ const Register = () => {
 		}
 	}, [error]);
 
-	console.log({ authState });
 	return (
 		<>
 			<Box width='100%' height='100%' center backgroundColor='inherit'>

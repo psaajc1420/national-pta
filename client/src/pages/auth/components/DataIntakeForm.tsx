@@ -1,10 +1,15 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import styled from '@emotion/styled';
 import { useTheme } from '@emotion/react';
 import { Box, Text, Button } from '../../../components';
 import AuthInput from './AuthInput';
+import { useBuildProfile } from '../hooks';
+import { useCreateChild } from '../../../hooks';
+import { AuthContext } from '../../../App';
 
 const DataIntakeForm = () => {
+	// @ts-expect-error
+	const { authState } = useContext(AuthContext);
 	const theme = useTheme();
 	const [parentName, setParentName] = useState('');
 	const [city, setCity] = useState('');
@@ -15,6 +20,25 @@ const DataIntakeForm = () => {
 	const [ethnicity, setEthnicity] = useState('');
 	const [primaryLang, setPrimaryLang] = useState('');
 	const [howDidYouHear, setHowDidYouHear] = useState('');
+
+	const { buildProfile } = useBuildProfile();
+	const { createChild } = useCreateChild();
+
+	const handleSubmit = () => {
+		buildProfile(
+			{ id: authState.user.id },
+			{
+				name: parentName,
+				city,
+				state,
+				race,
+				ethnicity,
+				primary_lang: primaryLang,
+				hear_about: howDidYouHear,
+			},
+		);
+		createChild(childName, Number(childAge), authState.user.id);
+	};
 	return (
 		<Box
 			height='80%'
@@ -217,7 +241,7 @@ const DataIntakeForm = () => {
 						height={48}
 						type='submit'
 						backgroundColor={theme.color.blue}
-						onClick={() => {}}
+						onClick={handleSubmit}
 					>
 						<Text typography='heading' textAlign='center'>
 							Submit
