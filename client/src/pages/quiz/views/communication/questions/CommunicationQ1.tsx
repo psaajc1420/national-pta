@@ -36,14 +36,14 @@ const CommunicationQ1 = ({
 	const theme = useTheme();
 	const { getQuestion } = useGetQuestion();
 	const questionData = getQuestion(GET_QUESTION);
-	const questionId = questionData?.data?.slide?.questions?.[0]?.id;
+	const questionId = questionData?.data?.slide?.questions[0]?.id;
 
 	const [answers, setAnswers] = useState<string[]>(
 		quizState.answers[questionId] || [],
 	);
 
 	useEffect(() => {
-		if (questionId) {
+		if (questionId && answers.length > 0) {
 			quizDispatch({
 				type: 'SET_ANSWER',
 				payload: { id: questionId, value: answers },
@@ -127,7 +127,7 @@ const CommunicationQ1 = ({
 				margin='0 0 35px 0'
 			>
 				<Text typography='subheading' textAlign='center' size={18}>
-					{questionData?.data?.slide?.questions?.[0]?.text.replace(
+					{questionData?.data?.slide?.questions[0]?.text.replace(
 						'(CHILD)',
 						quizState.guestChild ||
 							(authState.user?.children && authState.user?.children[0]?.name) ||

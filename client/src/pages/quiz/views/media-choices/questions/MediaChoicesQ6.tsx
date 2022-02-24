@@ -33,7 +33,9 @@ const MediaChoicesQ6 = ({
 	const { getQuestion } = useGetQuestion();
 	const questionData = getQuestion(GET_QUESTION);
 	const theme = useTheme();
-	console.log({ questionData });
+	const [adultInput, setAdultInput] = useState(['', '', '']);
+	const [childInput, setChildInput] = useState(['', '', '']);
+	console.log({ questionData, adultInput, childInput });
 
 	// useEffect(() => {
 	// 	quizDispatch({
@@ -81,9 +83,9 @@ const MediaChoicesQ6 = ({
 					backgroundColor='inherit'
 					margin='15px 0'
 				>
-					<input type='text' />
-					<input type='text' />
-					<input type='text' />
+					<input type='text' value={adultInput[0]} onChange={() => {}} />
+					<input type='text' value={adultInput[1]} onChange={() => {}} />
+					<input type='text' value={adultInput[2]} onChange={() => {}} />
 				</Box>
 			</Box>
 			<Box

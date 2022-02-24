@@ -36,14 +36,14 @@ const CommunicationQ3 = ({
 	const theme = useTheme();
 	const { getQuestion } = useGetQuestion();
 	const questionData = getQuestion(GET_QUESTION);
-	const questionId = questionData?.data?.slide?.questions?.[0]?.id;
+	const questionId = questionData?.data?.slide?.questions[2]?.id;
 
 	const [answers, setAnswers] = useState<string[]>(
 		quizState.answers[questionId] || [],
 	);
 
 	useEffect(() => {
-		if (questionId) {
+		if (questionId && answers.length > 0) {
 			quizDispatch({
 				type: 'SET_ANSWER',
 				payload: { id: questionId, value: answers },
@@ -133,8 +133,8 @@ const CommunicationQ3 = ({
 
 				<YesNo
 					questions={[
-						questionData?.data?.slide?.questions?.[0],
-						questionData?.data?.slide?.questions?.[1],
+						questionData?.data?.slide?.questions[0],
+						questionData?.data?.slide?.questions[1],
 					]}
 				/>
 			</Box>
@@ -146,7 +146,7 @@ const CommunicationQ3 = ({
 				margin='20px 0 20px 0'
 			>
 				<Text typography='subheading' textAlign='center' size={18}>
-					{questionData?.data?.slide?.questions?.[2]?.text
+					{questionData?.data?.slide?.questions[2]?.text
 						.replace(
 							'(CHILD)',
 							quizState.guestChild ||

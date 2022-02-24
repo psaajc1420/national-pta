@@ -36,7 +36,7 @@ const CommunicationQ2 = ({
 	const theme = useTheme();
 	const { getQuestion } = useGetQuestion();
 	const questionData = getQuestion(GET_QUESTION);
-	const questionId = questionData?.data?.slide?.questions?.[0]?.id;
+	const questionId = questionData?.data?.slide?.questions[0]?.id;
 
 	const [answers, setAnswers] = useState<string[]>(
 		quizState.answers[questionId] || [],
@@ -119,7 +119,7 @@ const CommunicationQ2 = ({
 				margin='0 0 35px 0'
 			>
 				<Text typography='subheading' textAlign='center' size={18}>
-					{questionData?.data?.slide?.questions?.[0]?.text.replace(
+					{questionData?.data?.slide?.questions[0]?.text.replace(
 						'(CHILD)',
 						quizState.guestChild ||
 							(authState.user?.children && authState.user?.children[0]?.name) ||

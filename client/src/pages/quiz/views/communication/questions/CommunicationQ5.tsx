@@ -36,14 +36,14 @@ const CommunicationQ5 = ({
 	const theme = useTheme();
 	const { getQuestion } = useGetQuestion();
 	const questionData = getQuestion(GET_QUESTION);
-	const questionId = questionData?.data?.slide?.questions?.[0]?.id;
+	const questionId = questionData?.data?.slide?.questions[0]?.id;
 
 	const [answers, setAnswers] = useState<string[]>(
 		quizState.answers[questionId] || [],
 	);
 
 	useEffect(() => {
-		if (questionId) {
+		if (questionId && answers.length > 0) {
 			quizDispatch({
 				type: 'SET_ANSWER',
 				payload: { id: questionId, value: answers },
@@ -117,7 +117,7 @@ const CommunicationQ5 = ({
 					margin='20px 0'
 				>
 					<Text typography='subheading' textAlign='center' size={18}>
-						{questionData?.data?.slide?.questions?.[0]?.text.replace(
+						{questionData?.data?.slide?.questions[0]?.text.replace(
 							'(ADULT)',
 							quizState.guestAdult ||
 								(authState.user && authState.user?.name) ||
@@ -146,11 +146,11 @@ const CommunicationQ5 = ({
 								type='checkbox'
 								id={e.name}
 								name={e.name}
-								onChange={() => handleOnChange(e.name)}
-								checked={handleChecked(e.name)}
+								onChange={() => handleOnChange(e.label)}
+								checked={handleChecked(e.label)}
 							/>
-							<label htmlFor={e.name}>
-								<Text typography='text' textAlign='left' size={16}>
+							<label htmlFor={e.label}>
+								<Text typography='text' textAlign='left' size={18}>
 									{e.label}
 								</Text>
 							</label>
@@ -160,8 +160,8 @@ const CommunicationQ5 = ({
 			</Box>
 			<YesNo
 				questions={[
-					questionData?.data?.slide?.questions?.[1],
-					questionData?.data?.slide?.questions?.[2],
+					questionData?.data?.slide?.questions[1],
+					questionData?.data?.slide?.questions[2],
 				]}
 			/>
 			<QuestionButtonsGroup

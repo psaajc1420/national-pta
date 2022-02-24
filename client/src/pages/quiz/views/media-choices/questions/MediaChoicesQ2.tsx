@@ -36,14 +36,14 @@ const MediaChoicesQ2 = ({
 	const theme = useTheme();
 	const { getQuestion } = useGetQuestion();
 	const questionData = getQuestion(GET_QUESTION);
-	const questionId = questionData?.data?.slide?.questions?.[0]?.id;
+	const questionId = questionData?.data?.slide?.questions[0]?.id;
 
 	const [answers, setAnswers] = useState<string[]>(
 		quizState.answers[questionId] || [],
 	);
 
 	useEffect(() => {
-		if (questionId) {
+		if (questionId && answers.length > 0) {
 			quizDispatch({
 				type: 'SET_ANSWER',
 				payload: { id: questionId, value: answers },
@@ -181,7 +181,7 @@ const MediaChoicesQ2 = ({
 						margin='0 0 5px 0'
 					>
 						<Text typography='heading' size={18}>
-							{questionData?.data?.slide?.questions?.[0]?.text}
+							{questionData?.data?.slide?.questions[1]?.text}
 						</Text>
 						<Box
 							width={200}
@@ -227,7 +227,7 @@ const MediaChoicesQ2 = ({
 						margin='0 0 5px 0'
 					>
 						<Text typography='heading' size={18}>
-							{questionData?.data?.slide?.questions?.[1]?.text}
+							{questionData?.data?.slide?.questions[2]?.text}
 						</Text>
 						<Box
 							width={65}
@@ -281,7 +281,7 @@ const MediaChoicesQ2 = ({
 						margin='0 0 25px 0'
 					>
 						<Text typography='heading' size={18}>
-							{questionData?.data?.slide?.questions?.[2]?.text}
+							{questionData?.data?.slide?.questions[3]?.text}
 						</Text>
 						<Box
 							width={65}
@@ -326,7 +326,7 @@ const MediaChoicesQ2 = ({
 						backgroundColor='transperant'
 					>
 						<Text typography='heading' size={18}>
-							{questionData?.data?.slide?.questions?.[3]?.text}
+							{questionData?.data?.slide?.questions[0]?.text}
 						</Text>
 						<Box
 							width={250}

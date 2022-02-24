@@ -36,7 +36,7 @@ const CommunicationQ6 = ({
 	const theme = useTheme();
 	const { getQuestion } = useGetQuestion();
 	const questionData = getQuestion(GET_QUESTION);
-	const questionId = questionData?.data?.slide?.questions?.[0]?.id;
+	const questionId = questionData?.data?.slide?.questions[0]?.id;
 
 	const [answers, setAnswers] = useState<string[]>(
 		quizState.answers[questionId] || [],
@@ -121,7 +121,7 @@ const CommunicationQ6 = ({
 					margin='20px 0'
 				>
 					<Text typography='subheading' textAlign='center' size={18}>
-						{questionData?.data?.slide?.questions?.[0]?.text.replace(
+						{questionData?.data?.slide?.questions[0]?.text.replace(
 							'(ADULT)',
 							quizState.guestAdult ||
 								(authState.user && authState.user?.name) ||

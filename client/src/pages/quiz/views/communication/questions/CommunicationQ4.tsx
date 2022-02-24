@@ -36,14 +36,14 @@ const CommunicationQ4 = ({
 	const theme = useTheme();
 	const { getQuestion } = useGetQuestion();
 	const questionData = getQuestion(GET_QUESTION);
-	const questionId = questionData?.data?.slide?.questions?.[0]?.id;
+	const questionId = questionData?.data?.slide?.questions[1]?.id;
 
 	const [answers, setAnswers] = useState<string[]>(
 		quizState.answers[questionId] || [],
 	);
 
 	useEffect(() => {
-		if (questionId) {
+		if (questionId && answers.length > 0) {
 			quizDispatch({
 				type: 'SET_ANSWER',
 				payload: { id: questionId, value: answers },
@@ -141,7 +141,7 @@ const CommunicationQ4 = ({
 					margin='20px 0'
 				>
 					<Text typography='subheading' textAlign='center' size={18}>
-						{questionData?.data?.slide?.questions?.[1]?.text
+						{questionData?.data?.slide?.questions[1]?.text
 							.replace(
 								'(CHILD)',
 								quizState.guestChild ||
@@ -178,11 +178,11 @@ const CommunicationQ4 = ({
 								type='checkbox'
 								id={e.name}
 								name={e.name}
-								onChange={() => handleOnChange(e.name)}
-								checked={handleChecked(e.name)}
+								onChange={() => handleOnChange(e.label)}
+								checked={handleChecked(e.label)}
 							/>
-							<label htmlFor={e.name}>
-								<Text typography='text' textAlign='left' size={16}>
+							<label htmlFor={e.label}>
+								<Text typography='text' textAlign='left' size={18}>
 									{e.label}
 								</Text>
 							</label>
@@ -190,7 +190,14 @@ const CommunicationQ4 = ({
 					))}
 				</Box>
 			</Box>
-			<YesNo questions={[questionData?.data?.slide?.questions?.[0]]} />
+			<Box
+				width='auto'
+				height={75}
+				display='block'
+				backgroundColor='transperant'
+			>
+				<YesNo questions={[questionData?.data?.slide?.questions[0]]} />
+			</Box>
 			<QuestionButtonsGroup
 				onContinue={onHandleNextQuestion}
 				onPrevious={onHandlePreviousQuestion}
