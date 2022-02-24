@@ -14,7 +14,7 @@ import { theme } from './theme';
 
 const httpLink = createHttpLink({
 	// eslint-disable-next-line no-undef
-	uri: `${process.env.REACT_APP_HOST}/graphql`
+	uri: `${process.env.REACT_APP_HOST}/graphql`,
 });
 
 const authLink = setContext((_, { headers }) => {
