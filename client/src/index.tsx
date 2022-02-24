@@ -13,7 +13,8 @@ import { ThemeProvider } from '@emotion/react';
 import { theme } from './theme';
 
 const httpLink = createHttpLink({
-	uri: 'http://localhost:1337/graphql',
+	// eslint-disable-next-line no-undef
+	uri: `${process.env.REACT_APP_HOST}/graphql`
 });
 
 const authLink = setContext((_, { headers }) => {

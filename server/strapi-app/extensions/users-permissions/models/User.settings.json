@@ -83,6 +83,9 @@
     },
     "is_registered": {
       "type": "boolean"
+    },
+    "race": {
+      "type": "string"
     }
   }
 }
