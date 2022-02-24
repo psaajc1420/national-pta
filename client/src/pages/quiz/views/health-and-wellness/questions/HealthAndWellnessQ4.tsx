@@ -7,24 +7,20 @@ import { QuestionButtonsGroup, YesNo } from '../../../components';
 import { useGetQuestion } from '../../../../../hooks';
 import { gql } from '@apollo/client';
 import { QuizAnswersContext } from '../../../Quiz';
+import { AuthContext } from '../../../../../App';
 
 const GET_QUESTION = gql`
 	query {
-		first: question(id: 52) {
-			id
-			text
-		}
-		second: question(id: 53) {
-			id
-			text
-		}
-		third: question(id: 54) {
-			id
-			text
+		slide(id: 22) {
+			slide_number
+			header
+			questions {
+				id
+				text
+			}
 		}
 	}
 `;
-
 const HealthAndWellnessQ4 = ({
 	onHandleNextQuestion,
 	onHandlePreviousQuestion,
@@ -34,11 +30,26 @@ const HealthAndWellnessQ4 = ({
 }) => {
 	// @ts-expect-error
 	const { quizState, quizDispatch } = useContext(QuizAnswersContext);
+	// @ts-expect-error
+	const { authState } = useContext(AuthContext);
+	const theme = useTheme();
 	const { getQuestion } = useGetQuestion();
 	const questionData = getQuestion(GET_QUESTION);
-	const theme = useTheme();
-	// const [answers, setAnswers] = useState<string[]>(quizState.answers[23] || []);
+	const questionId = questionData?.data?.slide?.questions?.[0]?.id;
 
+	const [answers, setAnswers] = useState<string[]>(
+		quizState.answers[questionId] || [],
+	);
+	console.log({ questionData });
+
+	useEffect(() => {
+		if (questionId) {
+			quizDispatch({
+				type: 'SET_ANSWER',
+				payload: { id: questionId, value: answers },
+			});
+		}
+	}, [questionId, answers]);
 	if (questionData.loading)
 		return (
 			<Box width='100%' height='100%' center backgroundColor='transperant'>
@@ -84,22 +95,22 @@ const HealthAndWellnessQ4 = ({
 		},
 	];
 
-	// const handleOnChange = (name: string) => {
-	// 	const answerIndex = answers.findIndex((e) => e === name);
-	// 	if (answerIndex !== -1) {
-	// 		setAnswers(answers.filter((e) => e !== name));
-	// 	} else {
-	// 		setAnswers((state) => [...state, name]);
-	// 	}
-	// };
+	const handleOnChange = (label: string) => {
+		const answerIndex = answers.findIndex((e) => e === label);
+		if (answerIndex !== -1) {
+			setAnswers(answers.filter((e) => e !== label));
+		} else {
+			setAnswers((state) => [...state, label]);
+		}
+	};
 
-	// const handleChecked = (name: string) => {
-	// 	if (quizState.answers[23]) {
-	// 		return quizState.answers[23].includes(name);
-	// 	} else {
-	// 		return false;
-	// 	}
-	// };
+	const handleChecked = (label: string) => {
+		if (quizState.answers[questionId]) {
+			return quizState.answers[questionId].includes(label);
+		} else {
+			return false;
+		}
+	};
 	return (
 		<>
 			<Box
@@ -109,7 +120,7 @@ const HealthAndWellnessQ4 = ({
 				backgroundColor='inherit'
 				margin='15px 0'
 			>
-				<YesNo questions={[questionData.data.first]} />
+				<YesNo questions={[questionData?.data?.slide?.questions[0]]} />
 			</Box>
 			<Box
 				width='100%'
@@ -130,7 +141,7 @@ const HealthAndWellnessQ4 = ({
 					backgroundColor='transperant'
 				>
 					<Text typography='text' size={18}>
-						{questionData.data.second.text}
+						{questionData?.data?.slide?.questions[1]?.text}
 					</Text>
 					<Box
 						width={250}
@@ -154,11 +165,11 @@ const HealthAndWellnessQ4 = ({
 									type='checkbox'
 									id={e.name}
 									name={e.name}
-									// onChange={() => handleOnChange(e.name)}
-									// checked={handleChecked(e.name)}
+									onChange={() => handleOnChange(e.label)}
+									checked={handleChecked(e.label)}
 								/>
-								<label htmlFor={e.name}>
-									<Text typography='text' textAlign='left' size={16}>
+								<label htmlFor={e.label}>
+									<Text typography='text' textAlign='left' size={18}>
 										{e.label}
 									</Text>
 								</label>
@@ -176,7 +187,7 @@ const HealthAndWellnessQ4 = ({
 					backgroundColor='transperant'
 				>
 					<Text typography='text' size={18}>
-						{questionData.data.third.text}
+						{questionData?.data?.slide?.questions[2]?.text}
 					</Text>
 					<Box
 						width={250}
@@ -200,11 +211,11 @@ const HealthAndWellnessQ4 = ({
 									type='checkbox'
 									id={e.name}
 									name={e.name}
-									// onChange={() => handleOnChange(e.name)}
-									// checked={handleChecked(e.name)}
+									onChange={() => handleOnChange(e.label)}
+									checked={handleChecked(e.label)}
 								/>
-								<label htmlFor={e.name}>
-									<Text typography='text' textAlign='left' size={16}>
+								<label htmlFor={e.label}>
+									<Text typography='text' textAlign='left' size={18}>
 										{e.label}
 									</Text>
 								</label>

@@ -6,24 +6,17 @@ import { QuestionButtonsGroup, YesNo } from '../../../components';
 import { useGetQuestion } from '../../../../../hooks';
 import { gql } from '@apollo/client';
 import { QuizAnswersContext } from '../../../Quiz';
+import { AuthContext } from '../../../../../App';
 
 const GET_QUESTION = gql`
 	query {
-		first: question(id: 39) {
-			id
-			text
-		}
-		second: question(id: 40) {
-			id
-			text
-		}
-		third: question(id: 41) {
-			id
-			text
-		}
-		fourth: question(id: 42) {
-			id
-			text
+		slide(id: 19) {
+			slide_number
+			header
+			questions {
+				id
+				text
+			}
 		}
 	}
 `;
@@ -37,6 +30,8 @@ const HealthAndWellnessQ1 = ({
 }) => {
 	// @ts-expect-error
 	const { quizState, quizDispatch } = useContext(QuizAnswersContext);
+	// @ts-expect-error
+	const { authState } = useContext(AuthContext);
 	const { getQuestion } = useGetQuestion();
 	const questionData = getQuestion(GET_QUESTION);
 	const theme = useTheme();
@@ -65,10 +60,7 @@ const HealthAndWellnessQ1 = ({
 				margin='0 0 20px 0'
 			>
 				<Text typography='subheading' textAlign='center' size={18}>
-					Screens can have an effect on our physical and emotional health.
-					<br />
-					Let&apos;s talk about ways to keep our minds and bodies in tip top
-					shape!
+					{questionData?.data?.slide?.header}
 				</Text>
 			</Box>
 			<Box
@@ -79,7 +71,12 @@ const HealthAndWellnessQ1 = ({
 				margin='15px 0'
 			>
 				<Text typography='subheading' textAlign='center' size={16}>
-					{questionData.data.first.text}
+					{questionData?.data?.slide?.questions[0]?.text.replace(
+						'(CHILD)',
+						quizState.guestChild ||
+							(authState.user?.children && authState.user?.children[0]?.name) ||
+							'CHILD',
+					)}
 				</Text>
 				<Box
 					width='100%'
@@ -103,8 +100,14 @@ const HealthAndWellnessQ1 = ({
 				margin='15px 0'
 			>
 				<Text typography='subheading' textAlign='center' size={16}>
-					(CHILD AND ADULT), what else can you agree to do to keep your bodies
-					healthy?
+					{quizState.guestChild ||
+						(authState.user?.children && authState.user?.children[0]?.name) ||
+						'CHILD'}{' '}
+					and{' '}
+					{quizState.guestAdult ||
+						(authState.user && authState.user?.name) ||
+						'ADULT'}
+					, what else can you agree to do to keep your bodies healthy?
 				</Text>
 				<Box
 					width='100%'
@@ -117,9 +120,9 @@ const HealthAndWellnessQ1 = ({
 				>
 					<YesNo
 						questions={[
-							questionData.data.second,
-							questionData.data.third,
-							questionData.data.fourth,
+							questionData?.data?.slide?.questions[1],
+							questionData?.data?.slide?.questions[2],
+							questionData?.data?.slide?.questions[3],
 						]}
 					/>
 				</Box>

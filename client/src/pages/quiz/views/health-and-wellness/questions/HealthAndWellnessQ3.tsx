@@ -9,25 +9,13 @@ import { QuizAnswersContext } from '../../../Quiz';
 
 const GET_QUESTION = gql`
 	query {
-		first: question(id: 47) {
-			id
-			text
-		}
-		second: question(id: 48) {
-			id
-			text
-		}
-		third: question(id: 49) {
-			id
-			text
-		}
-		fourth: question(id: 50) {
-			id
-			text
-		}
-		five: question(id: 51) {
-			id
-			text
+		slide(id: 21) {
+			slide_number
+			header
+			questions {
+				id
+				text
+			}
 		}
 	}
 `;
@@ -62,8 +50,7 @@ const HealthAndWellnessQ3 = ({
 				margin='0 0 35px 0'
 			>
 				<Text typography='subheading' textAlign='center' size={18}>
-					The way we use our devices can improve or worsen our moods. What can
-					we agree to as a family to help support our mental health?
+					{questionData?.data?.slide?.header}
 				</Text>
 			</Box>
 			<Box
@@ -75,11 +62,11 @@ const HealthAndWellnessQ3 = ({
 			>
 				<YesNo
 					questions={[
-						questionData.data.first,
-						questionData.data.second,
-						questionData.data.third,
-						questionData.data.fourth,
-						questionData.data.five,
+						questionData?.data?.slide?.questions[0],
+						questionData?.data?.slide?.questions[1],
+						questionData?.data?.slide?.questions[2],
+						questionData?.data?.slide?.questions[3],
+						questionData?.data?.slide?.questions[4],
 					]}
 				/>
 			</Box>
