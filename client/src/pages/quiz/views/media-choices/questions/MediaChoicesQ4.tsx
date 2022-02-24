@@ -41,16 +41,25 @@ const MediaChoicesQ4 = ({
 	const [deviceUseTime, setDeviceUseTime] = useState('');
 	const [screenTimePercentage, setScreenTimePercentage] = useState('50');
 
-	// useEffect(() => {
-	// 	quizDispatch({
-	// 		type: 'SET_ANSWER',
-	// 		payload: { id: 29, value: deviceUseTime },
-	// 	});
-	// 	quizDispatch({
-	// 		type: 'SET_ANSWER',
-	// 		payload: { id: 30, value: screenTimePercentage },
-	// 	});
-	// }, [deviceUseTime, screenTimePercentage]);
+	useEffect(() => {
+		if (questionData?.data?.slide?.questions[0]?.id) {
+			quizDispatch({
+				type: 'SET_ANSWER',
+				payload: {
+					id: questionData?.data?.slide?.questions[0]?.id,
+					value: deviceUseTime,
+				},
+			});
+		}
+		if (questionData?.data?.slide?.questions[1]?.id)
+			quizDispatch({
+				type: 'SET_ANSWER',
+				payload: {
+					id: questionData?.data?.slide?.questions[1]?.id,
+					value: screenTimePercentage,
+				},
+			});
+	}, [questionData?.data?.slide, deviceUseTime, screenTimePercentage]);
 
 	if (questionData.loading)
 		return (
@@ -123,7 +132,21 @@ const MediaChoicesQ4 = ({
 					margin='0 0 25px 0'
 				>
 					<Text typography='subheading' textAlign='center' size={18}>
-						{questionData?.data?.slide?.questions[1]?.text}
+						{questionData?.data?.slide?.questions[1]?.text
+							.replace(
+								'(CHILD)',
+								quizState.guestChild ||
+									(authState.user?.children &&
+										authState.user?.children[0]?.name) ||
+									'CHILD',
+							)
+							.replace(
+								'(CHILD)',
+								quizState.guestChild ||
+									(authState.user?.children &&
+										authState.user?.children[0]?.name) ||
+									'CHILD',
+							)}
 					</Text>
 					<Box
 						width='100%'

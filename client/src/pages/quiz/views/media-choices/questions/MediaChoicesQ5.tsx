@@ -36,20 +36,30 @@ const MediaChoicesQ5 = ({
 	const { getQuestion } = useGetQuestion();
 	const questionData = getQuestion(GET_QUESTION);
 	const theme = useTheme();
+	console.log({ questionData });
 
 	const [deviceUseTime, setDeviceUseTime] = useState('');
-	const [screenTimePercentage, setScreenTimePercentage] = useState('0');
+	const [screenTimePercentage, setScreenTimePercentage] = useState('50');
 
-	// useEffect(() => {
-	// 	quizDispatch({
-	// 		type: 'SET_ANSWER',
-	// 		payload: { id: 71, value: deviceUseTime },
-	// 	});
-	// 	quizDispatch({
-	// 		type: 'SET_ANSWER',
-	// 		payload: { id: 72, value: screenTimePercentage },
-	// 	});
-	// }, [deviceUseTime, screenTimePercentage]);
+	useEffect(() => {
+		if (questionData?.data?.slide?.questions[0]?.id) {
+			quizDispatch({
+				type: 'SET_ANSWER',
+				payload: {
+					id: questionData?.data?.slide?.questions[0]?.id,
+					value: deviceUseTime,
+				},
+			});
+		}
+		if (questionData?.data?.slide?.questions[1]?.id)
+			quizDispatch({
+				type: 'SET_ANSWER',
+				payload: {
+					id: questionData?.data?.slide?.questions[1]?.id,
+					value: screenTimePercentage,
+				},
+			});
+	}, [questionData?.data?.slide, deviceUseTime, screenTimePercentage]);
 
 	if (questionData.loading)
 		return (
@@ -122,7 +132,19 @@ const MediaChoicesQ5 = ({
 					margin='0 0 25px 0'
 				>
 					<Text typography='subheading' textAlign='center' size={18}>
-						{questionData.data.second.text}
+						{questionData?.data?.slide?.questions[1]?.text
+							.replace(
+								'(ADULT)',
+								quizState.guestAdult ||
+									(authState.user && authState.user?.name) ||
+									'ADULT',
+							)
+							.replace(
+								"(ADULT'S)",
+								quizState.guestAdult ||
+									(authState.user && authState.user?.name) ||
+									'ADULT',
+							)}
 					</Text>
 					<Box
 						width='100%'

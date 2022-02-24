@@ -33,6 +33,7 @@ const MediaChoicesQ6 = ({
 	const { getQuestion } = useGetQuestion();
 	const questionData = getQuestion(GET_QUESTION);
 	const theme = useTheme();
+	console.log({ questionData });
 
 	// useEffect(() => {
 	// 	quizDispatch({
