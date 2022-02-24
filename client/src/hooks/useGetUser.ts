@@ -13,6 +13,10 @@ const GET_ME = gql`
 				state
 				ethnicity
 				primary_lang
+				children {
+					name
+					age
+				}
 			}
 		}
 	}

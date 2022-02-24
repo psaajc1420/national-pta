@@ -34,7 +34,8 @@ const DataIntakeForm = () => {
 				race,
 				ethnicity,
 				primary_lang: primaryLang,
-				hear_about: howDidYouHear,
+				is_registered: true,
+				// hear_about: howDidYouHear,
 			},
 		);
 		createChild(childName, Number(childAge), authState.user.id);
