@@ -14,10 +14,6 @@
     "quiz": {
       "model": "quiz",
       "via": "quiz_answers"
-    },
-    "question_answer": {
-      "model": "question-answer",
-      "via": "quiz_answers"
     }
   }
 }
