@@ -39,6 +39,11 @@ export const CATEGORIES = {
 		iconSvg: '/assets/illustrations/NPTA_Keeping Our Promises Rev2.png',
 		color: 'purple',
 	},
+	loginWelcome: {
+		id: 7,
+		label: 'Welcome',
+		name: 'logged-in-welcome',
+	},
 };
 
 export const CATEGORIES_ARR = [
@@ -48,6 +53,7 @@ export const CATEGORIES_ARR = [
 		name: 'privacy-and-safety',
 		iconSvg: '/assets/illustrations/NPTA_Privacy and Safety.png',
 		quizIconSvg: '/assets/illustrations/NPTA_Privacy and Safety_simple.png',
+		animatedIcon: '/assets/animations/NPTA_Privacy and Safety.mp4',
 		color: 'red',
 	},
 	{
@@ -56,6 +62,7 @@ export const CATEGORIES_ARR = [
 		name: 'communication',
 		iconSvg: '/assets/illustrations/NPTA_Communication Rev2.png',
 		quizIconSvg: '/assets/illustrations/NPTA_Communication_simple.png',
+		animatedIcon: '/assets/animations/NPTA_Communication Rev2.mp4',
 		color: 'orange',
 	},
 	{
@@ -64,6 +71,7 @@ export const CATEGORIES_ARR = [
 		name: 'media-choices',
 		iconSvg: '/assets/illustrations/NPTA_Media Choices.png',
 		quizIconSvg: '/assets/illustrations/NPTA_Media Choices_Simple.png',
+		animatedIcon: '/assets/animations/NPTA_Media Choices.mp4',
 		color: 'green',
 	},
 	{
@@ -72,6 +80,7 @@ export const CATEGORIES_ARR = [
 		name: 'health-and-wellness',
 		iconSvg: '/assets/illustrations/NPTA_Health and Wellness Rev2.png',
 		quizIconSvg: '/assets/illustrations/NPTA_Health and Wellness_simple.png',
+		animatedIcon: '/assets/animations/NPTA_Health and WellnessRev2.mp4',
 		color: 'lightBlue',
 	},
 	{
@@ -80,6 +89,7 @@ export const CATEGORIES_ARR = [
 		name: 'keeping-our-promises',
 		iconSvg: '/assets/illustrations/NPTA_Keeping Our Promises Rev2.png',
 		quizIconSvg: '/assets/illustrations/NPTA_Keeping Our Promises_simple.png',
+		animatedIcon: '/assets/animations/NPTA_Keeping Our Promises Rev2.mp4',
 		color: 'purple',
 	},
 ];

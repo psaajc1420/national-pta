@@ -1,14 +1,16 @@
 import { useState, useContext, useEffect } from 'react';
-import styled from '@emotion/styled';
 import { useTheme } from '@emotion/react';
 import { Box, Button, Text } from '../../../../components';
 import { CATEGORIES, AGE_GROUPS_ARR } from '../../../../constants';
 import { CategoryButton } from '../../components';
 import { QuizAnswersContext } from '../../Quiz';
+import { AuthContext } from '../../../../App';
 
-const QuizWelcome = () => {
+const UserWelcome = () => {
 	// @ts-expect-error
 	const { quizDispatch } = useContext(QuizAnswersContext);
+	// @ts-expect-error
+	const { authState } = useContext(AuthContext);
 	const theme = useTheme();
 	const [selectedAgeGroup, setSelectedAgeGroup] = useState('');
 
@@ -46,10 +48,8 @@ const QuizWelcome = () => {
 					color={theme.color.black}
 					textAlign='center'
 				>
-					Welcome,
-					<StyledWelcomeInput type='text' />
-					and
-					<StyledWelcomeInput type='text' />. <br />
+					Welcome, {authState.user.name} and {authState.user.children[0].name}.{' '}
+					<br />
 					Are you ready to have Smart Talk?
 				</Text>
 				<Box
@@ -106,9 +106,4 @@ const QuizWelcome = () => {
 	);
 };
 
-export default QuizWelcome;
-
-const StyledWelcomeInput = styled('input')(() => ({
-	border: 'none',
-	borderBottom: '1px solid black',
-}));
+export default UserWelcome;

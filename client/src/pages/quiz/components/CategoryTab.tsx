@@ -68,10 +68,10 @@ const StyledTab = styled('div')<CategoryTabProps>(
 		zIndex: 899,
 		cursor: 'pointer',
 		transition: 'all .1s ease-in-out',
-		transform: selectedTab ? 'scale(1.1)' : undefined,
+		transform: selectedTab ? 'scale(1.2)' : undefined,
 		marginRight: selectedTab ? 50 : undefined,
 		['&:hover']: {
-			transform: disabled ? 'none' : 'scale(1.1)',
+			transform: disabled ? 'none' : 'scale(1.2)',
 		},
 	}),
 );

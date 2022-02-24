@@ -1,15 +1,22 @@
-import { createContext, useEffect, useReducer, useState } from 'react';
+import {
+	createContext,
+	useContext,
+	useEffect,
+	useReducer,
+	useState,
+} from 'react';
 // import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import { Box, Text, Todo } from '../../components';
 import { CategoryTab } from './components';
 import { CATEGORIES, CATEGORIES_ARR } from '../../constants/category-constants';
-import { QuizWelcome } from './views/welcome';
+import { UserWelcome, QuizWelcome } from './views/welcome';
 import PrivacyAndSafety from './views/privacy-and-safety';
 import Communication from './views/communication';
 import MediaChoices from './views/media-choices';
 import HealthAndWellness from './views/health-and-wellness';
 import KeepingOurPromises from './views/keeping-our-promises';
+import { AuthContext } from '../../App';
 
 const quizInitialState = {
 	currentCategory: '',
@@ -85,6 +92,8 @@ export const QuizAnswersContext = createContext(quizInitialState);
 
 const quizReducer = (state: any, action: any) => {
 	switch (action.type) {
+		case 'USER_WELCOME':
+			return { ...state, currentCategory: 'logged-in-welcome' };
 		case 'GUEST_WELCOME':
 			return { ...state, currentCategory: 'welcome' };
 		case 'SET_CATEGORY_AND_AGE':
@@ -97,6 +106,11 @@ const quizReducer = (state: any, action: any) => {
 			return {
 				...state,
 				currentCategory: action.payload.category,
+			};
+		case 'SET_AGE_GROUP':
+			return {
+				...state,
+				currentAgeGroup: action.payload.ageGroup,
 			};
 		case 'SET_ANSWER':
 			return {
@@ -116,16 +130,28 @@ const Quiz = () => {
 	// const theme = useTheme();
 	const [quizState, quizDispatch] = useReducer(quizReducer, quizInitialState);
 	const [loggedIn, setLoggedIn] = useState(false);
+	// @ts-expect-error
+	const { authState } = useContext(AuthContext);
 	// TODO: Add useEffect matching currentCategory and currentAgeGroup to child
 
 	useEffect(() => {
-		if (!loggedIn) {
+		if (authState?.loggedIn) {
+			setLoggedIn(true);
+		}
+	}, [authState?.loggedIn]);
+
+	useEffect(() => {
+		if (loggedIn) {
+			quizDispatch({ type: 'USER_WELCOME' });
+		} else {
 			quizDispatch({ type: 'GUEST_WELCOME' });
 		}
 	}, [loggedIn]);
 
 	const renderCurrentCategoryHeading = (param: string) => {
 		switch (param) {
+			case CATEGORIES.loginWelcome.name:
+				return null;
 			case CATEGORIES.welcome.name:
 				return null;
 			case CATEGORIES.privacyAndSafety.name:
@@ -145,6 +171,8 @@ const Quiz = () => {
 
 	const renderCurrentUI = (param: string) => {
 		switch (param) {
+			case CATEGORIES.loginWelcome.name:
+				return <UserWelcome />;
 			case CATEGORIES.welcome.name:
 				return <QuizWelcome />;
 			case CATEGORIES.privacyAndSafety.name:
@@ -222,7 +250,8 @@ const Quiz = () => {
 									}}
 									selectedTab={quizState.currentCategory === e.name}
 									disabled={
-										quizState.currentCategory === CATEGORIES.welcome.name
+										quizState.currentCategory === CATEGORIES.welcome.name ||
+										quizState.currentCategory === CATEGORIES.loginWelcome.name
 									}
 									label={e.label}
 								>

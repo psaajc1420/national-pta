@@ -1,22 +1,41 @@
-import React from 'react';
+import { useContext, useState, useEffect } from 'react';
 import styled from '@emotion/styled';
+import { QuizAnswersContext } from '../Quiz';
 
 interface CategoryButtonProps {
-	children: React.ReactNode;
+	icon?: string;
+	ageGroup?: string;
 	onClick: any;
-	bgColor: string;
 	selected?: boolean;
+	isClickDisabled?: boolean;
 }
 
 const CategoryButton = ({
-	children,
-	bgColor,
+	icon,
+	ageGroup,
 	onClick,
 	selected,
 }: CategoryButtonProps) => {
+	// @ts-expect-error
+	const { quizState } = useContext(QuizAnswersContext);
+	const [isClickDisabled, setIsClickDisabled] = useState(false);
+	useEffect(() => {
+		if (
+			quizState.currentAgeGroup.length > 0 &&
+			quizState.currentAgeGroup !== ageGroup &&
+			!selected
+		) {
+			setIsClickDisabled(true);
+		}
+	}, [quizState.currentAgeGroup]);
 	return (
-		<StyledButton bgColor={bgColor} onClick={onClick} selected={selected}>
-			{children}
+		// @ts-expect-error
+		<StyledButton
+			onClick={isClickDisabled ? null : () => onClick()}
+			selected={selected}
+			isClickDisabled={isClickDisabled}
+		>
+			<img src={window.location.origin + icon} alt={ageGroup} />
 		</StyledButton>
 	);
 };
@@ -24,20 +43,23 @@ const CategoryButton = ({
 export default CategoryButton;
 
 const StyledButton = styled('div')<CategoryButtonProps>(
-	({ bgColor, theme, selected }) => ({
-		width: 125,
+	({ selected, isClickDisabled }) => ({
+		width: 150,
 		height: 75,
 		display: 'flex',
 		justifyContent: 'center',
 		alignItems: 'center',
 		borderRadius: 25,
-		// @ts-expect-error
-		backgroundColor: `${theme.color[bgColor]}`,
 		cursor: 'pointer',
 		transition: 'all .1s ease-in-out',
-		transform: selected ? 'scale(1.1)' : undefined,
+		transform: selected ? 'scale(1.2)' : undefined,
 		['&:hover']: {
-			transform: 'scale(1.1)',
+			transform: isClickDisabled ? undefined : 'scale(1.2)',
+		},
+
+		img: {
+			width: 150,
+			height: 'auto',
 		},
 	}),
 );
