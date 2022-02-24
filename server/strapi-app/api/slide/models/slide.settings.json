@@ -20,6 +20,9 @@
     },
     "questions": {
       "collection": "question"
+    },
+    "age_group": {
+      "model": "age-group"
     }
   }
 }

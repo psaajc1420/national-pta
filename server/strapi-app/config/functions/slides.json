@@ -1,0 +1,190 @@
+{
+  "0": {
+     "header": "It  is important to be thoughtful and cautious when using technology. We must take steps to keep our private information to ourselves. There are many ways to protect our information, our accounts and our devices. Let's talk about some options!",
+     "questions": [107, 43, 86]
+  },
+  "1": {
+    "header":  "Tools on our devices called 'privacy settings' help us decide who can see the things we share - like our location, photos, apps and more. Select the privacy settings you would like to work on together after this conversation.",
+    "questions": [62, 126, 44, 137]
+  },
+  "2": {
+    "header":  "We can also protect our privacy and stay safe through the choices we make when we are online. (CHILD), what do you agree to do to protect yourself when you are using your device?",
+    "questions": [87, 32, 144, 82]
+  },
+  "3": {
+    "header":  "What else will we do to protect our information and stay safe?",
+    "questions": [23, 66, 70]
+  },
+  "4": {
+    "header":  "There are so many ways to talk to others through technology.",
+    "questions": [78]
+  },
+  "7": {
+    "header":  "",
+    "questions": [130]
+  },
+  "8": {
+    "header": "Talking through a device can sometimes lead to misunderstandings and upset feelings.",
+    "questions": [6, 30, 79]
+  },
+  "9": {
+    "header": "Technology is a great way to communicate, but we want to represent ourselves and our family well when we post online. We also want to share in ways that honor and respect the feelings of others. Let's talk about what types of information our family is comfortable sharing publicly.",
+    "questions": [132, 25]
+  },
+  "10": {
+    "header": "",
+    "questions": [69, 105, 81]
+  },
+  "11": {
+    "header": "",
+    "questions": [112]
+  },
+  "12": {
+    "header": "",
+    "questions": [9]
+  },
+  "13": {
+    "header": "There is so much information online, but not all of it is meant for kids. Which content is appropriate for (CHILD)?",
+    "questions": [57, 67, 41, 146]
+  },
+  "14": {
+    "header": "Just like there are device settings that help us maintain privacy, there are settings that can help us control what we can download, search for or access online. Which settings will your family set up to help you stick to your media agreements?",
+    "questions": [76, 39, 5, 95]
+  },
+  "15": {
+    "header": "Not all screen time is created equally!",
+    "questions": [40]
+  },
+  "16": {
+    "header": "Not all screen time is created equally!",
+    "questions": [104]
+  },
+  "17": {
+    "header": "Not all content on the internet is appropriate for kids. It is important to think about what kinds of online content make us feel good and what makes us feel scared, confused, sad or otherwise not so great. Let's talk about what types of content make us uncomfortable when we see it.",
+    "question": [2, 1, 88]
+  },
+  "18": {
+    "header":"What strategies can our family try to help avoid inappropriate content?",
+    "questions": [138, 11, 59, 61]
+  },
+  "19": {
+    "header": "",
+    "questions": [34]
+  },
+  "20": {
+    "header": "Screens can have an effect on our physical and emotional health. Let's talk about ways to keep our minds and bodies in tip top shape!",
+    "questions": [18, 42, 51, 136]
+  },
+  "21": {
+    "header": "",
+    "questions": [106, 27, 56, 74]
+  },
+  "22": {
+    "header": "The way we use our devices can improve or worsen our moods. What can we agree to as a family to help support our mental health?",
+    "questions": [10, 12, 65, 114, 122]
+  },
+  "23": {
+    "header": "",
+    "questions": [99, 35, 133]
+  },
+  "24": {
+    "header": "",
+    "questions": [64, 120, 89, 33]
+  },
+  "25": {
+    "header": "",
+    "questions": [83]
+  },
+  "26": {
+    "header": "It is important to be thoughtful and cautious when using technology. We must take steps to keep our private information from getting into the wrong hands. There are many ways to protect our information, our accounts and our devices. Let's talk about some options!",
+    "questions": []
+  },
+  "27": {
+    "header": "Privacy settings help us control our information, who can see it and what can be done with the data. By working on our settings, we can decide which companies and people can see information like our location, the images we've taken, which apps we've downloaded or even our browser history. Select the privacy settings you would like to work on together after this conversation.",
+    "questions": []
+  },
+  "28": {
+    "header": "We can also protect our privacy and stay safe through the choices we make when we are online. (CHILD), what do you agree to do to protect yourself when you are using your device?",
+    "questions": []
+  },
+  "29": {
+    "header": "What else will we do to help uphold rules, protect our information and stay safe?",
+    "questions": []
+  },
+  "30": {
+    "header": "There are so many ways to talk with others through technology.",
+    "questions": []
+  },
+  "31": {
+    "header": "Talking through a device can sometimes lead to 'digital drama' and upset feelings among friends and classmates.",
+    "questions": []
+  },
+  "32": {
+    "header": "Technology is a great way to communicate, but we want to represent ourselves and our family well when we post online. We also want to share in ways that honor and respect the feelings of others. Let's talk about what types of information our family is comfortable sharing publicly.",
+    "questions": []
+  },
+  "33": {
+    "header": "",
+    "questions": []
+  },
+  "34": {
+    "header": "",
+    "questions": []
+  },
+  "35": {
+    "header": "",
+    "questions": []
+  },
+  "36": {
+    "header": "",
+    "questions": []
+  },
+  "37": {
+    "header": "Just like there are device settings that help us maintain privacy, there are settings that can help us control what we can download, search for or access online. Which settings will your family set up to help you uphold your media agreements?",
+    "questions": []
+  },
+  "38": {
+    "header": "Not all screen time is created equally!",
+    "questions": []
+  },
+  "39": {
+    "header": "Not all screen time is created equally!",
+    "questions": []
+  },
+  "40": {
+    "header": "Not all content on the internet is appropriate for young people. It is important to think about what kinds of online content make us feel good and what makes us feel scared, confused, sad or otherwise not so great. Let's talk about what types of content that makes us uncomfortable when we see it.",
+    "questions": []
+  },
+  "41": {
+    "header":"What strategies can our family try to help avoid inappropriate content?",
+    "questions": []
+  },
+  "42": {
+    "header": "",
+    "questions": []
+  },
+  "43": {
+    "header": "Screens can have an effect on our physical and emotional health. Let's talk about ways to keep our minds and bodies in tip top shape!",
+    "questions": []
+  },
+  "44": {
+    "header": "",
+    "questions": []
+  },
+  "45": {
+    "header": "The way we use our devices can improve or worsen our moods. What can we agree to as a family to help support our mental health?",
+    "questions": []
+  },
+  "46": {
+    "header": "",
+    "questions": []
+  },
+  "47": {
+    "header": "",
+    "questions": []
+  },
+  "48": {
+    "header": "",
+    "questions": []
+  }
+}
