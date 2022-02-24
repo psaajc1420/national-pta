@@ -58,12 +58,14 @@ const Footer = () => {
 						align='center'
 						padding='0 8px'
 					>
-						<img
-							width='auto'
-							height={35}
-							src={window.location.origin + '/assets/logos/NPTA White.png'}
-							alt='Norton logo'
-						/>
+						<a href='https://pta.org' target='_blank' rel='noreferrer'>
+							<img
+								width='auto'
+								height={35}
+								src={window.location.origin + '/assets/logos/NPTA White.png'}
+								alt='NPTA logo'
+							/>
+						</a>
 					</Box>
 					<Box
 						width='auto'
@@ -73,15 +75,17 @@ const Footer = () => {
 						align='center'
 						padding='0 8px'
 					>
-						<img
-							width='auto'
-							height={35}
-							src={
-								window.location.origin +
-								'/assets/logos/NortonFull-Horizontal-Dark-RGB-Web.png'
-							}
-							alt='Norton logo'
-						/>
+						<a href='https://norton.com' target='_blank' rel='noreferrer'>
+							<img
+								width='auto'
+								height={35}
+								src={
+									window.location.origin +
+									'/assets/logos/NortonFull-Horizontal-Dark-RGB-Web.png'
+								}
+								alt='Norton logo'
+							/>
+						</a>
 					</Box>
 				</Box>
 			</Box>

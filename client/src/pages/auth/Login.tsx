@@ -111,9 +111,9 @@ const Login = () => {
 								}
 							>
 								<Text
-									typography='subheading'
+									typography='heading'
 									textAlign='center'
-									color={theme.color.white}
+									color={theme.color.black}
 								>
 									Login
 								</Text>

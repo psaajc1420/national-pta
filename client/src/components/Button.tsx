@@ -53,28 +53,32 @@ const StyledButton = styled('button')<ButtonProps>(
 		disabled,
 	}) => ({
 		backgroundColor: disabled
-			? theme.color.red
+			? theme.color.gray
 			: backgroundColor
 			? backgroundColor
 			: 'transparent',
-		color: backgroundColor ? theme.color.white : theme.color.black,
+		color: disabled
+			? theme.color.black
+			: backgroundColor
+			? theme.color.white
+			: theme.color.black,
 		width: width,
 		height: height,
 		borderRadius: borderRadius ? borderRadius : 56,
 		border: disabled
-			? theme.color.red
+			? theme.color.gray
 			: border
 			? border
 			: `3px solid ${theme.color.blue}`,
 		cursor: 'pointer',
 		['&:hover']: {
 			backgroundColor: disabled
-				? theme.color.red
+				? theme.color.gray
 				: backgroundColor
 				? 'transparent'
 				: theme.color.blue,
 			color: disabled
-				? theme.color.white
+				? theme.color.black
 				: backgroundColor
 				? theme.color.black
 				: theme.color.white,

@@ -29,12 +29,20 @@ const Header = ({
 			// top={0}
 			// zIndex={999}
 		>
-			<Link to='/'>
-				<HeaderLogo
-					src={window.location.origin + '/assets/logos/SmartTalk_Logo.svg'}
-					alt='The Smart Talk logo'
-				/>
-			</Link>
+			<Box
+				width='auto'
+				height='auto'
+				center
+				backgroundColor='transperant'
+				zIndex={999}
+			>
+				<Link to='/'>
+					<HeaderLogo
+						src={window.location.origin + '/assets/logos/SmartTalk_Logo.svg'}
+						alt='The Smart Talk logo'
+					/>
+				</Link>
+			</Box>
 
 			{!isMobile && (
 				<Box
@@ -117,6 +125,7 @@ const NavLink = styled(Link)(() => ({
 }));
 
 const HeaderLogo = styled('img')(() => ({
-	width: 150,
-	height: 90,
+	width: 200,
+	height: 120,
+	marginTop: 15,
 }));
