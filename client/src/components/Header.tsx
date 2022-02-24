@@ -24,7 +24,7 @@ const Header = ({
 			display='flex'
 			justify='space-between'
 			align='center'
-			backgroundColor='inherit'
+			backgroundColor='transperant'
 			// position='fixed'
 			// top={0}
 			// zIndex={999}
@@ -51,7 +51,7 @@ const Header = ({
 					flexDirection='row'
 					justify='space-around'
 					align='center'
-					backgroundColor='inherit'
+					backgroundColor='transperant'
 					zIndex={997}
 				>
 					<LanguageDropdown
@@ -64,7 +64,7 @@ const Header = ({
 							width={50}
 							height='100%'
 							display='block'
-							backgroundColor='inherit'
+							backgroundColor='transperant'
 						>
 							<Text
 								typography='subheading'
@@ -81,7 +81,7 @@ const Header = ({
 							width={50}
 							height='100%'
 							display='block'
-							backgroundColor='inherit'
+							backgroundColor='transperant'
 						>
 							<Text
 								typography='subheading'
@@ -98,7 +98,7 @@ const Header = ({
 							width={50}
 							height='100%'
 							display='block'
-							backgroundColor='inherit'
+							backgroundColor='transperant'
 						>
 							<Text
 								typography='subheading'
