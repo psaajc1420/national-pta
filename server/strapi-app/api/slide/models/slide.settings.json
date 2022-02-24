@@ -17,6 +17,9 @@
     },
     "slide_number": {
       "type": "integer"
+    },
+    "questions": {
+      "collection": "question"
     }
   }
 }
