@@ -14,7 +14,7 @@ const Register = () => {
 	const { authState } = useContext(AuthContext);
 	const theme = useTheme();
 	const [view, setView] = useState('default');
-	const { register, error } = useRegister();
+	const { register, data, error } = useRegister();
 	const [err, setErr] = useState('');
 	const [isRegistered, setIsRegistered] = useState(false);
 
@@ -38,6 +38,13 @@ const Register = () => {
 			setIsRegistered(true);
 		}
 	}, [authState?.user?.is_registered]);
+
+	useEffect(() => {
+		if (data?.register?.jwt) {
+			localStorage.setItem('token', data?.register?.jwt);
+			window.location.reload();
+		}
+	}, [data?.register?.jwt]);
 
 	return (
 		<>

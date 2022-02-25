@@ -54,8 +54,7 @@ const YesNo = ({ questions }: { questions: any }) => {
 				{questions &&
 					questions.map((e: any) => (
 						<Text key={e.id} typography='text' size={16}>
-							{e.text
-								.replace(
+							{e.text.replace(
 									'(CHILD)',
 									quizState.guestChild ||
 										(authState.user?.children &&

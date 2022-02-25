@@ -21,13 +21,6 @@ const useRegister = () => {
 		postRegister({ variables: { username: email, email, password } });
 	};
 
-	useEffect(() => {
-		if (data?.register?.jwt) {
-			localStorage.setItem('token', data?.register?.jwt);
-			window.location.reload();
-		}
-	}, [data?.register?.jwt]);
-
 	return { register, data, loading, error };
 };
 
