@@ -2,7 +2,7 @@ import { useContext, useState, useEffect } from 'react';
 import styled from '@emotion/styled';
 import { QuizAnswersContext } from '../Quiz';
 
-interface CategoryButtonProps {
+interface AgeGroupButtonProps {
 	icon?: string;
 	ageGroup?: string;
 	onClick: any;
@@ -10,12 +10,12 @@ interface CategoryButtonProps {
 	isClickDisabled?: boolean;
 }
 
-const CategoryButton = ({
+const AgeGroupButton = ({
 	icon,
 	ageGroup,
 	onClick,
 	selected,
-}: CategoryButtonProps) => {
+}: AgeGroupButtonProps) => {
 	// @ts-expect-error
 	const { quizState } = useContext(QuizAnswersContext);
 	const [isClickDisabled, setIsClickDisabled] = useState(false);
@@ -40,9 +40,9 @@ const CategoryButton = ({
 	);
 };
 
-export default CategoryButton;
+export default AgeGroupButton;
 
-const StyledButton = styled('div')<CategoryButtonProps>(
+const StyledButton = styled('div')<AgeGroupButtonProps>(
 	({ selected, isClickDisabled }) => ({
 		width: 150,
 		height: 75,

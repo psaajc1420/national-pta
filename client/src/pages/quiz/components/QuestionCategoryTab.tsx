@@ -5,7 +5,7 @@ import ReactTooltip from 'react-tooltip';
 import { useTheme } from '@emotion/react';
 import { Text } from '../../../components';
 
-interface CategoryTabProps {
+interface QuestionCategoryTabProps {
 	children: React.ReactNode;
 	onClick: any;
 	ringColor: string;
@@ -14,14 +14,14 @@ interface CategoryTabProps {
 	label?: string;
 }
 
-const CategoryTab = ({
+const QuestionCategoryTab = ({
 	children,
 	ringColor,
 	onClick,
 	selectedTab,
 	disabled,
 	label,
-}: CategoryTabProps) => {
+}: QuestionCategoryTabProps) => {
 	const theme = useTheme();
 	const handleTabClick = () => {
 		if (!disabled) {
@@ -53,9 +53,9 @@ const CategoryTab = ({
 	);
 };
 
-export default CategoryTab;
+export default QuestionCategoryTab;
 
-const StyledTab = styled('div')<CategoryTabProps>(
+const StyledTab = styled('div')<QuestionCategoryTabProps>(
 	({ ringColor, theme, selectedTab, disabled }) => ({
 		width: 75,
 		height: 75,

@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import { useTheme } from '@emotion/react';
 import { Box, Button, Text } from '../../../../components';
 import { CATEGORIES, AGE_GROUPS_ARR } from '../../../../constants';
-import { CategoryButton } from '../../components';
+import { AgeGroupButton } from '../../components';
 import { QuizAnswersContext } from '../../Quiz';
 
 const QuizWelcome = () => {
@@ -87,7 +87,7 @@ const QuizWelcome = () => {
 				backgroundColor='inherit'
 			>
 				{AGE_GROUPS_ARR.map((e) => (
-					<CategoryButton
+					<AgeGroupButton
 						key={e.id}
 						onClick={() => setSelectedAgeGroup(e.ageGroup)}
 						selected={selectedAgeGroup === e.ageGroup}

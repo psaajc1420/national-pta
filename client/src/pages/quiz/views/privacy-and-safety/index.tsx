@@ -6,6 +6,7 @@ import {
 	PrivacyAndSafetyQ2,
 	PrivacyAndSafetyQ3,
 	PrivacyAndSafetyQ4,
+	TestQuestion,
 } from './questions';
 import { QuizAnswersContext } from '../../Quiz';
 
@@ -63,13 +64,25 @@ const index = () => {
 				onHandlePreviousQuestion={handlePreviousQuestion}
 			/>
 		),
+		5: (
+			<TestQuestion
+				onHandleNextQuestion={handleNextQuestion}
+				onHandlePreviousQuestion={handlePreviousQuestion}
+			/>
+		),
 	};
 
 	useEffect(() => {
 		if (quizState.currentAgeGroup === AGE_GROUPS.group5to8.name) {
 			dispatch({
 				type: 'SET_FLOW',
-				payload: [QUESTIONS[1], QUESTIONS[2], QUESTIONS[3], QUESTIONS[4]],
+				payload: [
+					QUESTIONS[5],
+					QUESTIONS[1],
+					QUESTIONS[2],
+					QUESTIONS[3],
+					QUESTIONS[4],
+				],
 			});
 		} else {
 			dispatch({

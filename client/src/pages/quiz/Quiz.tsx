@@ -8,7 +8,7 @@ import {
 // import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import { Box, Text, Todo } from '../../components';
-import { CategoryTab } from './components';
+import { QuestionCategoryTab } from './components';
 import { CATEGORIES, CATEGORIES_ARR } from '../../constants/category-constants';
 import { UserWelcome, QuizWelcome } from './views/welcome';
 import PrivacyAndSafety from './views/privacy-and-safety';
@@ -152,18 +152,18 @@ const Quiz = () => {
 					position='relative'
 				>
 					<Todo />
-					<QuizCircles
+					{/* <QuizCircles
 						src={
 							window.location.origin +
 							'/assets/illustrations/Quiz Beginning Circles.svg'
 						}
 						alt='Background circles'
-					/>
+					/> */}
 					<Box
 						width='80%'
 						maxWidth={1000}
 						height='80%'
-						maxHeight={800}
+						maxHeight={1200}
 						center
 						backgroundColor='#ffffff'
 						borderRadius={75}
@@ -184,7 +184,7 @@ const Quiz = () => {
 							backgroundColor='transparent'
 						>
 							{CATEGORIES_ARR.map((e) => (
-								<CategoryTab
+								<QuestionCategoryTab
 									key={e.id}
 									ringColor={e.color}
 									onClick={() => {
@@ -206,7 +206,7 @@ const Quiz = () => {
 										src={window.location.origin + e.quizIconSvg}
 										alt={e.label}
 									/>
-								</CategoryTab>
+								</QuestionCategoryTab>
 							))}
 						</Box>
 						{''}

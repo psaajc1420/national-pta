@@ -37,110 +37,122 @@ const YesNo = ({ questions }: { questions: any }) => {
 	return (
 		<Box
 			width='100%'
-			height='100%'
+			height='auto'
+			minHeight={100}
 			display='flex'
-			justify='space-around'
+			flexDirection='column'
 			align='center'
 			backgroundColor='transperant'
+			margin='0 0 15px 0'
 		>
 			<Box
-				width='auto'
+				width='100%'
 				height='100%'
 				display='flex'
-				flexDirection='column'
 				justify='space-around'
-				backgroundColor='transperant'
-			>
-				{questions &&
-					questions.map((e: any) => (
-						<Text key={e.id} typography='text' size={16}>
-							{e.text.replace(
-									'(CHILD)',
-									quizState.guestChild ||
-										(authState.user?.children &&
-											authState.user?.children[0]?.name) ||
-										'CHILD',
-								)
-								.replace(
-									'(ADULT)',
-									quizState.guestAdult ||
-										(authState.user && authState.user?.name) ||
-										'ADULT',
-								)}
-						</Text>
-					))}
-			</Box>
-
-			<Box
-				width={150}
-				height='100%'
-				display='flex'
-				flexDirection='row'
-				justify='center'
 				align='center'
 				backgroundColor='transperant'
 			>
 				<Box
-					width='100%'
+					width='auto'
 					height='100%'
 					display='flex'
 					flexDirection='column'
 					justify='space-around'
-					align='center'
 					backgroundColor='transperant'
-					position='relative'
 				>
-					<Box
-						width='auto'
-						height='auto'
-						center
-						backgroundColor='transperant'
-						position='absolute'
-						top={-8}
-						right={0}
-					>
-						<Text typography='subheading'>YES</Text>
-					</Box>
-					{questions.map((e: any) => (
-						<input
-							key={e.id}
-							type='radio'
-							id={e.id}
-							checked={handleYesChecked(e.id)}
-							onChange={() => handleYesAnswer(e.id)}
-						/>
-					))}
+					{questions &&
+						questions.map((e: any) => (
+							<Text key={e.id} typography='text' size={16}>
+								{e.text
+									.replace(
+										'(CHILD)',
+										quizState.guestChild ||
+											(authState.user?.children &&
+												authState.user?.children[0]?.name) ||
+											'CHILD',
+									)
+									.replace(
+										'(ADULT)',
+										quizState.guestAdult ||
+											(authState.user && authState.user?.name) ||
+											'ADULT',
+									)}
+							</Text>
+						))}
 				</Box>
+
 				<Box
-					width='100%'
+					width={150}
 					height='100%'
 					display='flex'
-					flexDirection='column'
-					justify='space-around'
+					flexDirection='row'
+					justify='center'
 					align='center'
 					backgroundColor='transperant'
 				>
 					<Box
-						width='auto'
-						height='auto'
-						center
+						width='100%'
+						height='100%'
+						display='flex'
+						flexDirection='column'
+						justify='space-around'
+						align='center'
 						backgroundColor='transperant'
-						position='absolute'
-						top={-8}
-						right={0}
+						position='relative'
 					>
-						<Text typography='subheading'>NO</Text>
+						<Box
+							width='auto'
+							height='auto'
+							center
+							backgroundColor='transperant'
+							position='absolute'
+							top={-8}
+							right={0}
+						>
+							<Text typography='subheading'>YES</Text>
+						</Box>
+						{questions.map((e: any) => (
+							<input
+								key={e.id}
+								type='radio'
+								id={e.id}
+								checked={handleYesChecked(e.id)}
+								onChange={() => handleYesAnswer(e.id)}
+							/>
+						))}
 					</Box>
-					{questions.map((e: any) => (
-						<input
-							key={e.id}
-							type='radio'
-							id={e.id}
-							// @ts-expect-error
-							checked={handleNoChecked(e.id)}
-							onChange={() => handleNoAnswer(e.id)}
-						/>
-					))}
+					<Box
+						width='100%'
+						height='100%'
+						display='flex'
+						flexDirection='column'
+						justify='space-around'
+						align='center'
+						backgroundColor='transperant'
+					>
+						<Box
+							width='auto'
+							height='auto'
+							center
+							backgroundColor='transperant'
+							position='absolute'
+							top={-8}
+							right={0}
+						>
+							<Text typography='subheading'>NO</Text>
+						</Box>
+						{questions.map((e: any) => (
+							<input
+								key={e.id}
+								type='radio'
+								id={e.id}
+								// @ts-expect-error
+								checked={handleNoChecked(e.id)}
+								onChange={() => handleNoAnswer(e.id)}
+							/>
+						))}
+					</Box>
 				</Box>
 			</Box>
 		</Box>
