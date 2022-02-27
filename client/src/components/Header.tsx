@@ -59,7 +59,7 @@ const Header = ({
 						onSetCurrentLanguage={setCurrentLanguage}
 					/>
 
-					<NavLink to='/'>
+					<NavLink to='/about'>
 						<Box
 							width={50}
 							height='100%'
@@ -73,23 +73,6 @@ const Header = ({
 								color={theme.color.black}
 							>
 								About
-							</Text>
-						</Box>
-					</NavLink>
-					<NavLink to='/'>
-						<Box
-							width={50}
-							height='100%'
-							display='block'
-							backgroundColor='transperant'
-						>
-							<Text
-								typography='subheading'
-								size={16}
-								textAlign='center'
-								color={theme.color.black}
-							>
-								Q&A
 							</Text>
 						</Box>
 					</NavLink>

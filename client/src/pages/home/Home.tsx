@@ -21,7 +21,9 @@ const Home = () => {
 				<Box
 					width='100%'
 					height={isMobile ? 800 : 500}
-					center
+					display='flex'
+					justify='center'
+					align='flex-start'
 					flexDirection={isMobile ? 'column' : 'row'}
 					backgroundColor='transperant'
 					margin='0 0 100px 0'
@@ -66,7 +68,7 @@ const Home = () => {
 						center
 						flexDirection='column'
 						backgroundColor='transperant'
-						margin={isMobile ? '200px 0 0 0' : '150px 0 0 50px'}
+						margin={isMobile ? '200px 0 0 0' : '150px 0 0 150px'}
 					>
 						<Text
 							typography='heading'
@@ -236,14 +238,16 @@ const StyledList = styled('ul')(() => ({
 
 const HeroImage = styled('img')(({ theme }) => ({
 	position: 'absolute',
-	width: 350,
-	height: 350,
+	width: 450,
+	height: 450,
 	objectFit: 'cover',
 	objectPostion: '100% 0',
 	borderRadius: '50%',
 	zIndex: 98,
 	[`@media ${theme.screen.mobile}`]: {
 		left: 50,
+		width: 350,
+		height: 350,
 	},
 }));
 
@@ -251,8 +255,8 @@ const HeroImage2 = styled('img')(({ theme }) => ({
 	position: 'absolute',
 	top: 250,
 	right: 200,
-	width: 250,
-	height: 250,
+	width: 350,
+	height: 350,
 	objectFit: 'cover',
 	objectPostion: '100% 0',
 	borderRadius: '50%',
@@ -260,14 +264,16 @@ const HeroImage2 = styled('img')(({ theme }) => ({
 
 	[`@media ${theme.screen.mobile}`]: {
 		right: 150,
+		width: 250,
+		height: 250,
 	},
 }));
 
 const HeroImageCircles = styled('img')(() => ({
 	position: 'absolute',
 	top: 50,
-	right: -75,
-	width: 600,
+	right: -150,
+	width: 800,
 	height: 'auto',
 	objectFit: 'cover',
 	objectPostion: '100% 0',

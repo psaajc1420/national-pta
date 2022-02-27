@@ -1,4 +1,4 @@
-import { Box, Button, Text } from './index';
+import { Box, Button, Text, Link } from './index';
 import { useTheme } from '@emotion/react';
 import { useMediaQuery } from 'react-responsive';
 
@@ -117,7 +117,7 @@ const Footer = () => {
 					margin='0 15px'
 				>
 					<Text typography='heading' color={theme.color.white}>
-						Term | Privacy
+						<Link to='/terms'>Terms</Link> | <Link to='/privacy'>Privacy</Link>
 					</Text>
 				</Box>
 				<Button

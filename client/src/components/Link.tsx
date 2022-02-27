@@ -15,4 +15,5 @@ export default BaseLink;
 
 const StyledLink = styled(Link)<BaseLinkProps>(() => ({
 	textDecoration: 'none',
+	color: 'inherit',
 }));
