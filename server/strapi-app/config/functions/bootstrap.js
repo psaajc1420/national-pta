@@ -148,6 +148,26 @@ const createQuestions = async () => {
   }
 }
 
+const createAnswers = async () => {
+
+  const answers = await strapi.query("answer").find();
+
+  if (answers.length === 0) {
+    const jsonData = require("./answers.json");
+    
+    for (const key in jsonData) {
+      const {text, question} = jsonData[key];
+      await strapi.services.answer.create({
+        text: text,
+        questions: question 
+      }).then((result) => {
+        return result;
+      }).catch((error) => {strapi.log.info(`Error: ${error}`)});
+    }
+    
+  }
+}
+
 const createSlides = async () => {
   const slides = await strapi.query("slide").find();
 
@@ -182,5 +202,6 @@ module.exports = async () => {
   }
   await createAgeGroup();
   await createQuestions();
+  await createAnswers();
   await createSlides();
 };

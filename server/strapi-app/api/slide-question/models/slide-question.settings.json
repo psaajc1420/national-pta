@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "slide_questions",
+  "info": {
+    "name": "SlideQuestion"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "slides": {
+      "collection": "slide"
+    },
+    "questions": {
+      "collection": "question"
+    }
+  }
+}
