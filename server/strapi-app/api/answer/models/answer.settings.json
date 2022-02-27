@@ -25,9 +25,6 @@
       "type": "text",
       "required": true,
       "unique": false
-    },
-    "questions": {
-      "collection": "question"
     }
   }
 }
