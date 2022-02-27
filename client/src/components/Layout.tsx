@@ -31,8 +31,8 @@ const Layout = ({
 				width='100%'
 				height='100%'
 				display='block'
-				backgroundColor='inherit'
-				padding='40px 0'
+				backgroundColor='transperant'
+				padding='20px 0'
 				position='relative'
 			>
 				{children}

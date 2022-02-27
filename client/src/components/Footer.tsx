@@ -22,6 +22,7 @@ const Footer = () => {
 			position='absolute'
 			right={0}
 			bottom={0}
+			margin='50px 0 0 0'
 		>
 			<Box
 				width='auto'

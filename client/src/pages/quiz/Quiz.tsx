@@ -24,6 +24,7 @@ const quizInitialState = {
 	currentCategory: '',
 	currentAgeGroup: '',
 	answers: {},
+	todos: [],
 };
 
 export const QuizAnswersContext = createContext(quizInitialState);
@@ -152,22 +153,23 @@ const Quiz = () => {
 					position='relative'
 				>
 					<Todo />
-					{/* <QuizCircles
+					<QuizCircles
 						src={
 							window.location.origin +
 							'/assets/illustrations/Quiz Beginning Circles.svg'
 						}
 						alt='Background circles'
-					/> */}
+					/>
 					<Box
 						width='80%'
 						maxWidth={1000}
-						height='80%'
-						maxHeight={1200}
+						height='100%'
+						maxHeight={1100}
 						center
 						backgroundColor='#ffffff'
 						borderRadius={75}
 						zIndex={98}
+						margin='100px 0'
 					>
 						<Box
 							width={75}
