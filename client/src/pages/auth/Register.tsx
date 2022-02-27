@@ -24,7 +24,14 @@ const Register = () => {
 		if (authState.loggedIn && !authState.user.is_registered) {
 			setView('data-intake-form');
 		}
-	}, [authState.loggedIn, authState.user.is_registered]);
+		if (authState?.user?.is_registered) {
+			setIsRegistered(true);
+		}
+		if (data?.register?.jwt) {
+			localStorage.setItem('token', data?.register?.jwt);
+			window.location.reload();
+		}
+	}, [authState.loggedIn, authState.user.is_registered, data?.register?.jwt]);
 
 	useEffect(() => {
 		if (error) {
@@ -32,19 +39,6 @@ const Register = () => {
 			console.log({ error });
 		}
 	}, [error]);
-
-	useEffect(() => {
-		if (authState?.user?.is_registered) {
-			setIsRegistered(true);
-		}
-	}, [authState?.user?.is_registered]);
-
-	useEffect(() => {
-		if (data?.register?.jwt) {
-			localStorage.setItem('token', data?.register?.jwt);
-			window.location.reload();
-		}
-	}, [data?.register?.jwt]);
 
 	return (
 		<>

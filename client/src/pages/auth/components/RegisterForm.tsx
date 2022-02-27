@@ -22,9 +22,9 @@ const RegisterForm = ({
 
 	return (
 		<Box
-			height='60%'
+			height='100%'
+			maxHeight={500}
 			width={400}
-			maxWidth={500}
 			center
 			flexDirection='column'
 			backgroundColor={theme.color.lightBlue}
@@ -85,7 +85,13 @@ const RegisterForm = ({
 					/>
 				</Box>
 
-				<Box width='auto' height='auto' center backgroundColor='transperant'>
+				<Box
+					width='auto'
+					height='auto'
+					center
+					flexDirection='column'
+					backgroundColor='transperant'
+				>
 					{error && (
 						<Box
 							width='auto'

@@ -42,13 +42,14 @@ const DataIntakeForm = () => {
 	};
 	return (
 		<Box
-			height='80%'
+			height='100%'
+			maxHeight={600}
 			width={500}
-			maxWidth={500}
 			center
 			flexDirection='column'
 			backgroundColor={theme.color.lightBlue}
 			padding='2% 5%'
+			margin='0 0 25px 0'
 			borderRadius={75}
 		>
 			<Box
