@@ -1,27 +1,9 @@
-import { useContext, useEffect, useState, useReducer } from 'react';
-import { useTheme } from '@emotion/react';
+import { useContext, useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import { Box, Text } from '../../../components';
 import { QuizAnswersContext } from '../Quiz';
 import { AuthContext } from '../../../App';
 
-// const fillInTheBlankInitialState = {
-// 	inputAnswers: [],
-// };
-
-// const fillInTheBlankReducer = (state: any, action: any) => {
-// 	switch (action.type) {
-// 		case 'SET_INPUT':
-// 			return {
-// 				...state,
-// 				inputAnswers: [...state.inputAnswers, action.payload],
-// 			};
-// 		case 'RESET_QUIZ':
-// 			return { fillInTheBlankInitialState };
-// 		default:
-// 			throw new Error();
-// 	}
-// };
 const FillInTheBlank = ({
 	questionData,
 	questionId,
@@ -39,21 +21,24 @@ const FillInTheBlank = ({
 	const { quizState, quizDispatch } = useContext(QuizAnswersContext);
 	// @ts-expect-error
 	const { authState } = useContext(AuthContext);
-	// const [fillInTheBlankState, fillInTheBlankDispatch] = useReducer(
-	// 	fillInTheBlankReducer,
-	// 	fillInTheBlankInitialState,
-	// );
 
-	const [inputValues, setInputValues] = useState<any[]>(
-		Array(numberOfInputs).fill({ value: '' }),
-	);
+	const [inputValues, setInputValues] = useState<any[]>([]);
+
+	useEffect(() => {
+		if (questionId && inputValues.length > 0) {
+			quizDispatch({
+				type: 'SET_ANSWER',
+				payload: { id: questionId, value: inputValues },
+			});
+		}
+	}, [questionId, inputValues]);
 
 	const handleChange = (i: any, e: any) => {
-		let newInputValues = [...inputValues];
-		newInputValues[i].value = e.target.value;
+		const newInputValues = [...inputValues];
+		newInputValues[i] = e.target.value;
 		setInputValues(newInputValues);
 	};
-	console.log({ inputValues });
+
 	return (
 		<Box
 			width='100%'
@@ -86,17 +71,26 @@ const FillInTheBlank = ({
 				backgroundColor='inherit'
 				margin='15px 0'
 			>
-				{inputValues.map((element, index) => {
-					console.log({ element, index });
-					return (
-						<StyledInput
-							key={index}
-							type='text'
-							name={`input${index}`}
-							value={element.value || ''}
-							onChange={(e) => handleChange(index, e)}
-						/>
-					);
+				{Array.from(Array(numberOfInputs)).map((element, i) => {
+					if (inputType === 'text') {
+						return (
+							<StyledInput
+								key={i}
+								type='text'
+								onChange={(e) => handleChange(i, e)}
+							/>
+						);
+					} else if (inputType === 'textarea') {
+						<textarea key={i} onChange={(e) => handleChange(i, e)} />;
+					} else {
+						return (
+							<StyledInput
+								key={i}
+								type='text'
+								onChange={(e) => handleChange(i, e)}
+							/>
+						);
+					}
 				})}
 			</Box>
 		</Box>

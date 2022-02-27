@@ -1,5 +1,4 @@
 import { useContext, useEffect, useState } from 'react';
-import { useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import { Box, Text } from '../../../components';
 import { QuizAnswersContext } from '../Quiz';
@@ -17,24 +16,32 @@ const Checkboxes = ({
 }) => {
 	// @ts-expect-error
 	const { quizState, quizDispatch } = useContext(QuizAnswersContext);
-	const theme = useTheme();
 
 	const [answers, setAnswers] = useState<string[]>(
 		quizState.answers[questionId] || [],
 	);
 
-	const handleOnChange = (label: string) => {
-		const answerIndex = answers.findIndex((e) => e === label);
+	useEffect(() => {
+		if (questionId && answers.length > 0) {
+			quizDispatch({
+				type: 'SET_ANSWER',
+				payload: { id: questionId, value: answers },
+			});
+		}
+	}, [questionId, answers]);
+
+	const handleOnChange = (name: string) => {
+		const answerIndex = answers.findIndex((e) => e === name);
 		if (answerIndex !== -1) {
-			setAnswers(answers.filter((e) => e !== label));
+			setAnswers(answers.filter((e) => e !== name));
 		} else {
-			setAnswers((state) => [...state, label]);
+			setAnswers((state) => [...state, name]);
 		}
 	};
 
-	const handleChecked = (label: string) => {
+	const handleChecked = (name: string) => {
 		if (quizState.answers[questionId]) {
-			return quizState.answers[questionId].includes(label);
+			return quizState.answers[questionId].includes(name);
 		} else {
 			return false;
 		}
@@ -60,9 +67,9 @@ const Checkboxes = ({
 					{questionHeader}
 				</Text>
 			</Box>
-			{answerOptions.map((e: any) => (
+			{answerOptions.map((e: any, i: any) => (
 				<Box
-					key={e.name}
+					key={i}
 					width={300}
 					height='auto'
 					display='flex'
@@ -72,12 +79,12 @@ const Checkboxes = ({
 				>
 					<StyledCheckbox
 						type='checkbox'
-						id={e.name}
-						name={e.name}
-						onChange={() => handleOnChange(e.name)}
-						checked={handleChecked(e.name)}
+						id={i}
+						name={`checkbox-${i}`}
+						onChange={() => handleOnChange(`checkbox-${i}`)}
+						checked={handleChecked(`checkbox-${i}`)}
 					/>
-					<label htmlFor={e.name}>
+					<label htmlFor={`checkbox-${i}`}>
 						<Text typography='text' textAlign='left' size={14}>
 							{e.label}
 						</Text>
