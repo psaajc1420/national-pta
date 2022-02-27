@@ -136,10 +136,18 @@ const createQuestions = async () => {
 
   if (questions.length === 0) {
     const jsonData = require("./unique_questions.json");
-    
+    const answerData = require("./answers_questions.json");
+
     for (const key in jsonData) {
+      
+      let answers = []
+      if (answerData[key]) {
+          answers = answerData[key];
+      }
+
       await strapi.services.question.create({
         text: jsonData[key],
+        answers: answers
       }).then((result) => {
         return result;
       }).catch((error) => {strapi.log.info(`Error: ${error}`)});
@@ -151,15 +159,22 @@ const createQuestions = async () => {
 const createAnswers = async () => {
 
   const answers = await strapi.query("answer").find();
-
+  
   if (answers.length === 0) {
     const jsonData = require("./answers.json");
     
     for (const key in jsonData) {
       const {text, question} = jsonData[key];
+      // const questionJSON = await strapi.services.question.findOne(question)
+      //   .then((result) => { 
+      //     // strapi.log.info(result);
+      //     return result 
+      //   })
+      //   .catch((error) => {strapi.log.info(`Error: ${error}`)})
+      // strapi.log.info(questionJSON);
+      
       await strapi.services.answer.create({
         text: text,
-        questions: question 
       }).then((result) => {
         return result;
       }).catch((error) => {strapi.log.info(`Error: ${error}`)});

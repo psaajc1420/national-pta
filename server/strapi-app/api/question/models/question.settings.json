@@ -26,6 +26,9 @@
     },
     "age_groups": {
       "collection": "age-group"
+    },
+    "answers": {
+      "collection": "answer"
     }
   }
 }
