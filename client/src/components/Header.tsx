@@ -76,22 +76,35 @@ const Header = ({
 							</Text>
 						</Box>
 					</NavLink>
-					<NavLink to={loggedIn ? '/quiz' : '/login'}>
-						<Box
-							width={50}
-							height='100%'
-							display='block'
-							backgroundColor='transperant'
-						>
-							<Text
-								typography='subheading'
-								size={16}
-								textAlign='center'
-								color={theme.color.black}
+					<NavLink to={loggedIn ? '/account' : '/login'}>
+						{loggedIn ? (
+							<HeaderAvatar>
+								<Text
+									typography='subheading'
+									size={16}
+									textAlign='center'
+									color={theme.color.white}
+								>
+									{identifier}
+								</Text>
+							</HeaderAvatar>
+						) : (
+							<Box
+								width={50}
+								height='100%'
+								display='block'
+								backgroundColor='transperant'
 							>
-								{loggedIn ? identifier : 'Login'}
-							</Text>
-						</Box>
+								<Text
+									typography='subheading'
+									size={16}
+									textAlign='center'
+									color={theme.color.black}
+								>
+									Login
+								</Text>
+							</Box>
+						)}
 					</NavLink>
 				</Box>
 			)}
@@ -111,4 +124,17 @@ const HeaderLogo = styled('img')(() => ({
 	width: 200,
 	height: 120,
 	marginTop: 15,
+}));
+
+const HeaderAvatar = styled('div')(({ theme }) => ({
+	width: 50,
+	height: 50,
+	borderRadius: '50%',
+	display: 'flex',
+	justifyContent: 'center',
+	alignItems: 'center',
+	backgroundColor: theme.color.blue,
+	['&:hover']: {
+		backgroundColor: theme.color.lightBlue,
+	},
 }));

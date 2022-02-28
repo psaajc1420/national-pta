@@ -6,6 +6,7 @@ interface AuthInputProps {
 	type: string;
 	value: string | number;
 	onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+	name?: string;
 	width?: string | number;
 	height?: string | number;
 }
@@ -15,6 +16,7 @@ const AuthInput = ({
 	type,
 	onChange,
 	value,
+	name,
 	height,
 	width,
 }: AuthInputProps) => {
@@ -24,6 +26,7 @@ const AuthInput = ({
 			type={type}
 			onChange={onChange}
 			value={value}
+			name={name}
 			width={width}
 			height={height}
 		/>
