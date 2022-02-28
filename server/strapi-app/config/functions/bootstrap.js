@@ -165,13 +165,7 @@ const createAnswers = async () => {
     
     for (const key in jsonData) {
       const {text, question} = jsonData[key];
-      // const questionJSON = await strapi.services.question.findOne(question)
-      //   .then((result) => { 
-      //     // strapi.log.info(result);
-      //     return result 
-      //   })
-      //   .catch((error) => {strapi.log.info(`Error: ${error}`)})
-      // strapi.log.info(questionJSON);
+
       
       await strapi.services.answer.create({
         text: text,
