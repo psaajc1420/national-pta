@@ -33,6 +33,14 @@
       }
     },
     {
+      "method": "POST",
+      "path": "/question-answers-per-slide",
+      "handler": "question-answer.createPerSlide",
+      "config": {
+        "policies": []
+      }
+    },
+    {
       "method": "PUT",
       "path": "/question-answers/:id",
       "handler": "question-answer.update",

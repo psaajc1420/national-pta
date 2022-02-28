@@ -167,6 +167,8 @@ const createAnswers = async () => {
     
     for (const key in jsonData) {
       const {text, question} = jsonData[key];
+
+      
       await strapi.services.answer.create({
         text: text,
       }).then((result) => {
@@ -185,13 +187,13 @@ const createQuestionType = async () => {
 
     let types = ["checkboxes", "yes-no", "fill-in-blank", "slider"];
 
-    types.forEach(async (type) => {
-      if (!questionTypes.includes(type)) {
+    for (let i = 0; i < types.length; i++) {
+      if (!questionTypes.includes(types[i])) {
         await strapi.services["question-type"].create({
-          name: type,
+          name: types[i],
         });
       }
-    });
+    }
   }
   // questionTypes.forEach((data) => {
   //   if (types.includes(data.group)) {

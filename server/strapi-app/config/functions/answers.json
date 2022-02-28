@@ -1,353 +1,357 @@
 {
-  "0": {
+  "1": {
     "text": "Phone calls",
     "question": 78
   },
-  "1": {
+  "2": {
     "text": "Video calls",
     "question": 78
   },
-  "2": {
+  "3": {
     "text": "Texting or messaging apps",
     "question": 78
   },
-  "3": {
+  "4": {
     "text": "Email",
     "question": 78
   },
-  "4": {
+  "5": {
     "text":  "Gaming chats",
     "question": 78
   },
-  "5": {
-    "text": "Social media",
-    "question": 78
-  },
   "6": {
-    "text": "Other",
+    "text": "Social media",
     "question": 78
   },
   "7": {
+    "text": "Other",
+    "question": 78
+  },
+  "8": {
     "text": "Family members",
     "question": 130
   },
-  "8": {
+  "9": {
     "text": "Classmates",
     "question": 130
   },
-  "9": {
+  "10": {
     "text": "Teachers",
     "question": 130
   },
-  "10": {
+  "11": {
     "text": "Friends of our family",
     "question": 130
   },
-  "11": {
+  "12": {
     "text": "People they meet in games",
     "question": 130
   },
-  "12": {
+  "13": {
     "text": "Celebrities, influencers, Youtube or TikTok personalities, etc.",
     "question": 130
   },
-  "13": {
+  "14": {
     "text": "Anyone who makes a request",
     "question": 130
   },
-  "14": {
+  "15": {
     "text": "Other",
     "question": 130
   },
-  "15": {
+  "16": {
     "text": "Express your boundaries/concerns to the other party and/or their guardian",
     "question": 79
   },
-  "16": {
+  "17": {
     "text": "Reflect on our part in the problem and apologize when necessary",
     "question": 79
   },
-  "17": {
+  "18": {
     "text": "Spend time with other friends",
     "question": 79
   },
-  "18": {
+  "19": {
     "text": "Take a device break",
     "question": 79
   },
-  "19": {
+  "20": {
     "text": "Try communication in person",
     "question": 79
   },
-  "20": {
+  "21": {
     "text": "Ask another trusted adult for advice",
     "question": 79
   },
-  "21": {
+  "22": {
     "text": "Unfollow, hide or bloack the account",
     "question": 79
   },
-  "22": {
+  "23": {
     "text": "Other",
     "question": 79
   },
-  "23": {
+  "24": {
     "text": "Appropriate photos and videos from the internet",
     "question": 132
   },
-  "24": {
+  "25": {
     "text": "Links, stories, memes",
     "question": 132
   },
-  "25": {
+  "26": {
     "text": "Personal photos, videos and other creations",
     "question": 132
   },
-  "26": {
+  "27": {
     "text": "Updates about school, sports or personal successes",
     "question": 132
   },
-  "27": {
+  "28": {
     "text": "Photos and videos of friends and family with their permission",
     "question": 132
   },
-  "28": {
+  "29": {
     "text": "Other",
     "question": 132
   },
-  "29": {
+  "30": {
     "text": "Photos and videos of family members",
     "question": 69
   },
-  "30": {
+  "31": {
     "text": "Funny stories about our family",
     "question": 69
   },
-  "31": {
+  "32": {
     "text": "Questions/concerns about our family",
     "question": 69
   },
-  "32": {
+  "33": {
     "text": "Celebrations and success stories about their child(ren)",
     "question": 69
   },
-  "33": {
+  "34": {
     "text": "Other",
     "question": 69
   },
-  "34": {
+  "35": {
     "text": "Do not embarrass, harass or troll people online",
     "question": 112
   },
-  "35": {
+  "36": {
     "text": "Share content that is respectful, kind and uplifting",
     "question": 112
   },
-  "36": {
+  "37": {
     "text": "Congratulate others on their accomplishments",
     "question": 112
   },
-  "37": {
+  "38": {
     "text": "Ask questions to learn more about other people's perspectives",
     "question": 112
   },
-  "38": {
+  "39": {
     "text": "Pause to consider how the person on the other end of the screen feels before responding or commenting",
     "question": 112
   },
-  "39": {
+  "40": {
     "text": "Put screens away when spending time with those you care about",
     "question": 112
   },
-  "40": {
-    "text": "Schoolwork",
-    "question": 140
-  },
   "41": {
-    "text": "Gaming",
-    "question": 140
+    "text": "Schoolwork",
+    "question": 9
   },
   "42": {
-    "text": "Reading",
-    "question": 140
+    "text": "Gaming",
+    "question": 9
   },
   "43": {
-    "text": "Learning",
-    "question": 140
+    "text": "Reading",
+    "question": 9
   },
   "44": {
-    "text": "Texting",
-    "question": 140
+    "text": "Learning",
+    "question": 9
   },
   "45": {
-    "text": "Talking",
-    "question": 140
+    "text": "Texting",
+    "question": 9
   },
   "46": {
-    "text": "Watching videos",
-    "question": 140
+    "text": "Talking",
+    "question": 9
   },
   "47": {
-    "text": "Listening to music",
-    "question": 140
+    "text": "Watching videos",
+    "question": 9
   },
   "48": {
-    "text": "Listening to AudioBooks or Podcasts",
-    "question": 140
+    "text": "Listening to music",
+    "question": 9
   },
   "49": {
-    "text": "Taking photos and videos",
-    "question": 140
+    "text": "Listening to AudioBooks or Podcasts",
+    "question": 9
   },
   "50": {
-    "text": "Creating pictures, songs and videos",
-    "question": 140
+    "text": "Taking photos and videos",
+    "question": 9
   },
   "51": {
-    "text": "Social media",
-    "question": 140
+    "text": "Creating pictures, songs and videos",
+    "question": 9
   },
   "52": {
-    "text": "Other",
-    "question": 140
+    "text": "Sharing photos, videos and other content",
+    "question": 9
   },
   "53": {
+    "text": "Social media",
+    "question": 9
+  },
+  "54": {
+    "text": "Other",
+    "question": 9
+  },
+  "55": {
     "text": "E for Everyone",
     "question": 57
   },
-  "54": {
+  "56": {
     "text": "E10+",
     "question": 57
   },
-  "55": {
+  "57": {
     "text": "T for Teen",
     "question": 57
   },
-  "56": {
+  "58": {
     "text": "M for Mature 17+",
     "question": 57
   },
-  "57": {
+  "59": {
     "text": "A for Adult 18+ only",
     "question": 57
   },
-  "58": {
-    "text": "G",
-    "question": 58
-  },
-  "59": {
-    "text": "PG",
-    "question": 58
-  },
   "60": {
-    "text": "PG13",
-    "question": 58
+    "text": "G",
+    "question": 67
   },
   "61": {
-    "text": "R",
-    "question": 58
+    "text": "PG",
+    "question": 67
   },
   "62": {
+    "text": "PG13",
+    "question": 67
+  },
+  "63": {
+    "text": "R",
+    "question": 67
+  },
+  "64": {
     "text": "Music Labeled E for Explicit",
     "question": 152
   },
-  "63": {
+  "65": {
     "text": "4+",
     "question": 146
   },
-  "64": {
+  "66": {
     "text": "8+",
     "question": 146
   },
-  "65": {
+  "67": {
     "text": "12+",
     "question": 146
   },
-  "66": {
+  "68": {
     "text": "17+",
     "question": 146
   },
-  "67": {
+  "69": {
     "text": "During meals",
     "question": 35
   },
-  "68": {
+  "70": {
     "text": "Before going to sleep",
     "question": 35
   },
-  "69": {
+  "71": {
     "text": "First thing in the morning",
     "question": 35
   },
-  "70": {
+  "72": {
     "text": "During car rides",
     "question": 35
   },
-  "112": {
+  "73": {
     "text": "Where we eat",
     "question": 133
   },
-  "72": {
+  "74": {
     "text": "Beds/Bedrooms",
     "question": 133
   },
-  "73": {
+  "75": {
     "text": "Bathroom",
     "question": 133
   },
-  "74": {
+  "76": {
     "text": "Yard/Outdoor Area",
     "question": 133
   },
-  "75": {
+  "77": {
     "text": "Losing access to apps, websites or other content",
     "question": 89
   },
-  "76": {
+  "78": {
     "text": "Take a timeout from the device",
     "question": 89
   },
-  "77": {
+  "79": {
     "text": "Being grounded",
     "question": 89
   },
-  "78": {
+  "80": {
     "text": "Doing extra chores",
     "question": 89
   },
-  "79": {
+  "81": {
     "text": "Less screen time",
     "question": 89
   },
-  "80": {
+  "82": {
     "text": "Other",
     "question": 89
   },
-  "81": {
+  "83": {
     "text": "Print and sign our agreement",
     "question": 83
   },
-  "82": {
+  "84": {
     "text": "Hang our agreement where all can see it",
     "question": 83
   },
-  "83": {
+  "85": {
     "text": "Complete the items on our Smart Talk Tool to-do list",
     "question": 83
   },
-  "84": {
+  "86": {
     "text": "Use parental settings on home wifi, gaming systems and devices",
     "question": 83
   },
-  "85": {
+  "87": {
     "text": "Use a third party app like Norton Family, Bark, Life360 or Disney Circle to monitor your child's use",
     "question": 83
   },
-  "86": {
+  "88": {
     "text": "Schedule device checks",
     "question": 83
   },
-  "87": {
+  "89": {
     "text": "Conduct unscheduled device checks",
     "question": 83
   }
