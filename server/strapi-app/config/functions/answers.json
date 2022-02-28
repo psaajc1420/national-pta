@@ -10,19 +10,19 @@
   "2": {
     "text": "Texting or messaging apps",
     "question": 78
-  }, 
+  },
   "3": {
     "text": "Email",
     "question": 78
-  }, 
+  },
   "4": {
     "text":  "Gaming chats",
     "question": 78
-  }, 
+  },
   "5": {
     "text": "Social media",
     "question": 78
-  }, 
+  },
   "6": {
     "text": "Other",
     "question": 78
@@ -86,7 +86,7 @@
   "21": {
     "text": "Unfollow, hide or bloack the account",
     "question": 79
-  }, 
+  },
   "22": {
     "text": "Other",
     "question": 79
@@ -137,27 +137,27 @@
   },
   "34": {
     "text": "Do not embarrass, harass or troll people online",
-    "question": 71
+    "question": 112
   },
   "35": {
     "text": "Share content that is respectful, kind and uplifting",
-    "question": 71
+    "question": 112
   },
   "36": {
     "text": "Congratulate others on their accomplishments",
-    "question": 71
+    "question": 112
   },
   "37": {
     "text": "Ask questions to learn more about other people's perspectives",
-    "question": 71
+    "question": 112
   },
   "38": {
     "text": "Pause to consider how the person on the other end of the screen feels before responding or commenting",
-    "question": 71
+    "question": 112
   },
   "39": {
     "text": "Put screens away when spending time with those you care about",
-    "question": 71
+    "question": 112
   },
   "40": {
     "text": "Schoolwork",
@@ -283,7 +283,7 @@
     "text": "During car rides",
     "question": 35
   },
-  "71": {
+  "112": {
     "text": "Where we eat",
     "question": 133
   },

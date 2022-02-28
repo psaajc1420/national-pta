@@ -1,14 +1,8 @@
 import { useContext, useEffect, useReducer } from 'react';
 import { AGE_GROUPS, CATEGORIES } from '../../../../constants';
 import { Box } from '../../../../components';
-import {
-	PrivacyAndSafetyQ1,
-	PrivacyAndSafetyQ2,
-	PrivacyAndSafetyQ3,
-	PrivacyAndSafetyQ4,
-	TestQuestion,
-} from './questions';
 import { QuizAnswersContext } from '../../Quiz';
+import { QuestionButtonsGroup, TestQuestion } from '../../components';
 
 const initialState = {
 	questionFlow: [],
@@ -39,59 +33,19 @@ const index = () => {
 
 	const handlePreviousQuestion = () => dispatch({ type: 'PREVIOUS_QUESTION' });
 
-	const QUESTIONS = {
-		1: (
-			<PrivacyAndSafetyQ1
-				onHandleNextQuestion={handleNextQuestion}
-				onHandlePreviousQuestion={handlePreviousQuestion}
-			/>
-		),
-		2: (
-			<PrivacyAndSafetyQ2
-				onHandleNextQuestion={handleNextQuestion}
-				onHandlePreviousQuestion={handlePreviousQuestion}
-			/>
-		),
-		3: (
-			<PrivacyAndSafetyQ3
-				onHandleNextQuestion={handleNextQuestion}
-				onHandlePreviousQuestion={handlePreviousQuestion}
-			/>
-		),
-		4: (
-			<PrivacyAndSafetyQ4
-				onHandleNextQuestion={handleNextQuestion}
-				onHandlePreviousQuestion={handlePreviousQuestion}
-			/>
-		),
-		5: (
-			<TestQuestion
-				onHandleNextQuestion={handleNextQuestion}
-				onHandlePreviousQuestion={handlePreviousQuestion}
-			/>
-		),
-	};
-
 	useEffect(() => {
 		if (quizState.currentAgeGroup === AGE_GROUPS.group5to8.name) {
 			dispatch({
 				type: 'SET_FLOW',
-				payload: [
-					QUESTIONS[5],
-					QUESTIONS[1],
-					QUESTIONS[2],
-					QUESTIONS[3],
-					QUESTIONS[4],
-				],
+				payload: [1, 2, 3, 4],
 			});
 		} else {
 			dispatch({
 				type: 'SET_FLOW',
-				payload: [QUESTIONS[1], QUESTIONS[2], QUESTIONS[3], QUESTIONS[4]],
+				payload: [1, 2, 3, 4],
 			});
 		}
 	}, []);
-
 	useEffect(() => {
 		if (
 			state.currentQuestionIndex !== 0 &&
@@ -122,7 +76,12 @@ const index = () => {
 			backgroundColor='transperant'
 			overflow='break-word'
 		>
-			{state.questionFlow[state.currentQuestionIndex]}
+			<TestQuestion slideId={state.questionFlow[state.currentQuestionIndex]} />
+			<QuestionButtonsGroup
+				onContinue={handleNextQuestion}
+				onPrevious={handlePreviousQuestion}
+				onSave={() => {}}
+			/>
 		</Box>
 	);
 };

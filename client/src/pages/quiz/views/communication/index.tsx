@@ -1,22 +1,15 @@
 import { useContext, useEffect, useReducer } from 'react';
 import { AGE_GROUPS, CATEGORIES } from '../../../../constants';
 import { Box } from '../../../../components';
-import {
-	CommunicationQ1,
-	CommunicationQ2,
-	CommunicationQ3,
-	CommunicationQ4,
-	CommunicationQ5,
-	CommunicationQ6,
-} from './questions';
 import { QuizAnswersContext } from '../../Quiz';
+import { QuestionButtonsGroup, TestQuestion } from '../../components';
 
 const initialState = {
 	questionFlow: [],
 	currentQuestionIndex: 0,
 };
 
-const privacySafetyReducer = (state: any, action: any) => {
+const communicationReducer = (state: any, action: any) => {
 	switch (action.type) {
 		case 'NEXT_QUESTION':
 			return { ...state, currentQuestionIndex: state.currentQuestionIndex + 1 };
@@ -34,75 +27,22 @@ const privacySafetyReducer = (state: any, action: any) => {
 const index = () => {
 	// @ts-expect-error
 	const { quizState, quizDispatch } = useContext(QuizAnswersContext);
-	const [state, dispatch] = useReducer(privacySafetyReducer, initialState);
+	const [state, dispatch] = useReducer(communicationReducer, initialState);
 
 	const handleNextQuestion = () => dispatch({ type: 'NEXT_QUESTION' });
 
 	const handlePreviousQuestion = () => dispatch({ type: 'PREVIOUS_QUESTION' });
 
-	const QUESTIONS = {
-		1: (
-			<CommunicationQ1
-				onHandleNextQuestion={handleNextQuestion}
-				onHandlePreviousQuestion={handlePreviousQuestion}
-			/>
-		),
-		2: (
-			<CommunicationQ2
-				onHandleNextQuestion={handleNextQuestion}
-				onHandlePreviousQuestion={handlePreviousQuestion}
-			/>
-		),
-		3: (
-			<CommunicationQ3
-				onHandleNextQuestion={handleNextQuestion}
-				onHandlePreviousQuestion={handlePreviousQuestion}
-			/>
-		),
-		4: (
-			<CommunicationQ4
-				onHandleNextQuestion={handleNextQuestion}
-				onHandlePreviousQuestion={handlePreviousQuestion}
-			/>
-		),
-		5: (
-			<CommunicationQ5
-				onHandleNextQuestion={handleNextQuestion}
-				onHandlePreviousQuestion={handlePreviousQuestion}
-			/>
-		),
-		6: (
-			<CommunicationQ6
-				onHandleNextQuestion={handleNextQuestion}
-				onHandlePreviousQuestion={handlePreviousQuestion}
-			/>
-		),
-	};
-
 	useEffect(() => {
 		if (quizState.currentAgeGroup === AGE_GROUPS.group5to8.name) {
 			dispatch({
 				type: 'SET_FLOW',
-				payload: [
-					QUESTIONS[1],
-					QUESTIONS[2],
-					QUESTIONS[3],
-					QUESTIONS[4],
-					QUESTIONS[5],
-					QUESTIONS[6],
-				],
+				payload: [5, 6, 7, 8, 9, 10],
 			});
 		} else {
 			dispatch({
 				type: 'SET_FLOW',
-				payload: [
-					QUESTIONS[1],
-					QUESTIONS[2],
-					QUESTIONS[3],
-					QUESTIONS[4],
-					QUESTIONS[5],
-					QUESTIONS[6],
-				],
+				payload: [5, 6, 7, 8, 9, 10],
 			});
 		}
 	}, []);
@@ -125,7 +65,7 @@ const index = () => {
 			});
 		}
 	}, [state.currentQuestionIndex, state.questionFlow.length]);
-
+	console.log({ state });
 	return (
 		<Box
 			width='100%'
@@ -137,7 +77,12 @@ const index = () => {
 			backgroundColor='transperant'
 			overflow='break-word'
 		>
-			{state.questionFlow[state.currentQuestionIndex]}
+			<TestQuestion slideId={state.questionFlow[state.currentQuestionIndex]} />
+			<QuestionButtonsGroup
+				onContinue={handleNextQuestion}
+				onPrevious={handlePreviousQuestion}
+				onSave={() => {}}
+			/>
 		</Box>
 	);
 };

@@ -1,2 +1,2 @@
 // export { default as Quiz} from './Quiz';
-export { default } from './RevisedQuiz';
+export { default } from './Quiz';

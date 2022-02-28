@@ -23,7 +23,8 @@ const quizInitialState = {
 	guestChild: '',
 	currentCategory: '',
 	currentAgeGroup: '',
-	answers: {},
+	answers: {}, // TO BE REMOVED
+	slide_answers: {},
 	todos: [],
 };
 
@@ -57,6 +58,14 @@ const quizReducer = (state: any, action: any) => {
 				answers: {
 					...state.answers,
 					[action.payload.id]: action.payload.value,
+				},
+			};
+		case 'SET_SLIDE_ANSWER':
+			return {
+				...state,
+				selected_answers: {
+					...state.selected_answers,
+					[action.payload.slideId]: action.payload.value,
 				},
 			};
 		case 'SET_GUEST_NAMES':
