@@ -1,7 +1,9 @@
 // @ts-nocheck
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import { Box, Text } from '../../../components';
+import { QuizAnswersContext } from '../Quiz';
+import { useSubChildAdultString } from '../hooks';
 
 const Checkboxes = ({
 	question,
@@ -10,13 +12,16 @@ const Checkboxes = ({
 	question: any;
 	onSetAnswer: (arg0: any) => void;
 }) => {
+	// @ts-expect-error
+	const { quizState } = useContext(QuizAnswersContext);
 	const [answers, setAnswers] = useState<string[]>([]);
+	const parseText = useSubChildAdultString();
 
 	useEffect(() => {
 		onSetAnswer({
 			answers: answers,
 			question_id: question.id,
-			child_id: 0,
+			child_id: quizState.childId,
 		});
 	}, [answers]);
 
@@ -47,10 +52,10 @@ const Checkboxes = ({
 				height='auto'
 				display='block'
 				backgroundColor='inherit'
-				margin='5px 0'
+				margin='5px 0 15px 0'
 			>
 				<Text typography='text' textAlign='center' size={18}>
-					{question.text}
+					{parseText(question.text)}
 				</Text>
 			</Box>
 			{question.answers.map((e: any, i: any) => (
@@ -64,7 +69,7 @@ const Checkboxes = ({
 					margin='2px 0'
 				>
 					<StyledCheckbox key={e.id} id={e.id} className='container'>
-						<Text typography='text' textAlign='left' size={14}>
+						<Text typography='text' textAlign='left' size={16}>
 							{e.text}
 						</Text>
 						<input

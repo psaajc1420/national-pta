@@ -1,6 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useTheme } from '@emotion/react';
 import { Box, Text } from '../../../components';
+import { QuizAnswersContext } from '../Quiz';
+import { useSubChildAdultString } from '../hooks';
 
 const FillInTheBlank = ({
 	question,
@@ -9,14 +11,17 @@ const FillInTheBlank = ({
 	question: any;
 	onSetAnswer: (arg0: any) => void;
 }) => {
+	// @ts-expect-error
+	const { quizState } = useContext(QuizAnswersContext);
 	const theme = useTheme();
 	const [inputValue, setInputValue] = useState('');
+	const parseText = useSubChildAdultString();
 
 	useEffect(() => {
 		onSetAnswer({
 			answers: [inputValue],
 			question_id: question.id,
-			child_id: 0,
+			child_id: quizState.childId,
 		});
 	}, [inputValue]);
 
@@ -29,7 +34,7 @@ const FillInTheBlank = ({
 			margin='5px 0'
 		>
 			<Text typography='text' textAlign='center' size={18}>
-				{question.text}
+				{parseText(question.text)}
 			</Text>
 			<Box
 				width='100%'

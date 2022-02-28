@@ -47,7 +47,7 @@ const Login = () => {
 	return (
 		<>
 			{isLoggedIn ? (
-				<Redirect to='/account' />
+				<Redirect to='/quiz' />
 			) : (
 				<>
 					<Box width='100%' height='100%' center backgroundColor='inherit'>

@@ -1,5 +1,6 @@
-import React from 'react';
+import { useContext } from 'react';
 import { Page, Text, View, Document, StyleSheet } from '@react-pdf/renderer';
+import { QuizAnswersContext } from '../Quiz';
 
 // Create styles
 const styles = StyleSheet.create({
@@ -15,17 +16,20 @@ const styles = StyleSheet.create({
 });
 
 // Create Document Component
-const Agreement = () => (
-	<Document>
-		<Page size='A4' style={styles.page}>
-			<View style={styles.section}>
-				<Text>Section #1</Text>
-			</View>
-			<View style={styles.section}>
-				<Text>Section #2</Text>
-			</View>
-		</Page>
-	</Document>
-);
-
+const Agreement = () => {
+	// @ts-expect-error
+	const { quizState } = useContext(QuizAnswersContext);
+	return (
+		<Document>
+			<Page size='A4' style={styles.page}>
+				<View style={styles.section}>
+					<Text>Section #1</Text>
+				</View>
+				<View style={styles.section}>
+					<Text>Section #2</Text>
+				</View>
+			</Page>
+		</Document>
+	);
+};
 export default Agreement;

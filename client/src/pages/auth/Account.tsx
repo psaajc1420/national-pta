@@ -99,7 +99,7 @@ const Account = () => {
 	console.log({ accountState, authState });
 	return (
 		<>
-			{
+			{authState.loggedIn ? (
 				<Box width='100%' height='100%' center backgroundColor='transperant'>
 					<Box
 						height='100%'
@@ -383,7 +383,9 @@ const Account = () => {
 						</StyledForm>
 					</Box>
 				</Box>
-			}
+			) : (
+				<Redirect to='/' />
+			)}
 		</>
 	);
 };

@@ -108,10 +108,10 @@ const QuizWelcome = () => {
 						},
 					});
 					quizDispatch({
-						type: 'SET_GUEST_NAMES',
+						type: 'SET_NAMES',
 						payload: {
-							guestAdult,
-							guestChild,
+							parentName: guestAdult,
+							childName: guestChild,
 						},
 					});
 				}}

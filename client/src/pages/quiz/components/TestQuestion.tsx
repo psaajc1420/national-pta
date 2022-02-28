@@ -4,7 +4,12 @@ import { BallTriangle } from 'react-loader-spinner';
 import { useTheme } from '@emotion/react';
 import { Box, Text } from '../../../components';
 import { QuizAnswersContext } from '../Quiz';
-import { RevisedCheckboxes, RevisedYesNo, RevisedFillInTheBlank } from '.';
+import {
+	RevisedCheckboxes,
+	RevisedYesNo,
+	RevisedFillInTheBlank,
+	RevisedSlider,
+} from '.';
 import { useQuery } from '@apollo/client';
 import { gql } from '@apollo/client';
 import { useSubChildAdultString } from '../hooks';
@@ -58,10 +63,12 @@ const TestQuestion = ({ slideId }: { slideId: string | number }) => {
 	}, [data?.slide?.questions]);
 
 	useEffect(() => {
-		quizDispatch({
-			type: 'SET_SLIDE_ANSWER',
-			payload: { slideId: slideId, value: selectedAnswers },
-		});
+		if (slideId) {
+			quizDispatch({
+				type: 'SET_SLIDE_ANSWER',
+				payload: { slideId: slideId, value: selectedAnswers },
+			});
+		}
 	}, [selectedAnswers]);
 
 	const handleOnSetSelectedAnswer = (answer: any) => {
@@ -125,7 +132,13 @@ const TestQuestion = ({ slideId }: { slideId: string | number }) => {
 						/>
 					);
 				} else if (questionType === 'slider') {
-					return <div key={i}>SLIDER</div>;
+					return (
+						<RevisedSlider
+							key={i}
+							question={question}
+							onSetAnswer={handleOnSetSelectedAnswer}
+						/>
+					);
 				} else {
 					return <div key={i}>HELLO</div>;
 				}

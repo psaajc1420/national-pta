@@ -20,8 +20,9 @@ import { AuthContext } from '../../App';
 import { Agreement } from './pdf';
 
 const quizInitialState = {
-	guestAdult: '',
-	guestChild: '',
+	parentName: '',
+	childName: '',
+	childId: 0,
 	currentCategory: '',
 	currentAgeGroup: '',
 	answers: {}, // TO BE REMOVED
@@ -64,16 +65,16 @@ const quizReducer = (state: any, action: any) => {
 		case 'SET_SLIDE_ANSWER':
 			return {
 				...state,
-				selected_answers: {
-					...state.selected_answers,
+				slide_answers: {
+					...state.slide_answers,
 					[action.payload.slideId]: action.payload.value,
 				},
 			};
-		case 'SET_GUEST_NAMES':
+		case 'SET_NAMES':
 			return {
 				...state,
-				guestAdult: action.payload.guestAdult,
-				guestChild: action.payload.guestChild,
+				parentName: action.payload.parentName,
+				childName: action.payload.childName,
 			};
 		case 'RESET_QUIZ':
 			return { quizInitialState };

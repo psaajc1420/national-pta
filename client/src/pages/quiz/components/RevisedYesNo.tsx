@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Box, Text } from '../../../components/index';
 import styled from '@emotion/styled';
 import { useSubChildAdultString } from '../hooks';
+import { QuizAnswersContext } from '../Quiz';
 
 const YesNo = ({
 	question,
@@ -10,6 +11,8 @@ const YesNo = ({
 	question: any;
 	onSetAnswer: (arg0: any) => void;
 }) => {
+	// @ts-expect-error
+	const { quizState } = useContext(QuizAnswersContext);
 	const [yesNo, setYesNo] = useState<any>(undefined);
 	const parseText = useSubChildAdultString();
 
@@ -17,7 +20,7 @@ const YesNo = ({
 		onSetAnswer({
 			answers: [yesNo],
 			question_id: question.id,
-			child_id: 0,
+			child_id: quizState.childId,
 		});
 	}, [yesNo]);
 
