@@ -12,14 +12,14 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "answers": {
-      "collection": "answer"
+    "question": {
+      "model": "question"
     },
-    "questions": {
-      "collection": "question"
+    "child": {
+      "model": "child"
     },
-    "children": {
-      "collection": "child"
+    "answer": {
+      "type": "string"
     }
   }
 }
