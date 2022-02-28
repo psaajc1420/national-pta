@@ -144,12 +144,9 @@ const createQuestions = async () => {
       if (answerData[key]) {
           answers = answerData[key];
       }
-      const  {text, question_type, order_id} = jsonData[key];
-      // console.log(order_id);
+
       await strapi.services.question.create({
-        text: text,
-        question_type: question_type,
-        order_id: order_id,
+        text: jsonData[key],
         answers: answers
       }).then((result) => {
         return result;
@@ -160,6 +157,7 @@ const createQuestions = async () => {
 }
 
 const createAnswers = async () => {
+
   const answers = await strapi.query("answer").find();
   
   if (answers.length === 0) {
@@ -167,14 +165,8 @@ const createAnswers = async () => {
     
     for (const key in jsonData) {
       const {text, question} = jsonData[key];
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 
       
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
       await strapi.services.answer.create({
         text: text,
       }).then((result) => {
@@ -184,31 +176,6 @@ const createAnswers = async () => {
     
   }
 }
-
-const createQuestionType = async () => {
-  // Check if age groups exist
-  const questionTypes = await strapi.query("question-type").find();
-
-  if (questionTypes.length === 0) {
-
-    let types = ["checkboxes", "yes-no", "fill-in-blank", "slider"];
-
-    for (let i = 0; i < types.length; i++) {
-      if (!questionTypes.includes(types[i])) {
-        await strapi.services["question-type"].create({
-          name: types[i],
-        });
-      }
-    }
-  }
-  // questionTypes.forEach((data) => {
-  //   if (types.includes(data.group)) {
-  //     types = types.filter((item) => item !== data.group);
-  //   }
-  // });
-
-
-};
 
 const createSlides = async () => {
   const slides = await strapi.query("slide").find();
@@ -220,19 +187,12 @@ const createSlides = async () => {
     for (const key in jsonData) {
       const questions = jsonData[key].questions;
 
-      
-      for (let j = 0; j < questions.length; j++) {
-        await strapi.services.question.update({id : questions[j]}, {
-          order_id: j+1
-        });
-      }
-
       if (questions) {
         await strapi.services.slide.create({
           slide_number: i+1,
           header: jsonData[key].header,
           age_group: 1,
-          questions: questions
+          questions: jsonData[key].questions
         }).then((result) => {
           return result;
         }).catch((error) => {strapi.log.info(`Error: ${error}`)});
@@ -250,7 +210,6 @@ module.exports = async () => {
     await createAdminUser();
   }
   await createAgeGroup();
-  await createQuestionType();
   await createQuestions();
   await createAnswers();
   await createSlides();
