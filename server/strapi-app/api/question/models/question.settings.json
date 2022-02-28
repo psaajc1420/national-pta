@@ -29,6 +29,17 @@
     },
     "answers": {
       "collection": "answer"
+    },
+    "question_type": {
+      "model": "question-type"
+    },
+    "order_id": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "integer"
     }
   }
 }
