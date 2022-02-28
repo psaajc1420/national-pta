@@ -7,6 +7,7 @@ import { QuizAnswersContext } from '../Quiz';
 import { RevisedCheckboxes, RevisedYesNo, RevisedFillInTheBlank } from '.';
 import { useQuery } from '@apollo/client';
 import { gql } from '@apollo/client';
+import { useSubChildAdultString } from '../hooks';
 
 const GET_SLIDE = gql`
 	query GetSlide($id: ID!) {
@@ -41,6 +42,7 @@ const TestQuestion = ({ slideId }: { slideId: string | number }) => {
 
 	const [questions, setQuestions] = useState([]);
 	const [selectedAnswers, setSelectedAnswers] = useState({});
+	const parseText = useSubChildAdultString();
 
 	// console.log({ loading, error, data });
 
@@ -87,7 +89,7 @@ const TestQuestion = ({ slideId }: { slideId: string | number }) => {
 					margin='5px 0 15px 0'
 				>
 					<Text typography='subheading' size={18} textAlign='center'>
-						{data.slide.header}
+						{parseText(data.slide.header)}
 					</Text>
 				</Box>
 			)}

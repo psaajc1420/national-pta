@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Box, Text } from '../../../components/index';
 import styled from '@emotion/styled';
+import { useSubChildAdultString } from '../hooks';
 
 const YesNo = ({
 	question,
@@ -10,6 +11,7 @@ const YesNo = ({
 	onSetAnswer: (arg0: any) => void;
 }) => {
 	const [yesNo, setYesNo] = useState<any>(undefined);
+	const parseText = useSubChildAdultString();
 
 	useEffect(() => {
 		onSetAnswer({
@@ -47,7 +49,7 @@ const YesNo = ({
 					backgroundColor='transperant'
 				>
 					<Text typography='text' size={16}>
-						{question.text}
+						{parseText(question.text)}
 					</Text>
 				</Box>
 

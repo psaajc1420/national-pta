@@ -17,6 +17,7 @@ import MediaChoices from './views/media-choices';
 import HealthAndWellness from './views/health-and-wellness';
 import KeepingOurPromises from './views/keeping-our-promises';
 import { AuthContext } from '../../App';
+import { Agreement } from './pdf';
 
 const quizInitialState = {
 	guestAdult: '',
@@ -140,6 +141,8 @@ const Quiz = () => {
 				return <HealthAndWellness />;
 			case CATEGORIES.keepingOurPromises.name:
 				return <KeepingOurPromises />;
+			case 'AGREEMENT':
+				return <Agreement />;
 			default:
 				return null;
 		}

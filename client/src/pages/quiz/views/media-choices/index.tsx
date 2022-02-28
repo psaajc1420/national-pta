@@ -1,24 +1,15 @@
 import { useContext, useEffect, useReducer } from 'react';
 import { AGE_GROUPS, CATEGORIES } from '../../../../constants';
 import { Box } from '../../../../components';
-import {
-	MediaChoicesQ1,
-	MediaChoicesQ2,
-	MediaChoicesQ3,
-	MediaChoicesQ4,
-	MediaChoicesQ5,
-	MediaChoicesQ6,
-	MediaChoicesQ7,
-	MediaChoicesQ8,
-} from './questions';
 import { QuizAnswersContext } from '../../Quiz';
+import { QuestionButtonsGroup, TestQuestion } from '../../components';
 
 const initialState = {
 	questionFlow: [],
 	currentQuestionIndex: 0,
 };
 
-const privacySafetyReducer = (state: any, action: any) => {
+const mediaChoicesReducer = (state: any, action: any) => {
 	switch (action.type) {
 		case 'NEXT_QUESTION':
 			return { ...state, currentQuestionIndex: state.currentQuestionIndex + 1 };
@@ -36,91 +27,22 @@ const privacySafetyReducer = (state: any, action: any) => {
 const index = () => {
 	// @ts-expect-error
 	const { quizState, quizDispatch } = useContext(QuizAnswersContext);
-	const [state, dispatch] = useReducer(privacySafetyReducer, initialState);
+	const [state, dispatch] = useReducer(mediaChoicesReducer, initialState);
 
 	const handleNextQuestion = () => dispatch({ type: 'NEXT_QUESTION' });
 
 	const handlePreviousQuestion = () => dispatch({ type: 'PREVIOUS_QUESTION' });
 
-	const QUESTIONS = {
-		1: (
-			<MediaChoicesQ1
-				onHandleNextQuestion={handleNextQuestion}
-				onHandlePreviousQuestion={handlePreviousQuestion}
-			/>
-		),
-		2: (
-			<MediaChoicesQ2
-				onHandleNextQuestion={handleNextQuestion}
-				onHandlePreviousQuestion={handlePreviousQuestion}
-			/>
-		),
-		3: (
-			<MediaChoicesQ3
-				onHandleNextQuestion={handleNextQuestion}
-				onHandlePreviousQuestion={handlePreviousQuestion}
-			/>
-		),
-		4: (
-			<MediaChoicesQ4
-				onHandleNextQuestion={handleNextQuestion}
-				onHandlePreviousQuestion={handlePreviousQuestion}
-			/>
-		),
-		5: (
-			<MediaChoicesQ5
-				onHandleNextQuestion={handleNextQuestion}
-				onHandlePreviousQuestion={handlePreviousQuestion}
-			/>
-		),
-		6: (
-			<MediaChoicesQ6
-				onHandleNextQuestion={handleNextQuestion}
-				onHandlePreviousQuestion={handlePreviousQuestion}
-			/>
-		),
-		7: (
-			<MediaChoicesQ7
-				onHandleNextQuestion={handleNextQuestion}
-				onHandlePreviousQuestion={handlePreviousQuestion}
-			/>
-		),
-		8: (
-			<MediaChoicesQ8
-				onHandleNextQuestion={handleNextQuestion}
-				onHandlePreviousQuestion={handlePreviousQuestion}
-			/>
-		),
-	};
-
 	useEffect(() => {
 		if (quizState.currentAgeGroup === AGE_GROUPS.group5to8.name) {
 			dispatch({
 				type: 'SET_FLOW',
-				payload: [
-					QUESTIONS[1],
-					QUESTIONS[2],
-					QUESTIONS[3],
-					QUESTIONS[4],
-					QUESTIONS[5],
-					QUESTIONS[6],
-					QUESTIONS[7],
-					QUESTIONS[8],
-				],
+				payload: [11, 12, 13, 14, 15, 16, 17, 18],
 			});
 		} else {
 			dispatch({
 				type: 'SET_FLOW',
-				payload: [
-					QUESTIONS[1],
-					QUESTIONS[2],
-					QUESTIONS[3],
-					QUESTIONS[4],
-					QUESTIONS[5],
-					QUESTIONS[6],
-					QUESTIONS[7],
-					QUESTIONS[8],
-				],
+				payload: [11, 12, 13, 14, 15, 16, 17, 18],
 			});
 		}
 	}, []);
@@ -155,7 +77,12 @@ const index = () => {
 			backgroundColor='transperant'
 			overflow='break-word'
 		>
-			{state.questionFlow[state.currentQuestionIndex]}
+			<TestQuestion slideId={state.questionFlow[state.currentQuestionIndex]} />
+			<QuestionButtonsGroup
+				onContinue={handleNextQuestion}
+				onPrevious={handlePreviousQuestion}
+				onSave={() => {}}
+			/>
 		</Box>
 	);
 };

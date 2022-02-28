@@ -1,19 +1,15 @@
 import { useContext, useEffect, useReducer } from 'react';
 import { AGE_GROUPS, CATEGORIES } from '../../../../constants';
 import { Box } from '../../../../components';
-import {
-	KeepingOurPromisesQ1,
-	KeepingOurPromisesQ2,
-	// KeepingOurPromisesQ3,
-} from './questions';
 import { QuizAnswersContext } from '../../Quiz';
+import { QuestionButtonsGroup, TestQuestion } from '../../components';
 
 const initialState = {
 	questionFlow: [],
 	currentQuestionIndex: 0,
 };
 
-const privacySafetyReducer = (state: any, action: any) => {
+const keepingOurPromisesReducer = (state: any, action: any) => {
 	switch (action.type) {
 		case 'NEXT_QUESTION':
 			return { ...state, currentQuestionIndex: state.currentQuestionIndex + 1 };
@@ -31,43 +27,22 @@ const privacySafetyReducer = (state: any, action: any) => {
 const index = () => {
 	// @ts-expect-error
 	const { quizState, quizDispatch } = useContext(QuizAnswersContext);
-	const [state, dispatch] = useReducer(privacySafetyReducer, initialState);
+	const [state, dispatch] = useReducer(keepingOurPromisesReducer, initialState);
 
 	const handleNextQuestion = () => dispatch({ type: 'NEXT_QUESTION' });
 
 	const handlePreviousQuestion = () => dispatch({ type: 'PREVIOUS_QUESTION' });
 
-	const QUESTIONS = {
-		1: (
-			<KeepingOurPromisesQ1
-				onHandleNextQuestion={handleNextQuestion}
-				onHandlePreviousQuestion={handlePreviousQuestion}
-			/>
-		),
-		2: (
-			<KeepingOurPromisesQ2
-				onHandleNextQuestion={handleNextQuestion}
-				onHandlePreviousQuestion={handlePreviousQuestion}
-			/>
-		),
-		// 3: (
-		// 	<KeepingOurPromisesQ3
-		// 		onHandleNextQuestion={handleNextQuestion}
-		// 		onHandlePreviousQuestion={handlePreviousQuestion}
-		// 	/>
-		// ),
-	};
-
 	useEffect(() => {
 		if (quizState.currentAgeGroup === AGE_GROUPS.group5to8.name) {
 			dispatch({
 				type: 'SET_FLOW',
-				payload: [QUESTIONS[1], QUESTIONS[2]],
+				payload: [23, 24],
 			});
 		} else {
 			dispatch({
 				type: 'SET_FLOW',
-				payload: [QUESTIONS[1], QUESTIONS[2]],
+				payload: [23, 24],
 			});
 		}
 	}, []);
@@ -79,7 +54,7 @@ const index = () => {
 		) {
 			quizDispatch({
 				type: 'SET_CATEGORY',
-				payload: { category: CATEGORIES.welcome.name },
+				payload: { category: 'AGREEMENT' },
 			});
 		}
 
@@ -102,7 +77,12 @@ const index = () => {
 			backgroundColor='transperant'
 			overflow='break-word'
 		>
-			{state.questionFlow[state.currentQuestionIndex]}
+			<TestQuestion slideId={state.questionFlow[state.currentQuestionIndex]} />
+			<QuestionButtonsGroup
+				onContinue={handleNextQuestion}
+				onPrevious={handlePreviousQuestion}
+				onSave={() => {}}
+			/>
 		</Box>
 	);
 };
