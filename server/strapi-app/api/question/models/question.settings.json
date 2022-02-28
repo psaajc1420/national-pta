@@ -27,12 +27,9 @@
     "age_groups": {
       "collection": "age-group"
     },
-<<<<<<< HEAD
-=======
     "answers": {
       "collection": "answer"
     },
->>>>>>> 3bb12932b2bf674904d1b99fc5e672f1b17c1f12
     "question_type": {
       "model": "question-type"
     },
